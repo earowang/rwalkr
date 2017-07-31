@@ -1,4 +1,4 @@
-Package: walk
+Package: walkrr
 Type: Package
 Title: Scrape Hourly Pedestrian Counts From The City of Melbourne
 Version: 0.1.0
@@ -9,8 +9,8 @@ Depends:
 Imports: 
     tidyr,
     dplyr
-URL: https://github.com/earowang/walker
-BugReports: https://github.com/earowang/walker/issues
+URL: https://github.com/earowang/walkrr
+BugReports: https://github.com/earowang/walkrr/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

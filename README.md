@@ -1,10 +1,10 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Travis-CI Build Status](https://travis-ci.org/earowang/walk.svg?branch=master)](https://travis-ci.org/earowang/walk) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/walk)](https://cran.r-project.org/package=walk)
+[![Travis-CI Build Status](https://travis-ci.org/earowang/walkrr.svg?branch=master)](https://travis-ci.org/earowang/walkrr) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/walkrr)](https://cran.r-project.org/package=walkrr)
 
-walk
-====
+walkrr
+======
 
-The goal of **walk** is to provide API to the pedestrian data from the City of Melbourne in tidy data form.
+The goal of **walkrr** is to provide API to the pedestrian data from the City of Melbourne in tidy data form.
 
 Installation
 ------------
@@ -13,7 +13,7 @@ You could install the development version from Github using
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("earowang/walk")
+devtools::install_github("earowang/walkrr")
 ```
 
 Usage
@@ -22,7 +22,7 @@ Usage
 Currently there is only one function in the package, `walk_melb()`. The starting and ending date inform which period to be scraped.
 
 ``` r
-library(walk)
+library(walkrr)
 start_date <- as.Date("2017-07-01")
 end_date <- start_date + 6
 ped <- walk_melb(from = start_date, to = end_date)
