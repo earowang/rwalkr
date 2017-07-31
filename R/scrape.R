@@ -5,7 +5,7 @@ globalVariables(c("Time", "Count", "Sensor", "Date"))
 #' @param to Ending date.
 #' @param tz Time zone.
 #'
-#' @return A data frame contains "Sensor", "Date_Time", "Count".
+#' @return A data frame of "Sensor", "Date_Time", "Date", "Time", "Count" variables.
 #' @export
 #'
 #' @examples
@@ -51,9 +51,10 @@ get_pedestrian <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
   df_dat <- dplyr::mutate(df_dat, Time = interp_time(Time))
   df_dat <- dplyr::mutate(
     df_dat,
-    Date_Time = as.POSIXct(paste(Date, paste0(Time, ":00:00")), tz = tz)
-  )
-  df_dat[, c("Sensor", "Date_Time", "Count")]
+    Date_Time = as.POSIXct(paste(
+      Date, paste0(formatC(Time, width = 2, flag = "0"), ":00:00")), tz = tz
+  ))
+  df_dat[, c("Sensor", "Date_Time", "Date", "Time", "Count")]
 }
 
 interp_time <- function(x) {
@@ -64,5 +65,5 @@ interp_time <- function(x) {
   output[morning] <- num[morning]
   output[arvo] <- num[arvo] + 12L
   output[x %in% "Noon"] <- 12L
-  formatC(output, width = 2, flag = "0")
+  output
 }

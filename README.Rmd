@@ -31,8 +31,11 @@ devtools::install_github("earowang/pedestrian")
 
 Currently there is only one function in the package, `get_pedestrian()`. The starting and ending date inform which period to be scraped.
 
-```{r, eval = FALSE}
-get_pedestrian()
-get_pedestrian(from = as.Date("2017-01-01"), to = as.Date("2017-02-28"))
+```{r}
+library(pedestrian)
+start_date <- as.Date("2017-07-01")
+end_date <- start_date + 6
+ped <- get_pedestrian(from = start_date, end_date)
+head(ped)
 ```
 

@@ -3,8 +3,7 @@ Type: Package
 Title: Scrape Hourly Pedestrian Counts From The City of Melbourne
 Version: 0.1.0
 Authors@R: person("Earo", "Wang", email = "earo.wang@gmail.com", role = c("aut", "cre"))
-Description: Provides functions to scrape Melbourne pedestrian data into tidy
-    temporal data form.
+Description: Provides API to Melbourne pedestrian data in tidy data form.
 Depends:
     R (>= 3.1.3)
 Imports: 

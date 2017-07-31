@@ -14,7 +14,7 @@ get_pedestrian(from = to - 6L, to = Sys.Date() - 1L, tz = "")
 \item{tz}{Time zone.}
 }
 \value{
-A data frame contains "Sensor", "Date_Time", "Count".
+A data frame of "Sensor", "Date_Time", "Date", "Time", "Count" variables.
 }
 \description{
 API to the pedestrian data sourced from the City of Melbourne
