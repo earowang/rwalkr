@@ -14,6 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
+[![Travis-CI Build Status](https://travis-ci.org/earowang/pedestrian.svg?branch=master)](https://travis-ci.org/earowang/pedestrian)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/pedestrian)](https://cran.r-project.org/package=pedestrian)
+
 # pedestrian
 
 The goal of pedestrian is to provide API to the pedestrian data from the City of Melbourne in tidy data form.

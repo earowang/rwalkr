@@ -1,4 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+[![Travis-CI Build Status](https://travis-ci.org/earowang/pedestrian.svg?branch=master)](https://travis-ci.org/earowang/pedestrian) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/pedestrian)](https://cran.r-project.org/package=pedestrian)
+
 pedestrian
 ==========
 

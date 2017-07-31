@@ -5,14 +5,14 @@ globalVariables(c("Time", "Count", "Sensor", "Date"))
 #' @param to Ending date.
 #' @param tz Time zone.
 #'
-#' @return A data frame of "Sensor", "Date_Time", "Date", "Time", "Count" variables.
+#' @return A data frame including "Sensor", "Date_Time", "Date", "Time",
+#'   "Count" variables.
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #'   ped_df <- get_pedestrain()
 #' }
-#' @importFrom utils read.csv
 get_pedestrian <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
   stopifnot(class(from) == "Date" && class(to) == "Date")
   stopifnot(from > as.Date("2009-05-31"))
@@ -33,7 +33,7 @@ get_pedestrian <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
   urls <- paste0(prefix_url, fmt_date)
   p <- dplyr::progress_estimated(length(urls))
   lst_dat <- lapply(urls, function(x) {
-    dat <- read.csv(
+    dat <- utils::read.csv(
       x, skip = 8, nrows = 43, colClasses = c("character", rep("integer", 24)),
       na.strings = "N/A", stringsAsFactors = FALSE, check.names = FALSE
     )
@@ -53,7 +53,8 @@ get_pedestrian <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
     df_dat,
     Date_Time = as.POSIXct(paste(
       Date, paste0(formatC(Time, width = 2, flag = "0"), ":00:00")), tz = tz
-  ))
+    )
+  )
   df_dat[, c("Sensor", "Date_Time", "Date", "Time", "Count")]
 }
 
