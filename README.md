@@ -9,6 +9,12 @@ The goal of **walkrr** is to provide API to the pedestrian data from the City of
 Installation
 ------------
 
+You could install the stable version from CRAN:
+
+``` r
+install.packages("walkrr")
+```
+
 You could install the development version from Github using
 
 ``` r
@@ -24,7 +30,7 @@ Currently there is only one function in the package, `walk_melb()`. The starting
 ``` r
 library(walkrr)
 start_date <- as.Date("2017-07-01")
-end_date <- start_date + 6
+end_date <- start_date + 6L
 ped <- walk_melb(from = start_date, to = end_date)
 head(ped)
 #>                  Sensor  Date_Time       Date Time Count
@@ -43,3 +49,8 @@ ggplot(data = subset(ped, Sensor == "Melbourne Central")) +
 ```
 
 ![](man/figure/plot-1.png)
+
+Acknowledgements
+----------------
+
+Thanks to Stuart Lee (@sa-lee) for inspiring this package.

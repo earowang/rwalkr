@@ -1,11 +1,15 @@
-globalVariables(c("Time", "Count", "Sensor", "Date"))
-#' API to the pedestrian data sourced from the City of Melbourne
+globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
+#' API to Melbourne pedestrian data using R
 #'
 #' @param from Starting date.
 #' @param to Ending date.
 #' @param tz Time zone.
 #'
 #' @details The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp).
+#'   At its heart, this function scrapes the data through the
+#'   "https://compedapi.herokuapp.com" api. A progress bar shows the download
+#'   status. Please refer to Melbourne Open Data Portal for more details about
+#'   the dataset and its policy.
 #' @return A data frame including "Sensor", "Date_Time", "Date", "Time",
 #'   "Count" variables.
 #' @export
@@ -13,6 +17,7 @@ globalVariables(c("Time", "Count", "Sensor", "Date"))
 #' @examples
 #' \dontrun{
 #'   ped_df <- walk_melb()
+#'   head(ped_df)
 #' }
 walk_melb <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
   stopifnot(class(from) == "Date" && class(to) == "Date")
