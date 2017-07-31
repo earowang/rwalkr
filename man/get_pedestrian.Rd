@@ -20,5 +20,7 @@ A data frame contains "Sensor", "Date_Time", "Count".
 API to the pedestrian data sourced from the City of Melbourne
 }
 \examples{
+\dontrun{
   ped_df <- get_pedestrain()
+}
 }

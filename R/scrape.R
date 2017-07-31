@@ -1,3 +1,4 @@
+globalVariables(c("Time", "Count", "Sensor", "Date"))
 #' API to the pedestrian data sourced from the City of Melbourne
 #'
 #' @param from Starting date.
@@ -8,7 +9,10 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #'   ped_df <- get_pedestrain()
+#' }
+#' @importFrom utils read.csv
 get_pedestrian <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
   stopifnot(class(from) == "Date" && class(to) == "Date")
   stopifnot(from > as.Date("2009-05-31"))
