@@ -5,15 +5,16 @@ globalVariables(c("Time", "Count", "Sensor", "Date"))
 #' @param to Ending date.
 #' @param tz Time zone.
 #'
+#' @details The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp).
 #' @return A data frame including "Sensor", "Date_Time", "Date", "Time",
 #'   "Count" variables.
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#'   ped_df <- get_pedestrain()
+#'   ped_df <- walk_melb()
 #' }
-get_pedestrian <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
+walk_melb <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
   stopifnot(class(from) == "Date" && class(to) == "Date")
   stopifnot(from > as.Date("2009-05-31"))
   stopifnot(from <= to)
