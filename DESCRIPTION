@@ -1,4 +1,4 @@
-Package: walker
+Package: walk
 Type: Package
 Title: Scrape Hourly Pedestrian Counts From The City of Melbourne
 Version: 0.1.0
