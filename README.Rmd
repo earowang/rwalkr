@@ -10,7 +10,7 @@ output:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "man/figure/"
 )
 ```
 
@@ -34,11 +34,17 @@ devtools::install_github("earowang/walk")
 
 Currently there is only one function in the package, `walk_melb()`. The starting and ending date inform which period to be scraped.
 
-```{r}
+```{r data}
 library(walk)
 start_date <- as.Date("2017-07-01")
 end_date <- start_date + 6
 ped <- walk_melb(from = start_date, to = end_date)
 head(ped)
+```
+
+```{r plot, fig.height = 4}
+library(ggplot2)
+ggplot(data = subset(ped, Sensor == "Melbourne Central")) +
+  geom_line(aes(x = Date_Time, y = Count))
 ```
 

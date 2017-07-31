@@ -35,3 +35,11 @@ head(ped)
 #> 5     Melbourne Central 2017-07-01 2017-07-01    0   826
 #> 6      Town Hall (West) 2017-07-01 2017-07-01    0   682
 ```
+
+``` r
+library(ggplot2)
+ggplot(data = subset(ped, Sensor == "Melbourne Central")) +
+  geom_line(aes(x = Date_Time, y = Count))
+```
+
+![](man/figure/plot-1.png)
