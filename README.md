@@ -23,7 +23,7 @@ Currently there is only one function in the package, `get_pedestrian()`. The sta
 library(pedestrian)
 start_date <- as.Date("2017-07-01")
 end_date <- start_date + 6
-ped <- get_pedestrian(from = start_date, end_date)
+ped <- get_pedestrian(from = start_date, to = end_date)
 head(ped)
 #>                  Sensor  Date_Time       Date Time Count
 #> 1         State Library 2017-07-01 2017-07-01    0   334
