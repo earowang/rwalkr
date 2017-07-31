@@ -1,0 +1,28 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# pedestrian
+
+The goal of pedestrian is to provide functions to scrape hourly pedestrian counts from the City of Melbourne and arrange into tidy data form.
+
+## Installation
+
+You could install the development version from Github using
+
+```{r, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("earowang/pedestrian", build_vignettes = TRUE)
+```
