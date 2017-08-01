@@ -1,4 +1,4 @@
-Package: walkrr
+Package: rwalkr
 Type: Package
 Title: API to Melbourne Pedestrian Data
 Version: 0.1.0
@@ -9,8 +9,8 @@ Depends:
 Imports: 
     tidyr,
     dplyr
-URL: https://github.com/earowang/walkrr
-BugReports: https://github.com/earowang/walkrr/issues
+URL: https://github.com/earowang/rwalkr
+BugReports: https://github.com/earowang/rwalkr/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
