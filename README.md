@@ -15,7 +15,7 @@ You could install the stable version from CRAN:
 install.packages("walkrr")
 ```
 
-You could install the development version from Github using
+You could install the development version from Github using:
 
 ``` r
 # install.packages("devtools")
@@ -25,7 +25,7 @@ devtools::install_github("earowang/walkrr")
 Usage
 -----
 
-Currently there is only one function in the package, `walk_melb()`. The starting and ending date inform which period to be scraped.
+Currently there is only one function in the package, `walk_melb()`. The starting and ending dates inform which period to be scraped.
 
 ``` r
 library(walkrr)

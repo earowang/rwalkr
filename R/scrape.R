@@ -46,11 +46,11 @@ walk_melb <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
     p$tick()$print()
     dat
   })
-  lst_dat_x <- suppressWarnings(mapply(
+  lst_dat_x <- mapply(
     function(x, y) dplyr::mutate(x, Date = y),
     lst_dat, date_range,
     SIMPLIFY = FALSE, USE.NAMES = FALSE
-  ))
+  )
   df_dat <- dplyr::bind_rows(lapply(lst_dat_x, function(x)
     tidyr::gather(x, Time, Count, -c(Sensor, Date))
   ))
