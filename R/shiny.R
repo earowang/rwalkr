@@ -19,9 +19,10 @@ shine_melb <- function() {
   `%>%` <- plotly::`%>%`
 
   ui <- shiny::fluidPage(
+    shiny::br(),
     shiny::fluidRow(
       shiny::column(
-        width = 5,
+        width = 4,
         shiny::dateRangeInput(
           "date_rng", "Date range:",
           start = Sys.Date() - 6L,
@@ -37,6 +38,7 @@ shine_melb <- function() {
       shiny::column(
         width = 7,
         plotly::plotlyOutput("overlay", height = 400),
+        shiny::hr(),
         plotly::plotlyOutput("heatmap", height = 400)
       )
     )
@@ -87,7 +89,8 @@ shine_melb <- function() {
         ) %>%
         plotly::add_lines(alpha = 0.8)
       plotly::layout(
-        tsplot, xaxis = list(title = "Date Time"), yaxis = list(title = "Count")
+        tsplot, title = "Time series plot",
+        xaxis = list(title = "Date Time"), yaxis = list(title = "Count")
       )
     })
 
@@ -110,8 +113,8 @@ shine_melb <- function() {
           showscale = FALSE
         )
       plotly::layout(
-        heatmap,
-        xaxis = list(title = "Date Time"), yaxis = list(title = "Count")
+        heatmap, title = "Missing heatmap",
+        xaxis = list(title = "Date Time"), yaxis = list(title = "")
       )
     })
   }
