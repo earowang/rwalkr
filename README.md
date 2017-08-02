@@ -25,7 +25,7 @@ devtools::install_github("earowang/rwalkr")
 Usage
 -----
 
-Currently there is only one function in the package, `walk_melb()`. The starting and ending dates inform which period to be scraped.
+The `walk_melb()` function is the workhorse. The starting and ending dates inform of which period to be pulled.
 
 ``` r
 library(rwalkr)
@@ -42,6 +42,8 @@ head(ped)
 #> 6      Town Hall (West) 2017-07-01 2017-07-01    0   682
 ```
 
+The data can directly be chained to *ggplot2* for visualisation.
+
 ``` r
 library(ggplot2)
 ggplot(data = subset(ped, Sensor == "Melbourne Central")) +
@@ -49,6 +51,8 @@ ggplot(data = subset(ped, Sensor == "Melbourne Central")) +
 ```
 
 ![](man/figure/plot-1.png)
+
+The other function `shine_melb()` launches a shiny app to give a glimpse of the data. It is restricted to the data of less than one-month period. It provides two basic plots: one is an overlaying time series plot, and the other is a heatmap indicating missing values.
 
 Acknowledgements
 ----------------

@@ -1,4 +1,4 @@
-#' Visual summaries for pedestrian data of a month window
+#' A simple shiny app for pedestrian data of a given month window
 #'
 #' @return A shiny app.
 #' @export
