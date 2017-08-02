@@ -113,7 +113,7 @@ shine_melb <- function() {
           showscale = FALSE
         )
       plotly::layout(
-        heatmap, title = "Missing heatmap",
+        heatmap, title = "Missing value heatmap",
         xaxis = list(title = "Date Time"), yaxis = list(title = "")
       )
     })
