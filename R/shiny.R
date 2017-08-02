@@ -16,6 +16,7 @@ shine_melb <- function() {
       "Please install and try again.", call. = FALSE
     )
   }
+  `%>%` <- plotly::`%>%`
 
   ui <- shiny::fluidPage(
     shiny::fluidRow(
@@ -32,6 +33,11 @@ shine_melb <- function() {
           multiple = TRUE
         ),
         shiny::downloadButton("csv_dl", "Download CSV")
+      ),
+      shiny::column(
+        width = 7,
+        plotly::plotlyOutput("overlay", height = 400),
+        plotly::plotlyOutput("heatmap", height = 400)
       )
     )
   )
@@ -66,6 +72,48 @@ shine_melb <- function() {
         utils::write.csv(ped_df(), file)
       }
     )
+
+    output$overlay <- plotly::renderPlotly({
+      tsplot <- ped_df() %>%
+        dplyr::filter(!is.na(Count)) %>%
+        dplyr::group_by(Sensor) %>%
+        plotly::plot_ly(
+          x = ~ Date_Time, y = ~ Count,
+          hoverinfo = "text",
+          text = ~ paste(
+            "Sensor: ", Sensor,
+            "<br> Date Time: ", Date_Time
+          )
+        ) %>%
+        plotly::add_lines(alpha = 0.8)
+      plotly::layout(
+        tsplot, xaxis = list(title = "Date Time"), yaxis = list(title = "Count")
+      )
+    })
+
+    output$heatmap <- plotly::renderPlotly({
+      na_df <- ped_df() %>%
+        dplyr::mutate(
+          NA_num = ifelse(is.na(Count), 1, 0),
+          NA_chr = ifelse(is.na(Count), "Yes", "No")
+        )
+      heatmap <- plotly::plot_ly(
+        na_df, hoverinfo = "text",
+        text = ~ paste(
+          "Sensor: ", Sensor,
+          "<br> Date Time: ", Date_Time,
+          "<br> Missing: ", NA_chr
+          )
+        ) %>%
+        plotly::add_heatmap(
+          x = ~ Date_Time, y = ~ Sensor, z = ~ NA_num,
+          showscale = FALSE
+        )
+      plotly::layout(
+        heatmap,
+        xaxis = list(title = "Date Time"), yaxis = list(title = "Count")
+      )
+    })
   }
 
   shiny::shinyApp(ui, server)
