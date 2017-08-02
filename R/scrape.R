@@ -1,17 +1,24 @@
 globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #' API to Melbourne pedestrian data using R
 #'
+#' Provides API to Melbourne pedestrian data in a tidy data form.
+#'
 #' @param from Starting date.
 #' @param to Ending date.
 #' @param tz Time zone.
 #'
 #' @details The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp).
 #'   At its heart, this function scrapes the data through the
-#'   "https://compedapi.herokuapp.com" api. A progress bar shows the download
-#'   status. Please refer to Melbourne Open Data Portal for more details about
-#'   the dataset and its policy.
-#' @return A data frame including "Sensor", "Date_Time", "Date", "Time",
-#'   "Count" variables.
+#'   "https://compedapi.herokuapp.com" api. A progress bar shows the approximate
+#'   download status. Please refer to Melbourne Open Data Portal for more 
+#'   details about the dataset and its policy.
+#' @return A data frame including these variables as follows:
+#'   * Sensor: Sensor name (43 sensors)
+#'   * Date_Time: Date time when the pedestrian counts are recorded
+#'   * Date: Date associated with Date_Time
+#'   * Time: Time of day
+#'   * Count: Hourly counts
+#'
 #' @export
 #'
 #' @examples
@@ -46,12 +53,11 @@ walk_melb <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
     p$tick()$print()
     dat
   })
-  lst_dat_x <- mapply(
+  lst_dat[] <- Map(
     function(x, y) dplyr::mutate(x, Date = y),
-    lst_dat, date_range,
-    SIMPLIFY = FALSE, USE.NAMES = FALSE
+    lst_dat, date_range
   )
-  df_dat <- dplyr::bind_rows(lapply(lst_dat_x, function(x)
+  df_dat <- dplyr::bind_rows(lapply(lst_dat, function(x)
     tidyr::gather(x, Time, Count, -c(Sensor, Date))
   ))
   df_dat <- dplyr::mutate(df_dat, Time = interp_time(Time))
@@ -61,7 +67,7 @@ walk_melb <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
       Date, paste0(formatC(Time, width = 2, flag = "0"), ":00:00")), tz = tz
     )
   )
-  df_dat[, c("Sensor", "Date_Time", "Date", "Time", "Count")]
+  dplyr::select(df_dat, Sensor, Date_Time, Date, Time, Count)
 }
 
 interp_time <- function(x) {

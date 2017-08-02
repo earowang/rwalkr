@@ -14,18 +14,24 @@ walk_melb(from = to - 6L, to = Sys.Date() - 1L, tz = "")
 \item{tz}{Time zone.}
 }
 \value{
-A data frame including "Sensor", "Date_Time", "Date", "Time",
-"Count" variables.
+A data frame including these variables as follows:
+\itemize{
+\item Sensor: Sensor name (43 sensors)
+\item Date_Time: Date time when the pedestrian counts are recorded
+\item Date: Date associated with Date_Time
+\item Time: Time of day
+\item Count: Hourly counts
+}
 }
 \description{
-API to Melbourne pedestrian data using R
+Provides API to Melbourne pedestrian data in a tidy data form.
 }
 \details{
 The data is sourced from \href{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}{Melbourne Open Data Portal}.
 At its heart, this function scrapes the data through the
-"https://compedapi.herokuapp.com" api. A progress bar shows the download
-status. Please refer to Melbourne Open Data Portal for more details about
-the dataset and its policy.
+"https://compedapi.herokuapp.com" api. A progress bar shows the approximate
+download status. Please refer to Melbourne Open Data Portal for more
+details about the dataset and its policy.
 }
 \examples{
 \dontrun{
