@@ -8,11 +8,15 @@
 #'   shine_melb()
 #' }
 shine_melb <- function() {
-  shiny <- requireNamespace("shiny", quietly = TRUE)
-  plotly <- requireNamespace("plotly", quietly = TRUE)
-  if (!shiny && !plotly) {
+  if (!requireNamespace("shiny", quietly = TRUE)) {
     stop(
-      "Packages shiny & plotly required for shine_melb()", ".\n",
+      "Packages shiny required for shine_melb()", ".\n",
+      "Please install and try again.", call. = FALSE
+    )
+  }
+  if (!requireNamespace("plotly", quietly = TRUE)) {
+    stop(
+      "Packages plotly required for shine_melb()", ".\n",
       "Please install and try again.", call. = FALSE
     )
   }
@@ -25,7 +29,7 @@ shine_melb <- function() {
         width = 4,
         shiny::dateRangeInput(
           "date_rng", "Date range:",
-          start = Sys.Date() - 6L,
+          start = Sys.Date() - 7L,
           end = Sys.Date() - 1L
         ),
         shiny::selectizeInput(
