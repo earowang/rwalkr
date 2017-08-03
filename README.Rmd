@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 [![Travis-CI Build Status](https://travis-ci.org/earowang/rwalkr.svg?branch=master)](https://travis-ci.org/earowang/rwalkr)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/rwalkr)](https://cran.r-project.org/package=rwalkr)
+[![Downloads](http://cranlogs.r-pkg.org/badges/rwalkr?color=brightgreen)](https://cran.r-project.org/package=rwalkr)
 
 # rwalkr
 
