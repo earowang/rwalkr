@@ -2,7 +2,7 @@
 % Please edit documentation in R/shiny.R
 \name{shine_melb}
 \alias{shine_melb}
-\title{A simple shiny app for pedestrian data of a given month window}
+\title{A simple shiny app for pedestrian data}
 \usage{
 shine_melb()
 }
@@ -10,7 +10,7 @@ shine_melb()
 A shiny app.
 }
 \description{
-A simple shiny app for pedestrian data of a given month window
+A simple shiny app for pedestrian data
 }
 \examples{
 \dontrun{

@@ -7,7 +7,7 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #' @param from Starting date.
 #' @param to Ending date.
 #' @param tz Time zone.
-#' @param session `interactive()` or not. For internal use only.
+#' @param session `NULL` or "shiny". For internal use only.
 #'
 #' @details The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp).
 #'   At its heart, this function scrapes the data through the
@@ -28,8 +28,9 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #'   ped_df <- walk_melb()
 #'   head(ped_df)
 #' }
-walk_melb <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "",
-  session = interactive()) {
+walk_melb <- function(
+  from = to - 6L, to = Sys.Date() - 1L, tz = "", session = NULL
+) {
   stopifnot(class(from) == "Date" && class(to) == "Date")
   stopifnot(from > as.Date("2009-05-31"))
   stopifnot(from <= to)
@@ -49,7 +50,7 @@ walk_melb <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "",
   urls <- paste0(prefix_url, fmt_date)
   len_urls <- length(urls)
 
-  if (session) {
+  if (is.null(session)) {
     p <- dplyr::progress_estimated(len_urls)
     lst_dat <- lapply(urls, function(x) {
       dat <- read_file(file = x)

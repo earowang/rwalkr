@@ -1,4 +1,4 @@
-#' A simple shiny app for pedestrian data of a given month window
+#' A simple shiny app for pedestrian data
 #'
 #' @return A shiny app.
 #' @export
@@ -29,41 +29,39 @@ shine_melb <- function() {
         width = 4,
         shiny::dateRangeInput(
           "date_rng", "Date range:",
-          start = Sys.Date() - 7L,
-          end = Sys.Date() - 1L
+          start = Sys.Date() - 3L,
+          end = Sys.Date() - 1L,
+          min = "2009-06-01",
+          max = Sys.Date() - 1L
         ),
+        shiny::actionButton(
+          "goButton", "Update Date",
+          icon = shiny::icon("refresh")
+        ),
+        shiny::hr(),
         shiny::selectizeInput(
           "sensor_txt", "Sensor:",
           choices = sensor$sensor,
           multiple = TRUE
         ),
-        shiny::downloadButton("csv_dl", "Download CSV")
+        shiny::downloadButton("downloadCSV", "Download CSV")
       ),
       shiny::column(
         width = 7,
-        plotly::plotlyOutput("overlay", height = 320),
+        plotly::plotlyOutput("drawOverlay", height = 320),
         shiny::hr(),
-        plotly::plotlyOutput("marker", height = 480)
+        plotly::plotlyOutput("drawMarker", height = 480)
       )
     )
   )
 
   server <- function(input, output, session) {
-    # Update date range allowing for a month window
-    shiny::observe({
-      date <- input$date_rng[2]
-      shiny::updateDateRangeInput(
-        session, "date_rng",
-        min = date - 30L,
-        max = date
-      )
-    })
-
     all_df <- shiny::reactive({
-      walk_melb(
+      input$goButton
+      isolate(walk_melb(
         from = input$date_rng[1], to = input$date_rng[2],
-        session = FALSE
-      )
+        session = "shiny"
+      ))
     })
     ped_df <- shiny::reactive({
       if (is.null(input$sensor_txt)) {
@@ -73,7 +71,7 @@ shine_melb <- function() {
       }
     })
 
-    output$csv_dl <- shiny::downloadHandler(
+    output$downloadCSV <- shiny::downloadHandler(
       filename = function() {
         paste0("pedestian-", Sys.Date(), ".csv")
       },
@@ -82,7 +80,7 @@ shine_melb <- function() {
       }
     )
 
-    output$overlay <- plotly::renderPlotly({
+    output$drawOverlay <- plotly::renderPlotly({
       tsplot <- ped_df() %>%
         dplyr::filter(!is.na(Count)) %>%
         dplyr::group_by(Sensor) %>%
@@ -101,7 +99,7 @@ shine_melb <- function() {
       )
     })
 
-    output$marker <- plotly::renderPlotly({
+    output$drawMarker <- plotly::renderPlotly({
       na_df <- ped_df() %>%
         dplyr::left_join(sensor, by = c("Sensor" = "sensor")) %>%
         dplyr::mutate(NA_ind = is.na(Count))
