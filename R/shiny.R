@@ -33,17 +33,17 @@ shine_melb <- function() {
           end = Sys.Date() - 1L
         ),
         shiny::selectizeInput(
-          "sensor", "Sensor:",
-          choices = sensor,
+          "sensor_txt", "Sensor:",
+          choices = sensor$sensor,
           multiple = TRUE
         ),
         shiny::downloadButton("csv_dl", "Download CSV")
       ),
       shiny::column(
         width = 7,
-        plotly::plotlyOutput("overlay", height = 400),
+        plotly::plotlyOutput("overlay", height = 320),
         shiny::hr(),
-        plotly::plotlyOutput("heatmap", height = 400)
+        plotly::plotlyOutput("marker", height = 480)
       )
     )
   )
@@ -63,10 +63,10 @@ shine_melb <- function() {
       walk_melb(from = input$date_rng[1], to = input$date_rng[2])
     })
     ped_df <- shiny::reactive({
-      if (is.null(input$sensor)) {
+      if (is.null(input$sensor_txt)) {
         all_df()
       } else {
-        dplyr::filter(all_df(), Sensor %in% input$sensor)
+        dplyr::filter(all_df(), Sensor %in% input$sensor_txt)
       }
     })
 
@@ -98,26 +98,27 @@ shine_melb <- function() {
       )
     })
 
-    output$heatmap <- plotly::renderPlotly({
+    output$marker <- plotly::renderPlotly({
       na_df <- ped_df() %>%
+        dplyr::left_join(sensor, by = c("Sensor" = "sensor")) %>%
         dplyr::mutate(
-          NA_num = ifelse(is.na(Count), 1, 0),
-          NA_chr = ifelse(is.na(Count), "Yes", "No")
+          NA_ind = is.na(Count)
         )
-      heatmap <- plotly::plot_ly(
+      miss_marker <- plotly::plot_ly(
         na_df, hoverinfo = "text",
         text = ~ paste(
-          "Sensor: ", Sensor,
+          "Sensor:", Sensor,
           "<br> Date Time: ", Date_Time,
-          "<br> Missing: ", NA_chr
-          )
-        ) %>%
-        plotly::add_heatmap(
-          x = ~ Date_Time, y = ~ Sensor, z = ~ NA_num,
-          showscale = FALSE
+          "<br> Missing: ", NA_ind
+        )
+      ) %>%
+        plotly::add_markers(
+          x = ~ Date_Time, y = ~ abbr, color = ~ NA_ind,
+          colors = c("#1b9e77", "#7570b3")
         )
       plotly::layout(
-        heatmap, title = "Missing value heatmap",
+        miss_marker, title = "Missing value indicator",
+        showlegend = FALSE,
         xaxis = list(title = "Date Time"), yaxis = list(title = "")
       )
     })
