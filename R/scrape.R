@@ -1,4 +1,5 @@
 globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
+
 #' API to Melbourne pedestrian data using R
 #'
 #' Provides API to Melbourne pedestrian data in a tidy data form.
@@ -6,11 +7,12 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #' @param from Starting date.
 #' @param to Ending date.
 #' @param tz Time zone.
+#' @param session `interactive()` or not. For internal use only.
 #'
 #' @details The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp).
 #'   At its heart, this function scrapes the data through the
 #'   "https://compedapi.herokuapp.com" api. A progress bar shows the approximate
-#'   download status. Please refer to Melbourne Open Data Portal for more 
+#'   download status. Please refer to Melbourne Open Data Portal for more
 #'   details about the dataset and its policy.
 #' @return A data frame including these variables as follows:
 #'   * Sensor: Sensor name (43 sensors)
@@ -26,7 +28,8 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #'   ped_df <- walk_melb()
 #'   head(ped_df)
 #' }
-walk_melb <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
+walk_melb <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "",
+  session = interactive()) {
   stopifnot(class(from) == "Date" && class(to) == "Date")
   stopifnot(from > as.Date("2009-05-31"))
   stopifnot(from <= to)
@@ -44,15 +47,28 @@ walk_melb <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
 
   fmt_date <- format(date_range, "%d-%m-%Y")
   urls <- paste0(prefix_url, fmt_date)
-  p <- dplyr::progress_estimated(length(urls))
-  lst_dat <- lapply(urls, function(x) {
-    dat <- utils::read.csv(
-      x, skip = 8, nrows = 43, colClasses = c("character", rep("integer", 24)),
-      na.strings = "N/A", stringsAsFactors = FALSE, check.names = FALSE
-    )
-    p$tick()$print()
-    dat
-  })
+  len_urls <- length(urls)
+
+  if (session) {
+    p <- dplyr::progress_estimated(len_urls)
+    lst_dat <- lapply(urls, function(x) {
+      dat <- read_file(file = x)
+      p$tick()$print()
+      dat
+    })
+  } else {
+    # shiny session
+    shiny::withProgress(
+      message = "Retrieving data", value = 0, {
+        lst_dat <- lapply(urls, function(x) {
+          dat <- read_file(file = x)
+          shiny::incProgress(1 / len_urls)
+          dat
+        })
+      })
+  }
+  Sys.sleep(0.1)
+
   lst_dat[] <- Map(
     function(x, y) dplyr::mutate(x, Date = y),
     lst_dat, date_range
@@ -70,6 +86,8 @@ walk_melb <- function(from = to - 6L, to = Sys.Date() - 1L, tz = "") {
   dplyr::select(df_dat, Sensor, Date_Time, Date, Time, Count)
 }
 
+### helper functions
+
 interp_time <- function(x) {
   output <- integer(length = length(x))
   morning <- grepl("am", x)
@@ -80,3 +98,12 @@ interp_time <- function(x) {
   output[x %in% "Noon"] <- 12L
   output
 }
+
+read_file <- function(file) {
+  utils::read.csv(
+    file, skip = 8, nrows = 43,
+    colClasses = c("character", rep("integer", 24)),
+    na.strings = "N/A", stringsAsFactors = FALSE, check.names = FALSE
+  )
+}
+

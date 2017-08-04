@@ -60,7 +60,10 @@ shine_melb <- function() {
     })
 
     all_df <- shiny::reactive({
-      walk_melb(from = input$date_rng[1], to = input$date_rng[2])
+      walk_melb(
+        from = input$date_rng[1], to = input$date_rng[2],
+        session = FALSE
+      )
     })
     ped_df <- shiny::reactive({
       if (is.null(input$sensor_txt)) {
@@ -101,9 +104,7 @@ shine_melb <- function() {
     output$marker <- plotly::renderPlotly({
       na_df <- ped_df() %>%
         dplyr::left_join(sensor, by = c("Sensor" = "sensor")) %>%
-        dplyr::mutate(
-          NA_ind = is.na(Count)
-        )
+        dplyr::mutate(NA_ind = is.na(Count))
       miss_marker <- plotly::plot_ly(
         na_df, hoverinfo = "text",
         text = ~ paste(

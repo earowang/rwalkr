@@ -4,7 +4,8 @@
 \alias{walk_melb}
 \title{API to Melbourne pedestrian data using R}
 \usage{
-walk_melb(from = to - 6L, to = Sys.Date() - 1L, tz = "")
+walk_melb(from = to - 6L, to = Sys.Date() - 1L, tz = "",
+  session = interactive())
 }
 \arguments{
 \item{from}{Starting date.}
@@ -12,6 +13,8 @@ walk_melb(from = to - 6L, to = Sys.Date() - 1L, tz = "")
 \item{to}{Ending date.}
 
 \item{tz}{Time zone.}
+
+\item{session}{\code{interactive()} or not. For internal use only.}
 }
 \value{
 A data frame including these variables as follows:
