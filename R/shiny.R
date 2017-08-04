@@ -40,7 +40,7 @@ shine_melb <- function() {
         ),
         shiny::hr(),
         shiny::selectizeInput(
-          "sensor_txt", "Sensor:",
+          "sensor_txt", "Sensor filter:",
           choices = sensor$sensor,
           multiple = TRUE
         ),
