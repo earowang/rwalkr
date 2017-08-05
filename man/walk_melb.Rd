@@ -11,7 +11,7 @@ walk_melb(from = to - 6L, to = Sys.Date() - 1L, tz = "", session = NULL)
 
 \item{to}{Ending date.}
 
-\item{tz}{Time zone. By default, "" is the current time zone.}
+\item{tz}{Time zone.}
 
 \item{session}{\code{NULL} or "shiny". For internal use only.}
 }
