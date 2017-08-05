@@ -11,7 +11,8 @@ walk_melb(from = to - 6L, to = Sys.Date() - 1L, tz = "", session = NULL)
 
 \item{to}{Ending date.}
 
-\item{tz}{Time zone.}
+\item{tz}{Time zone. By default, "" is the current time zone. For this dataset,
+"Australia/Melbourne" is the most appropriate, depending on OS.}
 
 \item{session}{\code{NULL} or "shiny". For internal use only.}
 }
@@ -37,7 +38,14 @@ details about the dataset and its policy.
 }
 \examples{
 \dontrun{
-  ped_df <- walk_melb()
-  head(ped_df)
+  # Retrieve last week data
+  ped_df1 <- walk_melb()
+  head(ped_df1)
+  
+  # Retrieve data of a speficied period
+  start_date <- as.Date("2017-07-01")
+  end_date <- start_date + 6L
+  ped_df2 <- walk_melb(from = start_date, to = end_date)
+  head(ped_df2)
 }
 }
