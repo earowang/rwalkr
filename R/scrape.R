@@ -7,7 +7,8 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #' @param from Starting date.
 #' @param to Ending date.
 #' @param tz Time zone. By default, "" is the current time zone. For this dataset,
-#'   "Australia/Melbourne" is the most appropriate, depending on OS.
+#'   the local time zone is "Australia/Melbourne" which would be the most 
+#'   appropriate, depending on OS.
 #' @param session `NULL` or "shiny". For internal use only.
 #'
 #' @details The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp).
@@ -61,7 +62,7 @@ walk_melb <- function(
   if (is.null(session)) {
     p <- dplyr::progress_estimated(len_urls)
     lst_dat <- lapply(urls, function(x) {
-      dat <- read_file(file = x)
+      dat <- read_url(url = x)
       p$tick()$print()
       dat
     })
@@ -70,7 +71,7 @@ walk_melb <- function(
     shiny::withProgress(
       message = "Retrieving data", value = 0, {
         lst_dat <- lapply(urls, function(x) {
-          dat <- read_file(file = x)
+          dat <- read_url(url = x)
           shiny::incProgress(1 / len_urls)
           dat
         })
@@ -108,9 +109,9 @@ interp_time <- function(x) {
   output
 }
 
-read_file <- function(file) {
+read_url <- function(url) {
   utils::read.csv(
-    file, skip = 8, nrows = 43,
+    url, skip = 8, nrows = 43,
     colClasses = c("character", rep("integer", 24)),
     na.strings = "N/A", stringsAsFactors = FALSE, check.names = FALSE
   )

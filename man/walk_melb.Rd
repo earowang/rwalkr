@@ -12,7 +12,8 @@ walk_melb(from = to - 6L, to = Sys.Date() - 1L, tz = "", session = NULL)
 \item{to}{Ending date.}
 
 \item{tz}{Time zone. By default, "" is the current time zone. For this dataset,
-"Australia/Melbourne" is the most appropriate, depending on OS.}
+the local time zone is "Australia/Melbourne" which would be the most
+appropriate, depending on OS.}
 
 \item{session}{\code{NULL} or "shiny". For internal use only.}
 }
