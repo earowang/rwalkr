@@ -91,7 +91,8 @@ shine_melb <- function() {
           hoverinfo = "text",
           text = ~ paste(
             "Sensor: ", Sensor,
-            "<br> Date Time: ", Date_Time
+            "<br> Date Time: ", Date_Time,
+            "<br> Count:", Count
           ),
           source = "tsplot"
         ) %>%
