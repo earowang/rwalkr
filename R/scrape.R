@@ -77,7 +77,6 @@ walk_melb <- function(
         })
       })
   }
-  Sys.sleep(0.1)
 
   lst_dat[] <- Map(
     function(x, y) dplyr::mutate(x, Date = y),
