@@ -40,7 +40,7 @@ shine_melb <- function() {
         ),
         shiny::hr(),
         shiny::selectizeInput(
-          "sensor_txt", "Sensor filter:",
+          "SensorInfo", "Sensor filter:",
           choices = sensor$sensor,
           multiple = TRUE
         ),
@@ -58,16 +58,16 @@ shine_melb <- function() {
   server <- function(input, output, session) {
     all_df <- shiny::reactive({
       input$goButton
-      isolate(walk_melb(
+      shiny::isolate(walk_melb(
         from = input$date_rng[1], to = input$date_rng[2],
         session = "shiny"
       ))
     })
     ped_df <- shiny::reactive({
-      if (is.null(input$sensor_txt)) {
+      if (is.null(input$SensorInfo)) {
         all_df()
       } else {
-        dplyr::filter(all_df(), Sensor %in% input$sensor_txt)
+        dplyr::filter(all_df(), Sensor %in% input$SensorInfo)
       }
     })
 
