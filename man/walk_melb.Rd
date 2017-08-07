@@ -25,7 +25,7 @@ A data frame including these variables as follows:
 \item Date: Date associated with Date_Time
 \item Time: Time of day
 \item Count: Hourly counts
-Explicit missingness (\code{NA}) may occur to the dataset of a specified period.
+Explicit missingness (\code{NA}) may occur to the data over a specified period.
 }
 }
 \description{

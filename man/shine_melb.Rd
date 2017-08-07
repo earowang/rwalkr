@@ -10,7 +10,8 @@ shine_melb()
 A shiny app.
 }
 \description{
-A simple shiny app for pedestrian data
+Provides a GUI to download data of selected sensors over a specified period
+as a CSV file, accompanied with basic visualisation.
 }
 \examples{
 \dontrun{

@@ -22,7 +22,7 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #'   * Date: Date associated with Date_Time
 #'   * Time: Time of day
 #'   * Count: Hourly counts
-#'   Explicit missingness (`NA`) may occur to the dataset of a specified period.
+#'   Explicit missingness (`NA`) may occur to the data over a specified period.
 #'
 #' @export
 #'
