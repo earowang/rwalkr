@@ -20,11 +20,12 @@ appropriate, depending on OS.}
 \value{
 A data frame including these variables as follows:
 \itemize{
-\item Sensor: Sensor name (43 sensors)
+\item Sensor: Sensor name (43 sensors up to date)
 \item Date_Time: Date time when the pedestrian counts are recorded
 \item Date: Date associated with Date_Time
 \item Time: Time of day
 \item Count: Hourly counts
+Explicit missingness (\code{NA}) may occur to the dataset of a specified period.
 }
 }
 \description{
@@ -42,7 +43,7 @@ details about the dataset and its policy.
   # Retrieve last week data
   ped_df1 <- walk_melb()
   head(ped_df1)
-  
+
   # Retrieve data of a speficied period
   start_date <- as.Date("2017-07-01")
   end_date <- start_date + 6L

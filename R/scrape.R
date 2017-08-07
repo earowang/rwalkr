@@ -7,7 +7,7 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #' @param from Starting date.
 #' @param to Ending date.
 #' @param tz Time zone. By default, "" is the current time zone. For this dataset,
-#'   the local time zone is "Australia/Melbourne" which would be the most 
+#'   the local time zone is "Australia/Melbourne" which would be the most
 #'   appropriate, depending on OS.
 #' @param session `NULL` or "shiny". For internal use only.
 #'
@@ -17,11 +17,12 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #'   download status. Please refer to Melbourne Open Data Portal for more
 #'   details about the dataset and its policy.
 #' @return A data frame including these variables as follows:
-#'   * Sensor: Sensor name (43 sensors)
+#'   * Sensor: Sensor name (43 sensors up to date)
 #'   * Date_Time: Date time when the pedestrian counts are recorded
 #'   * Date: Date associated with Date_Time
 #'   * Time: Time of day
 #'   * Count: Hourly counts
+#'   Explicit missingness (`NA`) may occur to the dataset of a specified period.
 #'
 #' @export
 #'
@@ -30,7 +31,7 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #'   # Retrieve last week data
 #'   ped_df1 <- walk_melb()
 #'   head(ped_df1)
-#'   
+#'
 #'   # Retrieve data of a speficied period
 #'   start_date <- as.Date("2017-07-01")
 #'   end_date <- start_date + 6L
