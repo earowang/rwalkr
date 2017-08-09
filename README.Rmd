@@ -49,7 +49,7 @@ ped <- walk_melb(from = start_date, to = end_date)
 head(ped)
 ```
 
-The data can directly be chained to *ggplot2* for visualisation.
+Use *ggplot2* for visualisation:
 
 ```{r plot, fig.height = 4}
 library(ggplot2)

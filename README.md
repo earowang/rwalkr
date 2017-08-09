@@ -42,7 +42,7 @@ head(ped)
 #> 6      Town Hall (West) 2017-07-01 2017-07-01    0   682
 ```
 
-The data can directly be chained to *ggplot2* for visualisation.
+Use *ggplot2* for visualisation:
 
 ``` r
 library(ggplot2)
