@@ -79,7 +79,7 @@ shine_melb <- function() {
         paste0("pedestrian-", Sys.Date(), ".csv")
       },
       content = function(file) {
-        utils::write.csv(ped_df(), file, row.names = FALSE)
+        utils::write.csv(ped_df(), file, quote = FALSE, row.names = FALSE)
       }
     )
 
