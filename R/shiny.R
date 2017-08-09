@@ -76,10 +76,10 @@ shine_melb <- function() {
 
     output$downloadCSV <- shiny::downloadHandler(
       filename = function() {
-        paste0("pedestian-", Sys.Date(), ".csv")
+        paste0("pedestrian-", Sys.Date(), ".csv")
       },
       content = function(file) {
-        utils::write.csv(ped_df(), file)
+        utils::write.csv(ped_df(), file, row.names = FALSE)
       }
     )
 
