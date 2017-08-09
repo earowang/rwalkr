@@ -55,8 +55,3 @@ ggplot(data = subset(ped, Sensor == "Melbourne Central")) +
 The other function `shine_melb()` launches a shiny app to give a glimpse of the data. It provides two basic plots: one is an overlaying time series plot, and the other is a dot plot indicating missing values. Below is a screen-shot of the shiny app.
 
 ![](man/figure/shiny.png)
-
-Acknowledgements
-----------------
-
-Thanks to Stuart Lee (@sa-lee) for inspiring this package.
