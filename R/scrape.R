@@ -1,8 +1,8 @@
 globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 
-#' API to Melbourne pedestrian data using R
+#' API using compedapi to Melbourne pedestrian data using R
 #'
-#' Provides API to Melbourne pedestrian data in a tidy data form.
+#' Provides API using compedapi to Melbourne pedestrian data in a tidy data form.
 #'
 #' @param from Starting date.
 #' @param to Ending date.
@@ -11,11 +11,10 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #'   appropriate, depending on OS.
 #' @param session `NULL` or "shiny". For internal use only.
 #'
-#' @details The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp).
-#'   At its heart, this function scrapes the data through the
-#'   "https://compedapi.herokuapp.com" api. A progress bar shows the approximate
-#'   download status. Please refer to Melbourne Open Data Portal for more
-#'   details about the dataset and its policy.
+#' @details It provides API using compedapi, where counts are uploaded on a 
+#'   daily basis. The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp). Please 
+#'   refer to Melbourne Open Data Portal for more details about the dataset and 
+#'   its policy.
 #' @return A data frame including these variables as follows:
 #'   * Sensor: Sensor name (43 sensors up to date)
 #'   * Date_Time: Date time when the pedestrian counts are recorded

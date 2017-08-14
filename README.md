@@ -25,7 +25,9 @@ devtools::install_github("earowang/rwalkr")
 Usage
 -----
 
-The `walk_melb()` function is the workhorse. The starting and ending dates inform of which period to be pulled.
+### `walk_melb()`
+
+The `walk_melb()` function provides API using compedapi, where counts are uploaded on a daily basis. The starting and ending dates inform of which period to be pulled.
 
 ``` r
 library(rwalkr)
@@ -52,6 +54,16 @@ ggplot(data = subset(ped, Sensor == "Melbourne Central")) +
 
 ![](man/figure/plot-1.png)
 
-The other function `shine_melb()` launches a shiny app to give a glimpse of the data. It provides two basic plots: one is an overlaying time series plot, and the other is a dot plot indicating missing values. Below is a screen-shot of the shiny app.
+### `run_melb()`
+
+The `run_melb()` function provides API using Socrata, where counts are uploaded on a monthly basis. It should scrape much faster than the function `walk_melb()`.
+
+``` r
+run_melb(year = 2016:2017)
+```
+
+### `shine_melb()`
+
+The function `shine_melb()` launches a shiny app to give a glimpse of the data. It provides two basic plots: one is an overlaying time series plot, and the other is a dot plot indicating missing values. Below is a screen-shot of the shiny app.
 
 ![](man/figure/shiny.png)

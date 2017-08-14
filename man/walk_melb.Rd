@@ -2,7 +2,7 @@
 % Please edit documentation in R/scrape.R
 \name{walk_melb}
 \alias{walk_melb}
-\title{API to Melbourne pedestrian data using R}
+\title{API using compedapi to Melbourne pedestrian data using R}
 \usage{
 walk_melb(from = to - 6L, to = Sys.Date() - 1L, tz = "", session = NULL)
 }
@@ -29,14 +29,13 @@ Explicit missingness (\code{NA}) may occur to the data over a specified period.
 }
 }
 \description{
-Provides API to Melbourne pedestrian data in a tidy data form.
+Provides API using compedapi to Melbourne pedestrian data in a tidy data form.
 }
 \details{
-The data is sourced from \href{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}{Melbourne Open Data Portal}.
-At its heart, this function scrapes the data through the
-"https://compedapi.herokuapp.com" api. A progress bar shows the approximate
-download status. Please refer to Melbourne Open Data Portal for more
-details about the dataset and its policy.
+It provides API using compedapi, where counts are uploaded on a
+daily basis. The data is sourced from \href{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}{Melbourne Open Data Portal}. Please
+refer to Melbourne Open Data Portal for more details about the dataset and
+its policy.
 }
 \examples{
 \dontrun{
