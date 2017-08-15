@@ -44,7 +44,7 @@ shine_melb <- function() {
         shiny::hr(),
         shiny::selectizeInput(
           "SensorInfo", "Sensor filter:",
-          choices = sensor$sensor,
+          choices = sensor_df$sensor,
           multiple = TRUE
         ),
         shiny::downloadButton("downloadCSV", "Download CSV")
@@ -117,7 +117,7 @@ shine_melb <- function() {
 
     output$drawMarker <- plotly::renderPlotly({
       na_df <- ped_df() %>%
-        dplyr::left_join(sensor, by = c("Sensor" = "sensor")) %>%
+        dplyr::left_join(sensor_df, by = c("Sensor" = "sensor")) %>%
         dplyr::mutate(NA_ind = is.na(Count))
       miss_marker <- plotly::plot_ly(
         na_df, hoverinfo = "text",

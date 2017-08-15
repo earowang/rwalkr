@@ -14,7 +14,8 @@ globalVariables(c(
 #'   appropriate, depending on OS.
 #'
 #' @details It provides API using [Socrata](https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/mxb8-wn4w), 
-#'   where counts are uploaded on a monthly basis. The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp). Please 
+#'   where counts are uploaded on a monthly basis. The up-to-date data would be
+#'   till the previous month. The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp). Please 
 #'   refer to Melbourne Open Data Portal for more details about the dataset and 
 #'   its policy.
 #' @return A data frame including these variables as follows:
@@ -44,10 +45,10 @@ globalVariables(c(
 #' }
 run_melb <- function(year = NULL, sensor = NULL, tz = "") {
   this_year <- as.integer(format(Sys.Date(), "%Y"))
-  stopifnot(year > 2008 && year < (this_year + 1L))
   if (is.null(year)) {
     year <- this_year
   }
+  stopifnot(year > 2008 && year < (this_year + 1L))
   base_url <- "https://data.melbourne.vic.gov.au/resource/mxb8-wn4w.csv?"
   year_str <- paste(year, collapse = ", ")
   url <- paste0(base_url, "$where=year in", "(", year_str, ")")

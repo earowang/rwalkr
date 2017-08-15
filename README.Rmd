@@ -61,10 +61,10 @@ ggplot(data = subset(ped, Sensor == "Melbourne Central")) +
 
 ### `run_melb()`
 
-The `run_melb()` function provides API using Socrata, where counts are uploaded on a monthly basis. It should scrape much faster than the function `walk_melb()`.
+The `run_melb()` function provides API using Socrata, where counts are uploaded on a monthly basis. It should pull the data much faster than the function `walk_melb()`.
 
 ```{r run, eval = FALSE}
-run_melb(year = 2016:2017)
+run_melb(year = 2016:2017, sensor = NULL)
 ```
 
 ### `shine_melb()`

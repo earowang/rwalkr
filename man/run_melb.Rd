@@ -36,7 +36,8 @@ Provides API using Socrata to Melbourne pedestrian data in a tidy data form.
 }
 \details{
 It provides API using \href{https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/mxb8-wn4w}{Socrata},
-where counts are uploaded on a monthly basis. The data is sourced from \href{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}{Melbourne Open Data Portal}. Please
+where counts are uploaded on a monthly basis. The up-to-date data would be
+till the previous month. The data is sourced from \href{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}{Melbourne Open Data Portal}. Please
 refer to Melbourne Open Data Portal for more details about the dataset and
 its policy.
 }
