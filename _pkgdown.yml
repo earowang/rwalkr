@@ -1,0 +1,20 @@
+template:
+  params:
+    bootswatch: united
+
+authors:
+  Earo Wang:
+    href: http://earo.me
+
+reference:
+- title: API to Melbourne pedestrian data
+  desc: >
+    Provides API using Socrata to Melbourne pedestrian data in a tidy data form.
+  contents:
+    - walk_melb
+    - run_melb
+
+- title: Shiny app for Melbourne pedestrian data
+  contents:
+    - shine_melb
+

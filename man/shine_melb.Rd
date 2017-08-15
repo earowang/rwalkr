@@ -13,8 +13,17 @@ A shiny app.
 Provides a GUI to download data of selected sensors over a specified period
 as a CSV file, accompanied with basic visualisation.
 }
+\details{
+It offers some basic plots to give a glimpse of the data over a
+short time period, and so it uses \link{walk_melb} to pull the data. In
+order to be reproducible, scripting using \code{walk_melb} or \code{run_melb} is
+recommended.
+}
 \examples{
 \dontrun{
   shine_melb()
 }
+}
+\seealso{
+\link{walk_melb}, \link{run_melb}
 }

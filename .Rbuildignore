@@ -6,3 +6,5 @@
 ^Makefile$
 ^cran-comments\.md$
 ^data-raw$
+^docs$
+^_pkgdown\.yml$

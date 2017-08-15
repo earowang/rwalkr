@@ -52,3 +52,6 @@ its policy.
   head(sx_df17)
 }
 }
+\seealso{
+\link{walk_melb}
+}

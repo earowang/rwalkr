@@ -32,6 +32,7 @@ globalVariables(c(
 #'   Implicit missingness may occur to the data over a specified period.
 #'
 #' @export
+#' @seealso [walk_melb]
 #'
 #' @examples
 #' \dontrun{

@@ -3,8 +3,14 @@
 #' Provides a GUI to download data of selected sensors over a specified period
 #' as a CSV file, accompanied with basic visualisation. 
 #'
+#' @details It offers some basic plots to give a glimpse of the data over a 
+#' short time period, and so it uses [walk_melb] to pull the data. In
+#' order to be reproducible, scripting using `walk_melb` or `run_melb` is
+#' recommended.
+#'
 #' @return A shiny app.
 #' @export
+#' @seealso [walk_melb], [run_melb]
 #'
 #' @examples
 #' \dontrun{

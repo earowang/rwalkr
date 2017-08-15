@@ -25,6 +25,7 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #'   Explicit missingness (`NA`) may occur to the data over a specified period.
 #'
 #' @export
+#' @seealso [run_melb]
 #'
 #' @examples
 #' \dontrun{
