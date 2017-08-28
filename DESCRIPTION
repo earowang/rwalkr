@@ -9,7 +9,7 @@ Depends:
 Imports:
     tidyr,
     dplyr,
-    RSocrata
+    httr
 Suggests: 
     shiny,
     plotly

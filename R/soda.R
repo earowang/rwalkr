@@ -19,17 +19,12 @@ globalVariables(c(
 #'   refer to Melbourne Open Data Portal for more details about the dataset and 
 #'   its policy.
 #' @return A data frame including these variables as follows:
+#'   * Sensor: Sensor name (43 sensors up to date)
 #'   * Date_Time: Date time when the pedestrian counts are recorded
-#'   * Day: Week day
-#'   * ID
-#'   * Mdate: Day of month
-#'   * Month: Month
-#'   * Hourly_Counts: Hourly counts
-#'   * Sensor_ID: Sensor ID
-#'   * Sensor_Name: Sensor name
+#'   * Date: Date associated with Date_Time
 #'   * Time: Time of day
-#'   * Year: Year
-#'   Implicit missingness may occur to the data over a specified period.
+#'   * Count: Hourly counts
+#'   Explicit missingness (`NA`) may occur to the data over a specified period.
 #'
 #' @export
 #' @seealso [walk_melb]
@@ -51,29 +46,58 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "") {
   }
   stopifnot(year > 2008 && year < (this_year + 1L))
   base_url <- "https://data.melbourne.vic.gov.au/resource/mxb8-wn4w.csv?"
+  sel_cols <- paste(
+    "$query=SELECT sensor_name AS Sensor,",
+    "daet_time AS Date_Time,",
+    "time AS Time,",
+    "qv_market_peel_st AS Count"
+  )
   year_str <- paste(year, collapse = ", ")
-  url <- paste0(base_url, "$where=year in", "(", year_str, ")")
+  query <- paste0(sel_cols, " WHERE year in", "(", year_str, ")")
+  nsensors <- 43L
   if (!is.null(sensor)) {
     sensor_str <- paste(
       vapply(sensor, function(x) paste0("'", x, "'"), character(1)), 
       collapse = ", "
     )
-    url <- paste0(url, "AND sensor_name in", "(", sensor_str, ")")
+    query <- paste0(query, "AND sensor_name in", "(", sensor_str, ")")
+    nsensors[] <- length(sensor) # overwrite nsensors
   } 
-  ped <- RSocrata::read.socrata(url)
-  colnames(ped) <- c("Date_Time", "Day", "ID", "Mdate", "Month", 
-    "Hourly_Counts", "Sensor_ID", "Sensor_Name", "Time", "Year")
+  query <- paste0(query, " ORDER BY :id LIMIT 50000")
+  limit <- 50000L
+
+  # roughly the number of pages going through
+  npages <- ceiling((366L * 24L * nsensors * length(year)) / limit)
+
+  p <- dplyr::progress_estimated(npages)
+  lst_dat <- lapply(seq_len(npages), function(x) {
+    offset <- sprintf("%i", limit * (x - 1))
+    update_query <- paste0(query, " OFFSET ", offset)
+    url <- paste0(base_url, update_query)
+    response <- httr::GET(httr::parse_url(url))
+    content <- httr::content(response, as = "text", type = "text/csv", 
+      encoding = "UTF-8")
+    dat <- utils::read.csv(
+      textConnection(content), 
+      colClasses = rep("character", 4L),
+      stringsAsFactors = FALSE,
+      nrows = limit
+    )
+    p$tick()$print()
+    dat
+  })
+
+  ped <- dplyr::bind_rows(lst_dat)
   ped <- dplyr::mutate(
     ped, 
     Date_Time = as.POSIXct(strptime(Date_Time, format = "%d-%B-%Y %H:%M"),
-      tz = tz),
-    ID = as.integer(ID),
-    Mdate = as.integer(Mdate),
-    Hourly_Counts = as.integer(Hourly_Counts),
-    Sensor_ID = as.integer(Sensor_ID),
+      tz = ""),
+    Date = as.Date.POSIXct(Date_Time, tz = ""),
+    Count = as.integer(Count),
     Time = as.integer(Time),
-    Year = as.integer(Year)
   )
+  ped <- dplyr::distinct(ped) # remove duplicates
+  ped <- dplyr::select(ped, Sensor, Date_Time, Date, Time, Count)
+
   dplyr::arrange(ped, Date_Time)
 }
-

@@ -18,17 +18,12 @@ appropriate, depending on OS.}
 \value{
 A data frame including these variables as follows:
 \itemize{
+\item Sensor: Sensor name (43 sensors up to date)
 \item Date_Time: Date time when the pedestrian counts are recorded
-\item Day: Week day
-\item ID
-\item Mdate: Day of month
-\item Month: Month
-\item Hourly_Counts: Hourly counts
-\item Sensor_ID: Sensor ID
-\item Sensor_Name: Sensor name
+\item Date: Date associated with Date_Time
 \item Time: Time of day
-\item Year: Year
-Implicit missingness may occur to the data over a specified period.
+\item Count: Hourly counts
+Explicit missingness (\code{NA}) may occur to the data over a specified period.
 }
 }
 \description{
