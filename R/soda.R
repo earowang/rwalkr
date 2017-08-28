@@ -91,8 +91,8 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "") {
   ped <- dplyr::mutate(
     ped, 
     Date_Time = as.POSIXct(strptime(Date_Time, format = "%d-%B-%Y %H:%M"),
-      tz = ""),
-    Date = as.Date.POSIXct(Date_Time, tz = ""),
+      tz = tz),
+    Date = as.Date.POSIXct(Date_Time, tz = tz),
     Count = as.integer(Count),
     Time = as.integer(Time),
   )
