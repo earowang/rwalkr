@@ -9,6 +9,8 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #' @param tz Time zone. By default, "" is the current time zone. For this dataset,
 #'   the local time zone is "Australia/Melbourne" which would be the most
 #'   appropriate, depending on OS.
+#' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in 
+#'   the datset. `TRUE` removes the `NA`s.
 #' @param session `NULL` or "shiny". For internal use only.
 #'
 #' @details It provides API using compedapi, where counts are uploaded on a 
@@ -22,7 +24,6 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #'   * Date: Date associated with Date_Time
 #'   * Time: Time of day
 #'   * Count: Hourly counts
-#'   Explicit missingness (`NA`) may occur to the data over a specified period.
 #'
 #' @export
 #' @seealso [run_melb]
@@ -40,7 +41,8 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #'   head(ped_df2)
 #' }
 walk_melb <- function(
-  from = to - 6L, to = Sys.Date() - 1L, tz = "", session = NULL
+  from = to - 6L, to = Sys.Date() - 1L, tz = "", na.rm = FALSE,
+  session = NULL
 ) {
   stopifnot(class(from) == "Date" && class(to) == "Date")
   stopifnot(from > as.Date("2009-05-31"))
@@ -94,6 +96,8 @@ walk_melb <- function(
       Date, paste0(formatC(Time, width = 2, flag = "0"), ":00:00")), tz = tz
     )
   )
+  if (na.rm) df_dat <- dplyr::filter(df_dat, !is.na(Count))
+
   dplyr::select(df_dat, Sensor, Date_Time, Date, Time, Count)
 }
 

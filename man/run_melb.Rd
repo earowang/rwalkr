@@ -7,7 +7,8 @@
 run_melb(year = NULL, sensor = NULL, tz = "", na.rm = FALSE)
 }
 \arguments{
-\item{year}{An integer or a vector of integers. By default, it's the current #'   year.}
+\item{year}{An integer or a vector of integers. By default, it's the current
+year.}
 
 \item{sensor}{Sensor names. By default, it pulls all the sensors.}
 
@@ -15,7 +16,8 @@ run_melb(year = NULL, sensor = NULL, tz = "", na.rm = FALSE)
 the local time zone is "Australia/Melbourne" which would be the most
 appropriate, depending on OS.}
 
-\item{na.rm}{Logical. \code{FALSE} is the default suggesting to include \code{NA} in #'   the datset. \code{TRUE} removes the \code{NA}s.}
+\item{na.rm}{Logical. \code{FALSE} is the default suggesting to include \code{NA} in
+the datset. \code{TRUE} removes the \code{NA}s.}
 }
 \value{
 A data frame including these variables as follows:

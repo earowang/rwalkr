@@ -4,7 +4,8 @@
 \alias{walk_melb}
 \title{API using compedapi to Melbourne pedestrian data using R}
 \usage{
-walk_melb(from = to - 6L, to = Sys.Date() - 1L, tz = "", session = NULL)
+walk_melb(from = to - 6L, to = Sys.Date() - 1L, tz = "", na.rm = FALSE,
+  session = NULL)
 }
 \arguments{
 \item{from}{Starting date.}
@@ -14,6 +15,9 @@ walk_melb(from = to - 6L, to = Sys.Date() - 1L, tz = "", session = NULL)
 \item{tz}{Time zone. By default, "" is the current time zone. For this dataset,
 the local time zone is "Australia/Melbourne" which would be the most
 appropriate, depending on OS.}
+
+\item{na.rm}{Logical. \code{FALSE} is the default suggesting to include \code{NA} in
+the datset. \code{TRUE} removes the \code{NA}s.}
 
 \item{session}{\code{NULL} or "shiny". For internal use only.}
 }
@@ -25,7 +29,6 @@ A data frame including these variables as follows:
 \item Date: Date associated with Date_Time
 \item Time: Time of day
 \item Count: Hourly counts
-Explicit missingness (\code{NA}) may occur to the data over a specified period.
 }
 }
 \description{

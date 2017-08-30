@@ -8,12 +8,14 @@ globalVariables(c(
 #'
 #' Provides API using Socrata to Melbourne pedestrian data in a tidy data form.
 #'
-#' @param year An integer or a vector of integers. By default, it's the current #'   year.
+#' @param year An integer or a vector of integers. By default, it's the current 
+#'   year.
 #' @param sensor Sensor names. By default, it pulls all the sensors.
 #' @param tz Time zone. By default, "" is the current time zone. For this dataset,
 #'   the local time zone is "Australia/Melbourne" which would be the most
 #'   appropriate, depending on OS.
-#' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in #'   the datset. `TRUE` removes the `NA`s.
+#' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in 
+#'   the datset. `TRUE` removes the `NA`s.
 #'
 #' @details It provides API using [Socrata](https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/mxb8-wn4w), 
 #'   where counts are uploaded on a monthly basis. The up-to-date data would be
