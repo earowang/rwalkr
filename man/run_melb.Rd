@@ -2,28 +2,29 @@
 % Please edit documentation in R/soda.R
 \name{run_melb}
 \alias{run_melb}
-\title{API using Socrata to Melbourne pedestrian data using R}
+\title{API using Socrata to Melbourne pedestrian data}
 \usage{
-run_melb(year = NULL, sensor = NULL, tz = "")
+run_melb(year = NULL, sensor = NULL, tz = "", na.rm = FALSE)
 }
 \arguments{
-\item{year}{Numeric(s). By default, it's the current year.}
+\item{year}{An integer or a vector of integers. By default, it's the current #'   year.}
 
 \item{sensor}{Sensor names. By default, it pulls all the sensors.}
 
 \item{tz}{Time zone. By default, "" is the current time zone. For this dataset,
 the local time zone is "Australia/Melbourne" which would be the most
 appropriate, depending on OS.}
+
+\item{na.rm}{Logical. \code{FALSE} is the default suggesting to include \code{NA} in #'   the datset. \code{TRUE} removes the \code{NA}s.}
 }
 \value{
 A data frame including these variables as follows:
 \itemize{
-\item Sensor: Sensor name (43 sensors up to date)
+\item Sensor: Sensor name (45 sensors up to date)
 \item Date_Time: Date time when the pedestrian counts are recorded
 \item Date: Date associated with Date_Time
 \item Time: Time of day
 \item Count: Hourly counts
-Explicit missingness (\code{NA}) may occur to the data over a specified period.
 }
 }
 \description{
