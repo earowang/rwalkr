@@ -13,7 +13,7 @@ Imports:
 Suggests: 
     shiny,
     plotly
-URL: https://github.com/earowang/rwalkr
+URL: http://pkg.earo.me/rwalkr
 BugReports: https://github.com/earowang/rwalkr/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
