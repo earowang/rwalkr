@@ -4,7 +4,8 @@
 \alias{run_melb}
 \title{API using Socrata to Melbourne pedestrian data}
 \usage{
-run_melb(year = NULL, sensor = NULL, tz = "", na.rm = FALSE)
+run_melb(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
+  app_token = NULL)
 }
 \arguments{
 \item{year}{An integer or a vector of integers. By default, it's the current
@@ -18,6 +19,11 @@ appropriate, depending on OS.}
 
 \item{na.rm}{Logical. \code{FALSE} is the default suggesting to include \code{NA} in
 the datset. \code{TRUE} removes the \code{NA}s.}
+
+\item{app_token}{Characters giving the application token. A limited number of
+requests can be made without an app token (\code{NULL}), but they are subject
+to much lower throttling limits than request that do include one. Sign up
+for an app token \href{https://data.melbourne.vic.gov.au/profile/app_tokens}{here}.}
 }
 \value{
 A data frame including these variables as follows:

@@ -4,7 +4,13 @@
 \alias{pull_sensor}
 \title{API using Socrata to Melbourne pedestrian sensor locations}
 \usage{
-pull_sensor()
+pull_sensor(app_token = NULL)
+}
+\arguments{
+\item{app_token}{Characters giving the application token. A limited number of
+requests can be made without an app token (\code{NULL}), but they are subject
+to much lower throttling limits than request that do include one. Sign up
+for an app token \href{https://data.melbourne.vic.gov.au/profile/app_tokens}{here}.}
 }
 \value{
 A data frame including these variables as follows:

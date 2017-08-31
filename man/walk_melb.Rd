@@ -2,7 +2,7 @@
 % Please edit documentation in R/scrape.R
 \name{walk_melb}
 \alias{walk_melb}
-\title{API using compedapi to Melbourne pedestrian data using R}
+\title{API using compedapi to Melbourne pedestrian data}
 \usage{
 walk_melb(from = to - 6L, to = Sys.Date() - 1L, tz = "", na.rm = FALSE,
   session = NULL)

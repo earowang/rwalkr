@@ -1,6 +1,6 @@
 globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 
-#' API using compedapi to Melbourne pedestrian data using R
+#' API using compedapi to Melbourne pedestrian data
 #'
 #' Provides API using compedapi to Melbourne pedestrian data in a tidy data form.
 #'

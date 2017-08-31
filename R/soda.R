@@ -16,6 +16,10 @@ globalVariables(c(
 #'   appropriate, depending on OS.
 #' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in 
 #'   the datset. `TRUE` removes the `NA`s.
+#' @param app_token Characters giving the application token. A limited number of 
+#'    requests can be made without an app token (`NULL`), but they are subject 
+#'    to much lower throttling limits than request that do include one. Sign up
+#'    for an app token [here](https://data.melbourne.vic.gov.au/profile/app_tokens).
 #'
 #' @details It provides API using [Socrata](https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/mxb8-wn4w), 
 #'   where counts are uploaded on a monthly basis. The up-to-date data would be
@@ -42,7 +46,8 @@ globalVariables(c(
 #'   sx_df17 <- run_melb(year = 2017, sensor = "Southern Cross Station")
 #'   head(sx_df17)
 #' }
-run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE) {
+run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
+  app_token = NULL) {
   this_year <- as.integer(format(Sys.Date(), "%Y"))
   if (is.null(year)) {
     year <- this_year
@@ -77,7 +82,9 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE) {
     offset <- sprintf("%i", limit * (x - 1))
     update_query <- paste0(query, " OFFSET ", offset)
     url <- paste0(base_url, update_query)
-    response <- httr::GET(httr::parse_url(url))
+    p_url <- httr::parse_url(url)
+    if (!is.null(app_token)) p_url$query$`$$app_token` <- app_token
+    response <- httr::GET(p_url)
     content <- httr::content(response, as = "text", type = "text/csv", 
       encoding = "UTF-8")
     dat <- utils::read.csv(
@@ -124,7 +131,11 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE) {
       stringsAsFactors = FALSE
     )
     ped <- dplyr::left_join(full_df, ped, by = c("Sensor", "Date_Time"))
-    ped <- dplyr::mutate(ped, Time = as.integer(substr(Date_Time, 12, 13)))
+    ped <- dplyr::mutate(
+      ped, 
+      Date = as.Date.POSIXct(Date_Time, tz = tz),
+      Time = as.integer(substr(Date_Time, 12, 13))
+    )
   }
 
   ped <- dplyr::select(ped, Sensor, Date_Time, Date, Time, Count)
@@ -134,6 +145,11 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE) {
 #' API using Socrata to Melbourne pedestrian sensor locations
 #'
 #' Provides API using Socrata to Melbourne pedestrian sensor locations.
+#'
+#' @param app_token Characters giving the application token. A limited number of 
+#'    requests can be made without an app token (`NULL`), but they are subject 
+#'    to much lower throttling limits than request that do include one. Sign up
+#'    for an app token [here](https://data.melbourne.vic.gov.au/profile/app_tokens).
 #'
 #' @details It provides API using [Socrata](https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/xbm5-bb4n).
 #'
@@ -152,9 +168,11 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE) {
 #' \dontrun{
 #'   pull_sensor()
 #' }
-pull_sensor <- function() {
+pull_sensor <- function(app_token = NULL) {
   base_url <- "https://data.melbourne.vic.gov.au/resource/xbm5-bb4n.csv"
-  response <- httr::GET(httr::parse_url(base_url))
+  p_url <- httr::parse_url(base_url)
+  if (!is.null(app_token)) p_url$query$`$$app_token` <- app_token
+  response <- httr::GET(p_url)
   content <- httr::content(response, as = "text", type = "text/csv", 
     encoding = "UTF-8")
   sensor_info <- utils::read.csv(
