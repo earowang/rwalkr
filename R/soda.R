@@ -101,10 +101,7 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
   ped <- dplyr::mutate(
     ped, 
     Date_Time = as.POSIXct(strptime(Date_Time, format = "%d-%B-%Y %H:%M"),
-      tz = tz),
-    Date = as.Date.POSIXct(Date_Time, tz = tz),
-    Count = as.integer(Count),
-    Time = as.integer(Time),
+      tz = tz)
   )
   from_time <- as.POSIXct(paste0(min(year, na.rm = TRUE), "-01-01 00:00"),
       tz = tz)
@@ -135,6 +132,13 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
       ped, 
       Date = as.Date.POSIXct(Date_Time, tz = tz),
       Time = as.integer(substr(Date_Time, 12, 13))
+    )
+  } else {
+    ped <- dplyr::mutate(
+      ped, 
+      Date = as.Date.POSIXct(Date_Time, tz = tz),
+      Count = as.integer(Count),
+      Time = as.integer(Time),
     )
   }
 
