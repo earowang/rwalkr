@@ -10,7 +10,8 @@ globalVariables(c(
 #'
 #' @param year An integer or a vector of integers. By default, it's the current 
 #'   year.
-#' @param sensor Sensor names. By default, it pulls all the sensors.
+#' @param sensor Sensor names. By default, it pulls all the sensors. Use [lookup_sensor]
+#'   to see the available sensors.
 #' @param tz Time zone. By default, "" is the current time zone. For this dataset,
 #'   the local time zone is "Australia/Melbourne" which would be the most
 #'   appropriate, depending on OS.

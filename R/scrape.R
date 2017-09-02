@@ -1,4 +1,4 @@
-globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
+globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time", "walk"))
 
 #' API using compedapi to Melbourne pedestrian data
 #'
@@ -11,6 +11,8 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #'   appropriate, depending on OS.
 #' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in 
 #'   the datset. `TRUE` removes the `NA`s.
+#' @param tweak Logical. `FALSE` (the default) leaves the sensor names as is. If
+#'   `TRUE`, they are cleaned up and matched with the ones in [run_melb].
 #' @param session `NULL` or "shiny". For internal use only.
 #'
 #' @details It provides API using compedapi, where counts are uploaded on a 
@@ -41,7 +43,7 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time"))
 #'   head(ped_df2)
 #' }
 walk_melb <- function(
-  from = to - 6L, to = Sys.Date() - 1L, tz = "", na.rm = FALSE,
+  from = to - 6L, to = Sys.Date() - 1L, tz = "", na.rm = FALSE, tweak = FALSE,
   session = NULL
 ) {
   stopifnot(class(from) == "Date" && class(to) == "Date")
@@ -97,6 +99,18 @@ walk_melb <- function(
     )
   )
   if (na.rm) df_dat <- dplyr::filter(df_dat, !is.na(Count))
+
+  if (tweak) {
+    dif <- dplyr::filter(sensor_dict, match == FALSE, walk != "NA")
+    seq_sensor <- seq_len(nrow(dif))
+    changed_df <- dplyr::bind_rows(lapply(seq_sensor, function(x) {
+      df_dat[df_dat$Sensor == dif[x, "walk"], "Sensor"] <- dif[x, "run"]
+      df_dat
+    }))
+    same <- dplyr::filter(sensor_dict, match == TRUE)$walk
+    unchanged_df <- dplyr::filter(df_dat, Sensor %in% same)
+    df_dat <- dplyr::bind_rows(unchanged_df, changed_df)
+  }
 
   dplyr::select(df_dat, Sensor, Date_Time, Date, Time, Count)
 }

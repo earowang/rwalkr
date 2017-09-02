@@ -11,7 +11,8 @@ run_melb(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
 \item{year}{An integer or a vector of integers. By default, it's the current
 year.}
 
-\item{sensor}{Sensor names. By default, it pulls all the sensors.}
+\item{sensor}{Sensor names. By default, it pulls all the sensors. Use \link{lookup_sensor}
+to see the available sensors.}
 
 \item{tz}{Time zone. By default, "" is the current time zone. For this dataset,
 the local time zone is "Australia/Melbourne" which would be the most
