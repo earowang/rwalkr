@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>API using Socrata to Melbourne pedestrian data using R — run_melb • rwalkr</title>
+<title>API using Socrata to Melbourne pedestrian data — run_melb • rwalkr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -66,12 +66,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://github.com/earowang/rwalkr">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -83,25 +78,28 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>API using Socrata to Melbourne pedestrian data using R</h1>
+    <h1>API using Socrata to Melbourne pedestrian data</h1>
     </div>
 
     
     <p>Provides API using Socrata to Melbourne pedestrian data in a tidy data form.</p>
     
 
-    <pre class="usage"><span class='fu'>run_melb</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sensor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tz</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
+    <pre class="usage"><span class='fu'>run_melb</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sensor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tz</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>app_token</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>year</th>
-      <td><p>Numeric(s). By default, it's the current year.</p></td>
+      <td><p>An integer or a vector of integers. By default, it's the current
+year.</p></td>
     </tr>
     <tr>
       <th>sensor</th>
-      <td><p>Sensor names. By default, it pulls all the sensors.</p></td>
+      <td><p>Sensor names. By default, it pulls all the sensors. Use <a href='lookup_sensor.html'>lookup_sensor</a>
+to see the available sensors.</p></td>
     </tr>
     <tr>
       <th>tz</th>
@@ -109,22 +107,28 @@
 the local time zone is "Australia/Melbourne" which would be the most
 appropriate, depending on OS.</p></td>
     </tr>
+    <tr>
+      <th>na.rm</th>
+      <td><p>Logical. <code>FALSE</code> is the default suggesting to include <code>NA</code> in
+the datset. <code>TRUE</code> removes the <code>NA</code>s.</p></td>
+    </tr>
+    <tr>
+      <th>app_token</th>
+      <td><p>Characters giving the application token. A limited number of
+requests can be made without an app token (<code>NULL</code>), but they are subject
+to much lower throttling limits than request that do include one. Sign up
+for an app token <a href='https://data.melbourne.vic.gov.au/profile/app_tokens'>here</a>.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A data frame including these variables as follows:</p><ul>
+<li><p>Sensor: Sensor name (45 sensors up to date)</p></li>
 <li><p>Date_Time: Date time when the pedestrian counts are recorded</p></li>
-<li><p>Day: Week day</p></li>
-<li><p>ID</p></li>
-<li><p>Mdate: Day of month</p></li>
-<li><p>Month: Month</p></li>
-<li><p>Hourly_Counts: Hourly counts</p></li>
-<li><p>Sensor_ID: Sensor ID</p></li>
-<li><p>Sensor_Name: Sensor name</p></li>
+<li><p>Date: Date associated with Date_Time</p></li>
 <li><p>Time: Time of day</p></li>
-<li><p>Year: Year
-Implicit missingness may occur to the data over a specified period.</p></li>
+<li><p>Count: Hourly counts</p></li>
 </ul>
 
     

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>API using compedapi to Melbourne pedestrian data — walk_melb • rwalkr</title>
+<title>API using Socrata to Melbourne pedestrian sensor locations — pull_sensor • rwalkr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -78,46 +78,24 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>API using compedapi to Melbourne pedestrian data</h1>
+    <h1>API using Socrata to Melbourne pedestrian sensor locations</h1>
     </div>
 
     
-    <p>Provides API using compedapi to Melbourne pedestrian data in a tidy data form.</p>
+    <p>Provides API using Socrata to Melbourne pedestrian sensor locations.</p>
     
 
-    <pre class="usage"><span class='fu'>walk_melb</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='no'>to</span> - <span class='fl'>6L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>() - <span class='fl'>1L</span>, <span class='kw'>tz</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>tweak</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>pull_sensor</span>(<span class='kw'>app_token</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>from</th>
-      <td><p>Starting date.</p></td>
-    </tr>
-    <tr>
-      <th>to</th>
-      <td><p>Ending date.</p></td>
-    </tr>
-    <tr>
-      <th>tz</th>
-      <td><p>Time zone. By default, "" is the current time zone. For this dataset,
-the local time zone is "Australia/Melbourne" which would be the most
-appropriate, depending on OS.</p></td>
-    </tr>
-    <tr>
-      <th>na.rm</th>
-      <td><p>Logical. <code>FALSE</code> is the default suggesting to include <code>NA</code> in
-the datset. <code>TRUE</code> removes the <code>NA</code>s.</p></td>
-    </tr>
-    <tr>
-      <th>tweak</th>
-      <td><p>Logical. <code>FALSE</code> (the default) leaves the sensor names as is. If
-<code>TRUE</code>, they are cleaned up and matched with the ones in <a href='run_melb.html'>run_melb</a>.</p></td>
-    </tr>
-    <tr>
-      <th>session</th>
-      <td><p><code>NULL</code> or "shiny". For internal use only.</p></td>
+      <th>app_token</th>
+      <td><p>Characters giving the application token. A limited number of
+requests can be made without an app token (<code>NULL</code>), but they are subject
+to much lower throttling limits than request that do include one. Sign up
+for an app token <a href='https://data.melbourne.vic.gov.au/profile/app_tokens'>here</a>.</p></td>
     </tr>
     </table>
     
@@ -125,20 +103,17 @@ the datset. <code>TRUE</code> removes the <code>NA</code>s.</p></td>
 
     <p>A data frame including these variables as follows:</p><ul>
 <li><p>Sensor: Sensor name (43 sensors up to date)</p></li>
-<li><p>Date_Time: Date time when the pedestrian counts are recorded</p></li>
-<li><p>Date: Date associated with Date_Time</p></li>
-<li><p>Time: Time of day</p></li>
-<li><p>Count: Hourly counts</p></li>
+<li><p>Sensor_ID: Sensor identifier</p></li>
+<li><p>Longitude: Longitude</p></li>
+<li><p>Latitude: Latitude</p></li>
+<li><p>Location_Type: Location type</p></li>
+<li><p>Year_Installed: Year installed</p></li>
 </ul>
 
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>It provides API using compedapi, where counts are uploaded on a
-daily basis. The up-to-date data would be
-till the previous day. The data is sourced from <a href='https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp'>Melbourne Open Data Portal</a>. Please
-refer to Melbourne Open Data Portal for more details about the dataset and
-its policy.</p>
+    <p>It provides API using <a href='https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/xbm5-bb4n'>Socrata</a>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -147,15 +122,7 @@ its policy.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-  <span class='co'># Retrieve last week data</span>
-  <span class='no'>ped_df1</span> <span class='kw'>&lt;-</span> <span class='fu'>walk_melb</span>()
-  <span class='fu'>head</span>(<span class='no'>ped_df1</span>)
-
-  <span class='co'># Retrieve data of a speficied period</span>
-  <span class='no'>start_date</span> <span class='kw'>&lt;-</span> <span class='fu'>as.Date</span>(<span class='st'>"2017-07-01"</span>)
-  <span class='no'>end_date</span> <span class='kw'>&lt;-</span> <span class='no'>start_date</span> + <span class='fl'>6L</span>
-  <span class='no'>ped_df2</span> <span class='kw'>&lt;-</span> <span class='fu'>walk_melb</span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='no'>start_date</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='no'>end_date</span>)
-  <span class='fu'>head</span>(<span class='no'>ped_df2</span>)
+  <span class='fu'>pull_sensor</span>()
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

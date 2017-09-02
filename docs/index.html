@@ -41,14 +41,7 @@
   <a href="news/index.html">News</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/earowang/rwalkr">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
+<ul class="nav navbar-nav navbar-right"></ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -69,7 +62,7 @@
 <div id="rwalkr" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#rwalkr" class="anchor"></a>rwalkr</h1></div>
-<p>The goal of <strong>rwalkr</strong> is to provide API to the pedestrian data from the City of Melbourne in tidy data form.</p>
+<p>The goal of <strong>rwalkr</strong> is to provide APIs to the pedestrian data from the City of Melbourne in tidy data form.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -82,16 +75,18 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<div id="walk_melb" class="section level3">
+<div id="apis" class="section level3">
 <h3 class="hasAnchor">
-<a href="#walk_melb" class="anchor"></a><code><a href="reference/walk_melb.html">walk_melb()</a></code>
-</h3>
-<p>The <code><a href="reference/walk_melb.html">walk_melb()</a></code> function provides API using compedapi, where counts are uploaded on a daily basis. The starting and ending dates inform of which period to be pulled.</p>
+<a href="#apis" class="anchor"></a>APIs</h3>
+<p>There are two APIs available to access Melbourne pedestrian data: <em>compedapi</em> and <em>Socrata</em>. The former drives the <code><a href="reference/walk_melb.html">walk_melb()</a></code> function, where counts are uploaded on a daily basis; the latter powers the <code><a href="reference/run_melb.html">run_melb()</a></code> function, where counts are uploaded on a monthly basis. Given the function names, the function <code><a href="reference/run_melb.html">run_melb()</a></code> pulls the data at a much faster speed than <code><a href="reference/walk_melb.html">walk_melb()</a></code>.</p>
+<p>The function <code><a href="reference/walk_melb.html">walk_melb()</a></code> specifies the starting and ending dates to be pulled, whereas <code><a href="reference/run_melb.html">run_melb()</a></code> requires years to define the time frame. If a selection of sensors are of interest, <code><a href="reference/run_melb.html">run_melb()</a></code> provides the flexibility for sensor choices.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rwalkr)
 start_date &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">"2017-07-01"</span>)
-end_date &lt;-<span class="st"> </span>start_date <span class="op">+</span><span class="st"> </span>6L
-ped &lt;-<span class="st"> </span><span class="kw"><a href="reference/walk_melb.html">walk_melb</a></span>(<span class="dt">from =</span> start_date, <span class="dt">to =</span> end_date)
-<span class="kw">head</span>(ped)
+<span class="co"># tweak = TRUE gives the consistent sensors to the ones from run_melb().</span>
+<span class="co"># By default it's FALSE for back compatibility.</span>
+ped_walk &lt;-<span class="st"> </span><span class="kw"><a href="reference/walk_melb.html">walk_melb</a></span>(<span class="dt">from =</span> start_date, <span class="dt">to =</span> start_date <span class="op">+</span><span class="st"> </span>6L, <span class="dt">tweak =</span> <span class="ot">TRUE</span>)
+ped_run &lt;-<span class="st"> </span><span class="kw"><a href="reference/run_melb.html">run_melb</a></span>(<span class="dt">year =</span> <span class="dv">2016</span><span class="op">:</span><span class="dv">2017</span>, <span class="dt">sensor =</span> <span class="ot">NULL</span>) <span class="co"># NULL means all sensors</span>
+<span class="kw">head</span>(ped_walk)
 <span class="co">#&gt;                  Sensor  Date_Time       Date Time Count</span>
 <span class="co">#&gt; 1         State Library 2017-07-01 2017-07-01    0   334</span>
 <span class="co">#&gt; 2 Collins Place (South) 2017-07-01 2017-07-01    0    82</span>
@@ -99,23 +94,18 @@ ped &lt;-<span class="st"> </span><span class="kw"><a href="reference/walk_melb.
 <span class="co">#&gt; 4     Flagstaff Station 2017-07-01 2017-07-01    0     0</span>
 <span class="co">#&gt; 5     Melbourne Central 2017-07-01 2017-07-01    0   826</span>
 <span class="co">#&gt; 6      Town Hall (West) 2017-07-01 2017-07-01    0   682</span></code></pre></div>
-<p>Use <em>ggplot2</em> for visualisation:</p>
+<p>There are missing values (i.e. <code>NA</code>) in the dataset. By setting <code>na.rm = TRUE</code> in both functions, missing values will be removed.</p>
+<p>Here’s an example to use <em>ggplot2</em> for visualisation:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> <span class="kw">subset</span>(ped, Sensor <span class="op">==</span><span class="st"> "Melbourne Central"</span>)) <span class="op">+</span>
+<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> <span class="kw">subset</span>(ped_walk, Sensor <span class="op">==</span><span class="st"> "Melbourne Central"</span>)) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Date_Time, <span class="dt">y =</span> Count))</code></pre></div>
 <p><img src="man/figure/plot-1.png" width="672"></p>
+<p>It’s worth noting that some sensor names are coded differently by these two APIs. The argument <code>tweak = TRUE</code> ensures the sensor names returned by <code><a href="reference/walk_melb.html">walk_melb()</a></code> consistent to the ones in <code><a href="reference/run_melb.html">run_melb()</a></code> and <code><a href="reference/pull_sensor.html">pull_sensor()</a></code>, both of which are supported by Socrata. The dictionary for checking sensor names between two functions is available through <code><a href="reference/lookup_sensor.html">lookup_sensor()</a></code>.</p>
+<p>It’s recommended to include an application token in <code><a href="reference/run_melb.html">run_melb(app_token = "YOUR-APP-TOKEN")</a></code>, which you can sign up <a href="https://data.melbourne.vic.gov.au/profile/app_tokens">here</a>.</p>
 </div>
-<div id="run_melb" class="section level3">
+<div id="shiny-app" class="section level3">
 <h3 class="hasAnchor">
-<a href="#run_melb" class="anchor"></a><code><a href="reference/run_melb.html">run_melb()</a></code>
-</h3>
-<p>The <code><a href="reference/run_melb.html">run_melb()</a></code> function provides API using Socrata, where counts are uploaded on a monthly basis. It should pull the data much faster than the function <code><a href="reference/walk_melb.html">walk_melb()</a></code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/run_melb.html">run_melb</a></span>(<span class="dt">year =</span> <span class="dv">2016</span><span class="op">:</span><span class="dv">2017</span>, <span class="dt">sensor =</span> <span class="ot">NULL</span>)</code></pre></div>
-</div>
-<div id="shine_melb" class="section level3">
-<h3 class="hasAnchor">
-<a href="#shine_melb" class="anchor"></a><code><a href="reference/shine_melb.html">shine_melb()</a></code>
-</h3>
+<a href="#shiny-app" class="anchor"></a>Shiny app</h3>
 <p>The function <code><a href="reference/shine_melb.html">shine_melb()</a></code> launches a shiny app to give a glimpse of the data. It provides two basic plots: one is an overlaying time series plot, and the other is a dot plot indicating missing values. Below is a screen-shot of the shiny app.</p>
 <div class="figure">
 <img src="man/figure/shiny.png">
@@ -131,8 +121,6 @@ ped &lt;-<span class="st"> </span><span class="kw"><a href="reference/walk_melb.
 <a href="#sidebar" class="anchor"></a>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cran.r-project.org/package=rwalkr">https://​cran.r-project.org/​package=rwalkr</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/earowang/rwalkr">https://​github.com/​earowang/​rwalkr</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/earowang/rwalkr/issues">https://​github.com/​earowang/​rwalkr/​issues</a>
 </li>

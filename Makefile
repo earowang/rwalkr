@@ -16,5 +16,8 @@ install:
 winbuild:
 	Rscript -e "devtools::build_win(version = 'R-devel', quiet = TRUE)"
 
+pkgdown:
+	Rscript -e "pkgdown::build_site()"
+
 test:
 	Rscript -e "devtools::test()"

@@ -1,13 +1,14 @@
-# rwalkr 0.2.0.9000
+# rwalkr 0.3.0
 
 ## New functions
 
 * `run_melb()` pulls Melbourne pedestrian data using Socrata, which is faster than `walk_melb()`.
 * `pull_sensor()` pulls Melbourne pedestrian sensor locations using Socrata.
+* `lookup_sensor()` provides a dictionary for sensor names used in `walk_melb()` and `run_melb()`.
 
 ## Minor changes
 
-* Added a new argument `na.rm = FALSE` to the function `walk_melb()`. If `TRUE`, it removes `NA`s from the data.
+* Added new arguments `na.rm = FALSE` and `tweak = FALSE` to the function `walk_melb()`. If `na.rm = TRUE`, it removes `NA`s from the data. If `tweak = TRUE`, it ensures the consistency of sensor names to `run_melb()`.
 
 # rwalkr 0.2.0
 

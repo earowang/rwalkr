@@ -7,12 +7,16 @@ authors:
     href: http://earo.me
 
 reference:
-- title: API to Melbourne pedestrian data
+- title: APIs to Melbourne pedestrian data
   desc: >
-    Provides API using Socrata to Melbourne pedestrian data in a tidy data form.
+    Provides APIs using Socrata to Melbourne pedestrian data in a tidy data form.
   contents:
     - walk_melb
     - run_melb
+- title: Sensor locations
+  contents:
+    - pull_sensor
+    - lookup_sensor
 
 - title: Shiny app for Melbourne pedestrian data
   contents:
