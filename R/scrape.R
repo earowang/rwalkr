@@ -74,6 +74,7 @@ walk_melb <- function(
     })
   } else {
     # shiny session
+    stopifnot(shiny::isRunning())
     shiny::withProgress(
       message = "Retrieving data", value = 0, {
         lst_dat <- lapply(urls, function(x) {
