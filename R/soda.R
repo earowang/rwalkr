@@ -16,7 +16,7 @@ globalVariables(c(
 #'   the local time zone is "Australia/Melbourne" which would be the most
 #'   appropriate, depending on OS.
 #' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in 
-#'   the datset. `TRUE` removes the `NA`s.
+#'   the dataset. `TRUE` removes the `NA`s.
 #' @param app_token Characters giving the application token. A limited number of 
 #'    requests can be made without an app token (`NULL`), but they are subject 
 #'    to much lower throttling limits than request that do include one. Sign up

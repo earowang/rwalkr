@@ -17,7 +17,7 @@ the local time zone is "Australia/Melbourne" which would be the most
 appropriate, depending on OS.}
 
 \item{na.rm}{Logical. \code{FALSE} is the default suggesting to include \code{NA} in
-the datset. \code{TRUE} removes the \code{NA}s.}
+the dataset. \code{TRUE} removes the \code{NA}s.}
 
 \item{tweak}{Logical. \code{FALSE} (the default) leaves the sensor names as is. If
 \code{TRUE}, they are cleaned up and matched with the ones in \link{run_melb}.}

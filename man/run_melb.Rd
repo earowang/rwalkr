@@ -19,7 +19,7 @@ the local time zone is "Australia/Melbourne" which would be the most
 appropriate, depending on OS.}
 
 \item{na.rm}{Logical. \code{FALSE} is the default suggesting to include \code{NA} in
-the datset. \code{TRUE} removes the \code{NA}s.}
+the dataset. \code{TRUE} removes the \code{NA}s.}
 
 \item{app_token}{Characters giving the application token. A limited number of
 requests can be made without an app token (\code{NULL}), but they are subject

@@ -10,7 +10,7 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time", "walk"))
 #'   the local time zone is "Australia/Melbourne" which would be the most
 #'   appropriate, depending on OS.
 #' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in 
-#'   the datset. `TRUE` removes the `NA`s.
+#'   the dataset. `TRUE` removes the `NA`s.
 #' @param tweak Logical. `FALSE` (the default) leaves the sensor names as is. If
 #'   `TRUE`, they are cleaned up and matched with the ones in [run_melb].
 #' @param session `NULL` or "shiny". For internal use only.
