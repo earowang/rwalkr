@@ -122,3 +122,22 @@ read_url <- function(url) {
   )
 }
 
+#' Look up sensor names between `run_melb()` and `walk_melb()`
+#'
+#' One-to-one corresponding sensor names between `run_melb()` and `walk_melb()`
+#'
+#' @details Two APIs (Socrata and compedapi) code some sensors using different 
+#'   names. This functions returns a data frame that allows to compare sensor 
+#'   names obtained from these two APIs.
+#' @return A data frame including three columns:
+#'   * run: Sensor names obtained from the `run_melb()` function using Socrata
+#'   * walk: Sensor names obtained from the `walk_melb()` function using compedapi
+#'   * match: whether sensor names are identical or not
+#'
+#' @export
+#'
+#' @examples
+#'   lookup_sensor()
+lookup_sensor <- function() {
+  sensor_dict
+}
