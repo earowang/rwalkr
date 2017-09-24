@@ -1,3 +1,16 @@
+# rwalkr 0.3.1
+
+## Bug fixes
+
+* Fixed "Count" to be returned as integers instead of characters in `run_melb(na.rm = FALSE)`.
+* Fixed duplicated data entries when `walk_melb(tweak = TRUE)`.
+* Fixed one non-matching sensor in `lookup_sensor()`.
+
+## Updates
+
+* A new sensor "Pelham St (S)" added to `run_melb()`, `pull_sensor()`, and `lookup_sensor()` using Socrata.
+* Changed the shiny app using `shine_melb()` to use `walk_melb(tweak = TRUE)`.
+
 # rwalkr 0.3.0
 
 ## New functions

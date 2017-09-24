@@ -29,7 +29,7 @@ for an app token \href{https://data.melbourne.vic.gov.au/profile/app_tokens}{her
 \value{
 A data frame including these variables as follows:
 \itemize{
-\item Sensor: Sensor name (45 sensors up to date)
+\item Sensor: Sensor name (46 sensors up to date)
 \item Date_Time: Date time when the pedestrian counts are recorded
 \item Date: Date associated with Date_Time
 \item Time: Time of day

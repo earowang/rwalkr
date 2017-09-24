@@ -28,7 +28,7 @@ globalVariables(c(
 #'   refer to Melbourne Open Data Portal for more details about the dataset and 
 #'   its policy.
 #' @return A data frame including these variables as follows:
-#'   * Sensor: Sensor name (45 sensors up to date)
+#'   * Sensor: Sensor name (46 sensors up to date)
 #'   * Date_Time: Date time when the pedestrian counts are recorded
 #'   * Date: Date associated with Date_Time
 #'   * Time: Time of day
@@ -132,6 +132,7 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
     ped <- dplyr::mutate(
       ped, 
       Date = as.Date.POSIXct(Date_Time, tz = tz),
+      Count = as.integer(Count),
       Time = as.integer(substr(Date_Time, 12, 13))
     )
   } else {

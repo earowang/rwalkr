@@ -4,8 +4,8 @@
 #' as a CSV file, accompanied with basic visualisation. 
 #'
 #' @details It offers some basic plots to give a glimpse of the data over a 
-#' short time period, and so it uses [walk_melb] to pull the data. In
-#' order to be reproducible, scripting using `walk_melb` or `run_melb` is
+#' short time period, and so it uses [walk_melb] with `tweak = TRUE` to pull the 
+#' data. In order to be reproducible, scripting using `walk_melb` or `run_melb` is
 #' recommended.
 #'
 #' @return A shiny app.
@@ -68,7 +68,7 @@ shine_melb <- function() {
     all_df <- shiny::reactive({
       input$goButton
       shiny::isolate(walk_melb(
-        from = input$date_rng[1], to = input$date_rng[2],
+        from = input$date_rng[1], to = input$date_rng[2], tweak = TRUE,
         session = "shiny"
       ))
     })

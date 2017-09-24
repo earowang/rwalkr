@@ -105,8 +105,12 @@ walk_melb <- function(
     dif <- dplyr::filter(sensor_dict, match == FALSE, walk != "NA")
     seq_sensor <- seq_len(nrow(dif))
     changed_df <- dplyr::bind_rows(lapply(seq_sensor, function(x) {
-      df_dat[df_dat$Sensor == dif[x, "walk"], "Sensor"] <- dif[x, "run"]
-      df_dat
+      df_tmp <- df_dat[df_dat$Sensor == dif[x, "walk"], , drop = FALSE]
+      dif_run <- dif[x, "run"]
+      if (!is.na(dif_run)) {
+        df_tmp$Sensor <- dif_run
+      }
+      df_tmp
     }))
     same <- dplyr::filter(sensor_dict, match == TRUE)$walk
     unchanged_df <- dplyr::filter(df_dat, Sensor %in% same)
