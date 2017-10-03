@@ -1,7 +1,7 @@
 Package: rwalkr
 Type: Package
 Title: API to Melbourne Pedestrian Data
-Version: 0.3.1
+Version: 0.3.1.9000
 Authors@R: person("Earo", "Wang", email = "earo.wang@gmail.com", role = c("aut", "cre"))
 Description: Provides API to Melbourne pedestrian data in tidy data form.
 Depends:
@@ -11,7 +11,7 @@ Imports:
     dplyr,
     httr
 Suggests: 
-    shiny,
+    shiny (>= 1.0.4),
     plotly
 URL: http://pkg.earo.me/rwalkr
 BugReports: https://github.com/earowang/rwalkr/issues
