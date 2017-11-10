@@ -1,3 +1,13 @@
+# rwalkr 0.3.2
+
+## Major changes
+
+* Returned a tibble (`tbl_ts`) instead of data.frame.
+
+## Minor changes
+
+* Specified the requirement version of shiny to the DESCRIPTION file.
+
 # rwalkr 0.3.1
 
 ## Bug fixes

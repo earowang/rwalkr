@@ -20,7 +20,7 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time", "walk"))
 #'   till the previous day. The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp). Please 
 #'   refer to Melbourne Open Data Portal for more details about the dataset and 
 #'   its policy.
-#' @return A data frame including these variables as follows:
+#' @return A tibble including these variables as follows:
 #'   * Sensor: Sensor name (43 sensors up to date)
 #'   * Date_Time: Date time when the pedestrian counts are recorded
 #'   * Date: Date associated with Date_Time
@@ -68,7 +68,7 @@ walk_melb <- function(
   if (is.null(session)) {
     p <- dplyr::progress_estimated(len_urls)
     lst_dat <- lapply(urls, function(x) {
-      dat <- read_url(url = x)
+      dat <- tibble::as_tibble(read_url(url = x))
       p$tick()$print()
       dat
     })

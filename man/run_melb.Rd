@@ -27,7 +27,7 @@ to much lower throttling limits than request that do include one. Sign up
 for an app token \href{https://data.melbourne.vic.gov.au/profile/app_tokens}{here}.}
 }
 \value{
-A data frame including these variables as follows:
+A tibble including these variables as follows:
 \itemize{
 \item Sensor: Sensor name (46 sensors up to date)
 \item Date_Time: Date time when the pedestrian counts are recorded

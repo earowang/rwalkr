@@ -9,7 +9,8 @@ Depends:
 Imports:
     tidyr,
     dplyr,
-    httr
+    httr,
+    tibble
 Suggests: 
     shiny (>= 1.0.4),
     plotly
