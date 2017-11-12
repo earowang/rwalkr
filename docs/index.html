@@ -29,7 +29,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="/index.html">
+  <a href="index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -41,7 +41,14 @@
   <a href="news/index.html">News</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/earowang/rwalkr">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -85,15 +92,27 @@ start_date &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span c
 <span class="co"># tweak = TRUE gives the consistent sensors to the ones from run_melb().</span>
 <span class="co"># By default it's FALSE for back compatibility.</span>
 ped_walk &lt;-<span class="st"> </span><span class="kw"><a href="reference/walk_melb.html">walk_melb</a></span>(<span class="dt">from =</span> start_date, <span class="dt">to =</span> start_date <span class="op">+</span><span class="st"> </span>6L, <span class="dt">tweak =</span> <span class="ot">TRUE</span>)
+ped_walk
+<span class="co">#&gt; # A tibble: 7,224 x 5</span>
+<span class="co">#&gt;                  Sensor  Date_Time       Date  Time Count</span>
+<span class="co">#&gt;                   &lt;chr&gt;     &lt;dttm&gt;     &lt;date&gt; &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt; 1         State Library 2017-07-01 2017-07-01     0   334</span>
+<span class="co">#&gt; 2 Collins Place (South) 2017-07-01 2017-07-01     0    82</span>
+<span class="co">#&gt; 3 Collins Place (North) 2017-07-01 2017-07-01     0    51</span>
+<span class="co">#&gt; 4     Flagstaff Station 2017-07-01 2017-07-01     0     0</span>
+<span class="co">#&gt; 5     Melbourne Central 2017-07-01 2017-07-01     0   826</span>
+<span class="co">#&gt; # ... with 7,219 more rows</span>
 ped_run &lt;-<span class="st"> </span><span class="kw"><a href="reference/run_melb.html">run_melb</a></span>(<span class="dt">year =</span> <span class="dv">2016</span><span class="op">:</span><span class="dv">2017</span>, <span class="dt">sensor =</span> <span class="ot">NULL</span>) <span class="co"># NULL means all sensors</span>
-<span class="kw">head</span>(ped_walk)
-<span class="co">#&gt;                  Sensor  Date_Time       Date Time Count</span>
-<span class="co">#&gt; 1         State Library 2017-07-01 2017-07-01    0   334</span>
-<span class="co">#&gt; 2 Collins Place (South) 2017-07-01 2017-07-01    0    82</span>
-<span class="co">#&gt; 3 Collins Place (North) 2017-07-01 2017-07-01    0    51</span>
-<span class="co">#&gt; 4     Flagstaff Station 2017-07-01 2017-07-01    0     0</span>
-<span class="co">#&gt; 5     Melbourne Central 2017-07-01 2017-07-01    0   826</span>
-<span class="co">#&gt; 6      Town Hall (West) 2017-07-01 2017-07-01    0   682</span></code></pre></div>
+ped_run
+<span class="co">#&gt; # A tibble: 705,502 x 5</span>
+<span class="co">#&gt;                        Sensor  Date_Time       Date  Time Count</span>
+<span class="co">#&gt;                         &lt;chr&gt;     &lt;dttm&gt;     &lt;date&gt; &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt; 1                Alfred Place 2016-01-01 2016-01-01     0    NA</span>
+<span class="co">#&gt; 2        Australia on Collins 2016-01-01 2016-01-01     0  1081</span>
+<span class="co">#&gt; 3              Birrarung Marr 2016-01-01 2016-01-01     0  1405</span>
+<span class="co">#&gt; 4 Bourke St-Russell St (West) 2016-01-01 2016-01-01     0  1900</span>
+<span class="co">#&gt; 5  Bourke Street Mall (North) 2016-01-01 2016-01-01     0   461</span>
+<span class="co">#&gt; # ... with 7.055e+05 more rows</span></code></pre></div>
 <p>There are missing values (i.e. <code>NA</code>) in the dataset. By setting <code>na.rm = TRUE</code> in both functions, missing values will be removed.</p>
 <p>Here’s an example to use <em>ggplot2</em> for visualisation:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)

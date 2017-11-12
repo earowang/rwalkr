@@ -117,18 +117,10 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
 
   if (!na.rm) {
     # Make implicit missingness to explicit
-    full_time <- seq.POSIXt(from = from_time, to = to_time, by = "hour")
-    len_time <- length(full_time)
-    available_sensors <- unique(ped$Sensor)
-    len_sensor <- length(available_sensors)
-    full_df <- data.frame(
-      Sensor = available_sensors[rep.int(
-        seq_along(available_sensors), len_time
-      )],
-      Date_Time = rep(full_time, each = len_sensor),
-      stringsAsFactors = FALSE
+    ped <- tidyr::complete(ped,
+      Date_Time = seq.POSIXt(from = from_time, to = to_time, by = "hour"),
+      Sensor
     )
-    ped <- dplyr::left_join(full_df, ped, by = c("Sensor", "Date_Time"))
     ped <- dplyr::mutate(
       ped, 
       Date = as.Date.POSIXct(Date_Time, tz = tz),

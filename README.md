@@ -38,15 +38,27 @@ start_date <- as.Date("2017-07-01")
 # tweak = TRUE gives the consistent sensors to the ones from run_melb().
 # By default it's FALSE for back compatibility.
 ped_walk <- walk_melb(from = start_date, to = start_date + 6L, tweak = TRUE)
+ped_walk
+#> # A tibble: 7,224 x 5
+#>                  Sensor  Date_Time       Date  Time Count
+#>                   <chr>     <dttm>     <date> <int> <int>
+#> 1         State Library 2017-07-01 2017-07-01     0   334
+#> 2 Collins Place (South) 2017-07-01 2017-07-01     0    82
+#> 3 Collins Place (North) 2017-07-01 2017-07-01     0    51
+#> 4     Flagstaff Station 2017-07-01 2017-07-01     0     0
+#> 5     Melbourne Central 2017-07-01 2017-07-01     0   826
+#> # ... with 7,219 more rows
 ped_run <- run_melb(year = 2016:2017, sensor = NULL) # NULL means all sensors
-head(ped_walk)
-#>                  Sensor  Date_Time       Date Time Count
-#> 1         State Library 2017-07-01 2017-07-01    0   334
-#> 2 Collins Place (South) 2017-07-01 2017-07-01    0    82
-#> 3 Collins Place (North) 2017-07-01 2017-07-01    0    51
-#> 4     Flagstaff Station 2017-07-01 2017-07-01    0     0
-#> 5     Melbourne Central 2017-07-01 2017-07-01    0   826
-#> 6      Town Hall (West) 2017-07-01 2017-07-01    0   682
+ped_run
+#> # A tibble: 705,502 x 5
+#>                        Sensor  Date_Time       Date  Time Count
+#>                         <chr>     <dttm>     <date> <int> <int>
+#> 1                Alfred Place 2016-01-01 2016-01-01     0    NA
+#> 2        Australia on Collins 2016-01-01 2016-01-01     0  1081
+#> 3              Birrarung Marr 2016-01-01 2016-01-01     0  1405
+#> 4 Bourke St-Russell St (West) 2016-01-01 2016-01-01     0  1900
+#> 5  Bourke Street Mall (North) 2016-01-01 2016-01-01     0   461
+#> # ... with 7.055e+05 more rows
 ```
 
 There are missing values (i.e. `NA`) in the dataset. By setting `na.rm = TRUE` in both functions, missing values will be removed.
