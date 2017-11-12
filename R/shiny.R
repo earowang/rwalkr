@@ -17,9 +17,10 @@
 #'   shine_melb()
 #' }
 shine_melb <- function() {
-  if (!requireNamespace("shiny", quietly = TRUE)) {
+  if (!(requireNamespace("shiny", quietly = TRUE) && 
+        utils::packageVersion("shiny") >= "1.0.4")) {
     stop(
-      "Packages shiny required for shine_melb()", ".\n",
+      "Packages shiny (>= v1.0.4) required for shine_melb()", ".\n",
       "Please install and try again.", call. = FALSE
     )
   }
