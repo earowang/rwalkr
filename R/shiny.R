@@ -91,33 +91,40 @@ shine_melb <- function() {
     output$drawOverlay <- plotly::renderPlotly({
       ped_dat <- ped_df() %>%
         dplyr::filter(!is.na(Count))
-      ped_key <- row.names(ped_dat)
-      tsplot <- ped_dat %>%
-        dplyr::group_by(Sensor) %>%
+      if (NROW(ped_dat) == 0) {
         plotly::plot_ly(
-          x = ~ Date_Time, y = ~ Count,
-          hoverinfo = "text",
-          text = ~ paste(
-            "Sensor: ", Sensor,
-            "<br> Date Time: ", Date_Time,
-            "<br> Count:", Count
-          ),
-          source = "tsplot"
-        ) %>%
-        plotly::add_lines(alpha = 0.8, key = ~ ped_key)
-      click <- plotly::event_data("plotly_click", source = "tsplot")
-      if (!is.null(click)) {
-        hl_line <- ped_dat[ped_key %in% click$key[1], "Sensor"]
-        hl_sensor <- ped_dat %>% dplyr::filter(Sensor %in% hl_line)
-        if (nrow(hl_sensor) != 0) # if it's an empty data frame
-          tsplot <- plotly::add_lines(
-            tsplot, data = hl_sensor, color = I("#d73027")
-          )
+          x = 1, y = 1, text = "Oops! No data points available."
+        ) %>% 
+        plotly::add_text()
+      } else {
+        ped_key <- row.names(ped_dat)
+        tsplot <- ped_dat %>%
+          dplyr::group_by(Sensor) %>%
+          plotly::plot_ly(
+            x = ~ Date_Time, y = ~ Count,
+            hoverinfo = "text",
+            text = ~ paste(
+              "Sensor: ", Sensor,
+              "<br> Date Time: ", Date_Time,
+              "<br> Count:", Count
+            ),
+            source = "tsplot"
+          ) %>%
+          plotly::add_lines(alpha = 0.8, key = ~ ped_key)
+        click <- plotly::event_data("plotly_click", source = "tsplot")
+        if (!is.null(click)) {
+          hl_line <- ped_dat[ped_key %in% click$key[1], "Sensor"]
+          hl_sensor <- ped_dat %>% dplyr::filter(Sensor %in% hl_line)
+          if (nrow(hl_sensor) != 0) # if it's an empty data frame
+            tsplot <- plotly::add_lines(
+              tsplot, data = hl_sensor, color = I("#d73027")
+            )
+        }
+        plotly::layout(
+          tsplot, title = "Time series plot", showlegend = FALSE,
+          xaxis = list(title = "Date Time"), yaxis = list(title = "Count")
+        )
       }
-      plotly::layout(
-        tsplot, title = "Time series plot", showlegend = FALSE,
-        xaxis = list(title = "Date Time"), yaxis = list(title = "Count")
-      )
     })
 
     output$drawMarker <- plotly::renderPlotly({
