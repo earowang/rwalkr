@@ -66,72 +66,54 @@
 <div class="contents">
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<div id="rwalkr" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#rwalkr" class="anchor"></a>rwalkr</h1></div>
+<section id="rwalkr" class="level1"><div class="page-header"><h1>rwalkr</h1></div>
 <p>The goal of <strong>rwalkr</strong> is to provide APIs to the pedestrian data from the City of Melbourne in tidy data form.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<section id="installation" class="level2"><h2>Installation</h2>
 <p>You could install the stable version from CRAN:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"rwalkr"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"rwalkr"</span>)</a></code></pre></div>
 <p>You could install the development version from Github using:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"earowang/rwalkr"</span>)</code></pre></div>
-</div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<div id="apis" class="section level3">
-<h3 class="hasAnchor">
-<a href="#apis" class="anchor"></a>APIs</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"earowang/rwalkr"</span>)</a></code></pre></div>
+</section><section id="usage" class="level2"><h2>Usage</h2>
+<section id="apis" class="level3"><h3>APIs</h3>
 <p>There are two APIs available to access Melbourne pedestrian data: <em>compedapi</em> and <em>Socrata</em>. The former drives the <code><a href="reference/walk_melb.html">walk_melb()</a></code> function, where counts are uploaded on a daily basis; the latter powers the <code><a href="reference/run_melb.html">run_melb()</a></code> function, where counts are uploaded on a monthly basis. Given the function names, the function <code><a href="reference/run_melb.html">run_melb()</a></code> pulls the data at a much faster speed than <code><a href="reference/walk_melb.html">walk_melb()</a></code>.</p>
 <p>The function <code><a href="reference/walk_melb.html">walk_melb()</a></code> specifies the starting and ending dates to be pulled, whereas <code><a href="reference/run_melb.html">run_melb()</a></code> requires years to define the time frame. If a selection of sensors are of interest, <code><a href="reference/run_melb.html">run_melb()</a></code> provides the flexibility for sensor choices.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rwalkr)
-start_date &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">"2017-07-01"</span>)
-<span class="co"># tweak = TRUE gives the consistent sensors to the ones from run_melb().</span>
-<span class="co"># By default it's FALSE for back compatibility.</span>
-ped_walk &lt;-<span class="st"> </span><span class="kw"><a href="reference/walk_melb.html">walk_melb</a></span>(<span class="dt">from =</span> start_date, <span class="dt">to =</span> start_date <span class="op">+</span><span class="st"> </span>6L, <span class="dt">tweak =</span> <span class="ot">TRUE</span>)
-ped_walk
-<span class="co">#&gt; # A tibble: 7,224 x 5</span>
-<span class="co">#&gt;                  Sensor  Date_Time       Date  Time Count</span>
-<span class="co">#&gt;                   &lt;chr&gt;     &lt;dttm&gt;     &lt;date&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt; 1         State Library 2017-07-01 2017-07-01     0   334</span>
-<span class="co">#&gt; 2 Collins Place (South) 2017-07-01 2017-07-01     0    82</span>
-<span class="co">#&gt; 3 Collins Place (North) 2017-07-01 2017-07-01     0    51</span>
-<span class="co">#&gt; 4     Flagstaff Station 2017-07-01 2017-07-01     0     0</span>
-<span class="co">#&gt; 5     Melbourne Central 2017-07-01 2017-07-01     0   826</span>
-<span class="co">#&gt; # ... with 7,219 more rows</span>
-ped_run &lt;-<span class="st"> </span><span class="kw"><a href="reference/run_melb.html">run_melb</a></span>(<span class="dt">year =</span> <span class="dv">2016</span><span class="op">:</span><span class="dv">2017</span>, <span class="dt">sensor =</span> <span class="ot">NULL</span>) <span class="co"># NULL means all sensors</span>
-ped_run
-<span class="co">#&gt; # A tibble: 705,502 x 5</span>
-<span class="co">#&gt;                        Sensor  Date_Time       Date  Time Count</span>
-<span class="co">#&gt;                         &lt;chr&gt;     &lt;dttm&gt;     &lt;date&gt; &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt; 1                Alfred Place 2016-01-01 2016-01-01     0    NA</span>
-<span class="co">#&gt; 2        Australia on Collins 2016-01-01 2016-01-01     0  1081</span>
-<span class="co">#&gt; 3              Birrarung Marr 2016-01-01 2016-01-01     0  1405</span>
-<span class="co">#&gt; 4 Bourke St-Russell St (West) 2016-01-01 2016-01-01     0  1900</span>
-<span class="co">#&gt; 5  Bourke Street Mall (North) 2016-01-01 2016-01-01     0   461</span>
-<span class="co">#&gt; # ... with 7.055e+05 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(rwalkr)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">start_date &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">"2017-07-01"</span>)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">ped_walk &lt;-<span class="st"> </span><span class="kw"><a href="reference/walk_melb.html">walk_melb</a></span>(<span class="dt">from =</span> start_date, <span class="dt">to =</span> start_date <span class="op">+</span><span class="st"> </span>6L)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">ped_walk</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; # A tibble: 7,224 x 5</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;   Sensor                     Date_Time           Date        Time Count</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;   &lt;chr&gt;                      &lt;dttm&gt;              &lt;date&gt;     &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 1 Bourke Street Mall (North) 2017-07-01 00:00:00 2017-07-01     0   280</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 2 Bourke Street Mall (South) 2017-07-01 00:00:00 2017-07-01     0   177</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 3 Melbourne Central          2017-07-01 00:00:00 2017-07-01     0   826</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; 4 Town Hall (West)           2017-07-01 00:00:00 2017-07-01     0   682</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; 5 Princes Bridge             2017-07-01 00:00:00 2017-07-01     0     0</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; # ... with 7,219 more rows</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">ped_run &lt;-<span class="st"> </span><span class="kw"><a href="reference/run_melb.html">run_melb</a></span>(<span class="dt">year =</span> <span class="dv">2016</span><span class="op">:</span><span class="dv">2017</span>, <span class="dt">sensor =</span> <span class="ot">NULL</span>) <span class="co"># NULL means all sensors</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">ped_run</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; # A tibble: 912,288 x 5</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;   Sensor                      Date_Time           Date        Time Count</span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt;   &lt;chr&gt;                       &lt;dttm&gt;              &lt;date&gt;     &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; 1 Alfred Place                2016-01-01 00:00:00 2016-01-01     0    NA</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; 2 Australia on Collins        2016-01-01 00:00:00 2016-01-01     0  1081</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt; 3 Birrarung Marr              2016-01-01 00:00:00 2016-01-01     0  1405</span></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; 4 Bourke St-Russell St (West) 2016-01-01 00:00:00 2016-01-01     0  1900</span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt; 5 Bourke Street Mall (North)  2016-01-01 00:00:00 2016-01-01     0   461</span></a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; # ... with 9.123e+05 more rows</span></a></code></pre></div>
 <p>There are missing values (i.e. <code>NA</code>) in the dataset. By setting <code>na.rm = TRUE</code> in both functions, missing values will be removed.</p>
 <p>Here’s an example to use <em>ggplot2</em> for visualisation:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> <span class="kw">subset</span>(ped_walk, Sensor <span class="op">==</span><span class="st"> "Melbourne Central"</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Date_Time, <span class="dt">y =</span> Count))</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> <span class="kw">subset</span>(ped_walk, Sensor <span class="op">==</span><span class="st"> "Melbourne Central"</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Date_Time, <span class="dt">y =</span> Count))</a></code></pre></div>
 <p><img src="man/figure/plot-1.png" width="672"></p>
 <p>It’s worth noting that some sensor names are coded differently by these two APIs. The argument <code>tweak = TRUE</code> ensures the sensor names returned by <code><a href="reference/walk_melb.html">walk_melb()</a></code> consistent to the ones in <code><a href="reference/run_melb.html">run_melb()</a></code> and <code><a href="reference/pull_sensor.html">pull_sensor()</a></code>, both of which are supported by Socrata. The dictionary for checking sensor names between two functions is available through <code><a href="reference/lookup_sensor.html">lookup_sensor()</a></code>.</p>
 <p>It’s recommended to include an application token in <code><a href="reference/run_melb.html">run_melb(app_token = "YOUR-APP-TOKEN")</a></code>, which you can sign up <a href="https://data.melbourne.vic.gov.au/profile/app_tokens">here</a>.</p>
-</div>
-<div id="shiny-app" class="section level3">
-<h3 class="hasAnchor">
-<a href="#shiny-app" class="anchor"></a>Shiny app</h3>
+</section><section id="shiny-app" class="level3"><h3>Shiny app</h3>
 <p>The function <code><a href="reference/shine_melb.html">shine_melb()</a></code> launches a shiny app to give a glimpse of the data. It provides two basic plots: one is an overlaying time series plot, and the other is a dot plot indicating missing values. Below is a screen-shot of the shiny app.</p>
-<div class="figure">
-<img src="man/figure/shiny.png">
-</div>
-</div>
-</div>
-</div>
+<p><img src="man/figure/shiny.png"></p>
+</section></section></section>
 </div>
   </div>
 
@@ -167,7 +149,7 @@ ped_run
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

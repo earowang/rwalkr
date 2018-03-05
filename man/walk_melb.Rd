@@ -5,7 +5,7 @@
 \title{API using compedapi to Melbourne pedestrian data}
 \usage{
 walk_melb(from = to - 6L, to = Sys.Date() - 1L, tz = "", na.rm = FALSE,
-  tweak = FALSE, session = NULL)
+  session = NULL)
 }
 \arguments{
 \item{from}{Starting date.}
@@ -18,9 +18,6 @@ appropriate, depending on OS.}
 
 \item{na.rm}{Logical. \code{FALSE} is the default suggesting to include \code{NA} in
 the dataset. \code{TRUE} removes the \code{NA}s.}
-
-\item{tweak}{Logical. \code{FALSE} (the default) leaves the sensor names as is. If
-\code{TRUE}, they are cleaned up and matched with the ones in \link{run_melb}.}
 
 \item{session}{\code{NULL} or "shiny". For internal use only.}
 }

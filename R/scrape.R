@@ -11,8 +11,6 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time", "walk"))
 #'   appropriate, depending on OS.
 #' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in 
 #'   the dataset. `TRUE` removes the `NA`s.
-#' @param tweak Logical. `FALSE` (the default) leaves the sensor names as is. If
-#'   `TRUE`, they are cleaned up and matched with the ones in [run_melb].
 #' @param session `NULL` or "shiny". For internal use only.
 #'
 #' @details It provides API using compedapi, where counts are uploaded on a 
@@ -43,8 +41,7 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time", "walk"))
 #'   head(ped_df2)
 #' }
 walk_melb <- function(
-  from = to - 6L, to = Sys.Date() - 1L, tz = "", na.rm = FALSE, tweak = FALSE,
-  session = NULL
+  from = to - 6L, to = Sys.Date() - 1L, tz = "", na.rm = FALSE, session = NULL
 ) {
   stopifnot(class(from) == "Date" && class(to) == "Date")
   stopifnot(from > as.Date("2009-05-31"))
@@ -101,21 +98,21 @@ walk_melb <- function(
   )
   if (na.rm) df_dat <- dplyr::filter(df_dat, !is.na(Count))
 
-  if (tweak) {
-    dif <- dplyr::filter(sensor_dict, match == FALSE, walk != "NA")
-    seq_sensor <- seq_len(nrow(dif))
-    changed_df <- dplyr::bind_rows(lapply(seq_sensor, function(x) {
-      df_tmp <- df_dat[df_dat$Sensor == dif[x, "walk"], , drop = FALSE]
-      dif_run <- dif[x, "run"]
-      if (!is.na(dif_run)) {
-        df_tmp$Sensor <- dif_run
-      }
-      df_tmp
-    }))
-    same <- dplyr::filter(sensor_dict, match == TRUE)$walk
-    unchanged_df <- dplyr::filter(df_dat, Sensor %in% same)
-    df_dat <- dplyr::bind_rows(unchanged_df, changed_df)
-  }
+  # if (tweak) {
+  #   dif <- dplyr::filter(sensor_dict, match == FALSE, walk != "NA")
+  #   seq_sensor <- seq_len(nrow(dif))
+  #   changed_df <- dplyr::bind_rows(lapply(seq_sensor, function(x) {
+  #     df_tmp <- df_dat[df_dat$Sensor == dif[x, "walk"], , drop = FALSE]
+  #     dif_run <- dif[x, "run"]
+  #     if (!is.na(dif_run)) {
+  #       df_tmp$Sensor <- dif_run
+  #     }
+  #     df_tmp
+  #   }))
+  #   same <- dplyr::filter(sensor_dict, match == TRUE)$walk
+  #   unchanged_df <- dplyr::filter(df_dat, Sensor %in% same)
+  #   df_dat <- dplyr::bind_rows(unchanged_df, changed_df)
+  # }
 
   dplyr::select(df_dat, Sensor, Date_Time, Date, Time, Count)
 }

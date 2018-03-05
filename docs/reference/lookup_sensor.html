@@ -109,54 +109,112 @@ names obtained from these two APIs.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>lookup_sensor</span>()</div><div class='output co'>#&gt;                                       run                            walk match
-#&gt; 1                           State Library                   State Library  TRUE
-#&gt; 2                   Collins Place (South)           Collins Place (South)  TRUE
-#&gt; 3                   Collins Place (North)           Collins Place (North)  TRUE
-#&gt; 4                       Flagstaff Station               Flagstaff Station  TRUE
-#&gt; 5                       Melbourne Central               Melbourne Central  TRUE
-#&gt; 6                        Town Hall (West)                Town Hall (West)  TRUE
-#&gt; 7              Bourke Street Mall (North)      Bourke Street Mall (North)  TRUE
-#&gt; 8              Bourke Street Mall (South)      Bourke Street Mall (South)  TRUE
-#&gt; 9                    Australia on Collins            Australia on Collins  TRUE
-#&gt; 10                 Southern Cross Station          Southern Cross Station  TRUE
-#&gt; 11                         Victoria Point                  Victoria Point  TRUE
-#&gt; 12                               New Quay                        New Quay  TRUE
-#&gt; 13                        Waterfront City                 Waterfront City  TRUE
-#&gt; 14                            Webb Bridge                     Webb Bridge  TRUE
-#&gt; 15                         Princes Bridge                  Princes Bridge  TRUE
-#&gt; 16                       Sandridge Bridge                Sandridge Bridge  TRUE
-#&gt; 17                         Birrarung Marr                  Birrarung Marr  TRUE
-#&gt; 18        Flinders St-Elizabeth St (East) Flinders St-Elizabeth St (East)  TRUE
-#&gt; 19          Spencer St-Collins St (North)   Spencer St-Collins St (North)  TRUE
-#&gt; 20          Spencer St-Collins St (South)   Spencer St-Collins St (South)  TRUE
-#&gt; 21            Bourke St-Russell St (West)     Bourke St-Russell St (West)  TRUE
-#&gt; 22          Chinatown-Swanston St (North)   Chinatown-Swanston St (North)  TRUE
-#&gt; 23         Chinatown-Lt Bourke St (South)  Chinatown-Lt Bourke St (South)  TRUE
-#&gt; 24                      QV Market-Peel St               QV Market-Peel St  TRUE
-#&gt; 25                    Lonsdale St (South)             Lonsdale St (South)  TRUE
-#&gt; 26                        Lygon St (West)                 Lygon St (West)  TRUE
-#&gt; 27           Flinders St-Spring St (West)    Flinders St-Spring St (West)  TRUE
-#&gt; 28                           Alfred Place                    Alfred Place  TRUE
-#&gt; 29         Flinders St-Swanston St (West)  Flinders St-Swanston St (West)  TRUE
-#&gt; 30                            City Square                     City Square  TRUE
-#&gt; 31          Grattan St-Swanston St (West)   Grattan St-Swanston St (West)  TRUE
-#&gt; 32           Monash Rd-Swanston St (West)    Monash Rd-Swanston St (West)  TRUE
-#&gt; 33           Tin Alley-Swanston St (West)    Tin Alley-Swanston St (West)  TRUE
-#&gt; 34                              Southbank                       Southbank  TRUE
-#&gt; 35      Flinders Street Station Underpass   Flinders St Station Underpass FALSE
-#&gt; 36          QV Market-Elizabeth St (West)      QV Market-Elizabeth (West) FALSE
-#&gt; 37 Melbourne Convention Exhibition Centre    Convention/Exhibition Centre FALSE
-#&gt; 38                        The Arts Centre                 Vic Arts Centre FALSE
-#&gt; 39                   Flinders St-Spark La          Flinders St-Spark Lane FALSE
-#&gt; 40                        Queen St (West)             Queen Street (West) FALSE
-#&gt; 41                        Lygon St (East)             Lygon Street (East) FALSE
-#&gt; 42                                   &lt;NA&gt;   Spring St-Lonsdale St (South) FALSE
-#&gt; 43          St Kilda Rd-Alexandra Gardens     St. Kilda-Alexandra Gardens FALSE
-#&gt; 44         Flinders La-Swanston St (West)                            &lt;NA&gt; FALSE
-#&gt; 45   Little Collins St-Swanston St (East)                            &lt;NA&gt; FALSE
-#&gt; 46                          Pelham St (S)                            &lt;NA&gt; FALSE
-#&gt; 47           Lonsdale St-Spring St (West)                            &lt;NA&gt; FALSE</div></pre>
+    <pre class="examples"><div class='input'>  <span class='fu'>lookup_sensor</span>()</div><div class='output co'>#&gt;                                       run
+#&gt; 1              Bourke Street Mall (North)
+#&gt; 2              Bourke Street Mall (South)
+#&gt; 3                       Melbourne Central
+#&gt; 4                        Town Hall (West)
+#&gt; 5                          Princes Bridge
+#&gt; 6       Flinders Street Station Underpass
+#&gt; 7                          Birrarung Marr
+#&gt; 8                             Webb Bridge
+#&gt; 9                  Southern Cross Station
+#&gt; 10                         Victoria Point
+#&gt; 11                        Waterfront City
+#&gt; 12                               New Quay
+#&gt; 13                      Flagstaff Station
+#&gt; 14                       Sandridge Bridge
+#&gt; 15                          State Library
+#&gt; 16                   Australia on Collins
+#&gt; 17                  Collins Place (South)
+#&gt; 18                  Collins Place (North)
+#&gt; 19          Chinatown-Swanston St (North)
+#&gt; 20         Chinatown-Lt Bourke St (South)
+#&gt; 21            Bourke St-Russell St (West)
+#&gt; 22        Flinders St-Elizabeth St (East)
+#&gt; 23          Spencer St-Collins St (South)
+#&gt; 24          Spencer St-Collins St (North)
+#&gt; 25 Melbourne Convention Exhibition Centre
+#&gt; 26          QV Market-Elizabeth St (West)
+#&gt; 27                      QV Market-Peel St
+#&gt; 28                        The Arts Centre
+#&gt; 29          St Kilda Rd-Alexandra Gardens
+#&gt; 30                    Lonsdale St (South)
+#&gt; 31                        Lygon St (West)
+#&gt; 32                            City Square
+#&gt; 33           Flinders St-Spring St (West)
+#&gt; 34                   Flinders St-Spark La
+#&gt; 35                              Southbank
+#&gt; 36                        Queen St (West)
+#&gt; 37                        Lygon St (East)
+#&gt; 38         Flinders St-Swanston St (West)
+#&gt; 39                           Alfred Place
+#&gt; 40           Lonsdale St-Spring St (West)
+#&gt; 41          Grattan St-Swanston St (West)
+#&gt; 42           Monash Rd-Swanston St (West)
+#&gt; 43           Tin Alley-Swanston St (West)
+#&gt; 44       Elizabeth St-Lonsdale St (South)
+#&gt; 45             Faraday St-Lygon St (West)
+#&gt; 46         Flinders La-Swanston St (West)
+#&gt; 47   Little Collins St-Swanston St (East)
+#&gt; 48  Melbourne Central-Elizabeth St (East)
+#&gt; 49                          Pelham St (S)
+#&gt; 50                QVM-Franklin St (North)
+#&gt; 51                    QVM-Queen St (East)
+#&gt; 52                  QVM-Therry St (South)
+#&gt;                                      walk
+#&gt; 1              Bourke Street Mall (North)
+#&gt; 2              Bourke Street Mall (South)
+#&gt; 3                       Melbourne Central
+#&gt; 4                        Town Hall (West)
+#&gt; 5                          Princes Bridge
+#&gt; 6       Flinders Street Station Underpass
+#&gt; 7                          Birrarung Marr
+#&gt; 8                             Webb Bridge
+#&gt; 9                  Southern Cross Station
+#&gt; 10                         Victoria Point
+#&gt; 11                        Waterfront City
+#&gt; 12                               New Quay
+#&gt; 13                      Flagstaff Station
+#&gt; 14                       Sandridge Bridge
+#&gt; 15                          State Library
+#&gt; 16                   Australia on Collins
+#&gt; 17                  Collins Place (South)
+#&gt; 18                  Collins Place (North)
+#&gt; 19          Chinatown-Swanston St (North)
+#&gt; 20         Chinatown-Lt Bourke St (South)
+#&gt; 21            Bourke St-Russell St (West)
+#&gt; 22        Flinders St-Elizabeth St (East)
+#&gt; 23          Spencer St-Collins St (South)
+#&gt; 24          Spencer St-Collins St (North)
+#&gt; 25 Melbourne Convention Exhibition Centre
+#&gt; 26          QV Market-Elizabeth St (West)
+#&gt; 27                      QV Market-Peel St
+#&gt; 28                        The Arts Centre
+#&gt; 29          St Kilda Rd-Alexandra Gardens
+#&gt; 30                    Lonsdale St (South)
+#&gt; 31                        Lygon St (West)
+#&gt; 32                            City Square
+#&gt; 33           Flinders St-Spring St (West)
+#&gt; 34                   Flinders St-Spark La
+#&gt; 35                              Southbank
+#&gt; 36                        Queen St (West)
+#&gt; 37                        Lygon St (East)
+#&gt; 38         Flinders St-Swanston St (West)
+#&gt; 39                           Alfred Place
+#&gt; 40           Lonsdale St-Spring St (West)
+#&gt; 41          Grattan St-Swanston St (West)
+#&gt; 42           Monash Rd-Swanston St (West)
+#&gt; 43           Tin Alley-Swanston St (West)
+#&gt; 44                                   &lt;NA&gt;
+#&gt; 45                                   &lt;NA&gt;
+#&gt; 46                                   &lt;NA&gt;
+#&gt; 47                                   &lt;NA&gt;
+#&gt; 48                                   &lt;NA&gt;
+#&gt; 49                                   &lt;NA&gt;
+#&gt; 50                                   &lt;NA&gt;
+#&gt; 51                                   &lt;NA&gt;
+#&gt; 52                                   &lt;NA&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -178,7 +236,7 @@ names obtained from these two APIs.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

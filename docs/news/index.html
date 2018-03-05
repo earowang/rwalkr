@@ -88,51 +88,58 @@
     </div>
 
     <div class="contents">
-    <div id="rwalkr-0-3-2" class="section level1">
-<h1 class="hasAnchor">
-<a href="#rwalkr-0-3-2" class="anchor"></a>rwalkr 0.3.2</h1>
-<div id="major-changes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#major-changes" class="anchor"></a>Major changes</h2>
+    <div class="section level1">
+<h1>rwalkr 0.3.2.9000</h1>
+<div class="section level2">
+<h2>API changes</h2>
+<ul>
+<li>Dropped the argument of <code>tweak</code> in <code><a href="../reference/walk_melb.html">walk_melb()</a></code>, as the sensor names from the data source match with <code><a href="../reference/run_melb.html">run_melb()</a></code>.</li>
+</ul>
+</div>
+<div class="section level2">
+<h2>Minor changes</h2>
+<ul>
+<li>Dropped the <code>match</code> column in the data frame called from <code><a href="../reference/lookup_sensor.html">lookup_sensor()</a></code>.</li>
+</ul>
+</div>
+</div>
+    <div class="section level1">
+<h1>rwalkr 0.3.2</h1>
+<div class="section level2">
+<h2>Major changes</h2>
 <ul>
 <li>Returned a tibble (<code>tbl_ts</code>) instead of data.frame.</li>
 </ul>
 </div>
-<div id="minor-changes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor changes</h2>
+<div class="section level2">
+<h2>Minor changes</h2>
 <ul>
 <li>Specified the requirement version of shiny to the DESCRIPTION file.</li>
 </ul>
 </div>
 </div>
-    <div id="rwalkr-0-3-1" class="section level1">
-<h1 class="hasAnchor">
-<a href="#rwalkr-0-3-1" class="anchor"></a>rwalkr 0.3.1</h1>
-<div id="bug-fixes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+    <div class="section level1">
+<h1>rwalkr 0.3.1</h1>
+<div class="section level2">
+<h2>Bug fixes</h2>
 <ul>
 <li>Fixed “Count” to be returned as integers instead of characters in <code><a href="../reference/run_melb.html">run_melb(na.rm = FALSE)</a></code>.</li>
 <li>Fixed duplicated data entries when <code><a href="../reference/walk_melb.html">walk_melb(tweak = TRUE)</a></code>.</li>
 <li>Fixed one non-matching sensor in <code><a href="../reference/lookup_sensor.html">lookup_sensor()</a></code>.</li>
 </ul>
 </div>
-<div id="updates" class="section level2">
-<h2 class="hasAnchor">
-<a href="#updates" class="anchor"></a>Updates</h2>
+<div class="section level2">
+<h2>Updates</h2>
 <ul>
 <li>A new sensor “Pelham St (S)” added to <code><a href="../reference/run_melb.html">run_melb()</a></code>, <code><a href="../reference/pull_sensor.html">pull_sensor()</a></code>, and <code><a href="../reference/lookup_sensor.html">lookup_sensor()</a></code> using Socrata.</li>
 <li>Changed the shiny app using <code><a href="../reference/shine_melb.html">shine_melb()</a></code> to use <code><a href="../reference/walk_melb.html">walk_melb(tweak = TRUE)</a></code>.</li>
 </ul>
 </div>
 </div>
-    <div id="rwalkr-0-3-0" class="section level1">
-<h1 class="hasAnchor">
-<a href="#rwalkr-0-3-0" class="anchor"></a>rwalkr 0.3.0</h1>
-<div id="new-functions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-functions" class="anchor"></a>New functions</h2>
+    <div class="section level1">
+<h1>rwalkr 0.3.0</h1>
+<div class="section level2">
+<h2>New functions</h2>
 <ul>
 <li>
 <code><a href="../reference/run_melb.html">run_melb()</a></code> pulls Melbourne pedestrian data using Socrata, which is faster than <code><a href="../reference/walk_melb.html">walk_melb()</a></code>.</li>
@@ -142,24 +149,21 @@
 <code><a href="../reference/lookup_sensor.html">lookup_sensor()</a></code> provides a dictionary for sensor names used in <code><a href="../reference/walk_melb.html">walk_melb()</a></code> and <code><a href="../reference/run_melb.html">run_melb()</a></code>.</li>
 </ul>
 </div>
-<div id="minor-changes-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
+<div class="section level2">
+<h2>Minor changes</h2>
 <ul>
 <li>Added new arguments <code>na.rm = FALSE</code> and <code>tweak = FALSE</code> to the function <code><a href="../reference/walk_melb.html">walk_melb()</a></code>. If <code>na.rm = TRUE</code>, it removes <code>NA</code>s from the data. If <code>tweak = TRUE</code>, it ensures the consistency of sensor names to <code><a href="../reference/run_melb.html">run_melb()</a></code>.</li>
 </ul>
 </div>
 </div>
-    <div id="rwalkr-0-2-0" class="section level1">
-<h1 class="hasAnchor">
-<a href="#rwalkr-0-2-0" class="anchor"></a>rwalkr 0.2.0</h1>
+    <div class="section level1">
+<h1>rwalkr 0.2.0</h1>
 <ul>
 <li>Added the function <code><a href="../reference/shine_melb.html">shine_melb()</a></code> to launch a shiny app. It provides two basic plots to take a glimpse at the data: one is an overlaying time series plot and the other showing a dot plot of missing values.</li>
 </ul>
 </div>
-    <div id="rwalkr-0-1-0" class="section level1">
-<h1 class="hasAnchor">
-<a href="#rwalkr-0-1-0" class="anchor"></a>rwalkr 0.1.0</h1>
+    <div class="section level1">
+<h1>rwalkr 0.1.0</h1>
 <ul>
 <li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
 <li>Added the function <code><a href="../reference/walk_melb.html">walk_melb()</a></code> to scrape Melbourne pedestrian data.</li>
@@ -172,11 +176,12 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#rwalkr-0-3-2">0.3.2</a></li>
-        <li><a href="#rwalkr-0-3-1">0.3.1</a></li>
-        <li><a href="#rwalkr-0-3-0">0.3.0</a></li>
-        <li><a href="#rwalkr-0-2-0">0.2.0</a></li>
-        <li><a href="#rwalkr-0-1-0">0.1.0</a></li>
+        <li><a href="#NA">0.3.2.9000</a></li>
+        <li><a href="#NA">0.3.2</a></li>
+        <li><a href="#NA">0.3.1</a></li>
+        <li><a href="#NA">0.3.0</a></li>
+        <li><a href="#NA">0.2.0</a></li>
+        <li><a href="#NA">0.1.0</a></li>
       </ul>
     </div>
   </div>
@@ -189,7 +194,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

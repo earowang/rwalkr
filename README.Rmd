@@ -49,9 +49,7 @@ The function `walk_melb()` specifies the starting and ending dates to be pulled,
 ```{r data}
 library(rwalkr)
 start_date <- as.Date("2017-07-01")
-# tweak = TRUE gives the consistent sensors to the ones from run_melb().
-# By default it's FALSE for back compatibility.
-ped_walk <- walk_melb(from = start_date, to = start_date + 6L, tweak = TRUE)
+ped_walk <- walk_melb(from = start_date, to = start_date + 6L)
 ped_walk
 ped_run <- run_melb(year = 2016:2017, sensor = NULL) # NULL means all sensors
 ped_run

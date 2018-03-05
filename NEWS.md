@@ -1,3 +1,13 @@
+# rwalkr 0.3.2.9000
+
+## API changes
+
+* Dropped the argument of `tweak` in `walk_melb()`, as the sensor names from the data source match with `run_melb()`.
+
+## Minor changes
+
+* Dropped the `match` column in the data frame called from `lookup_sensor()`.
+
 # rwalkr 0.3.2
 
 ## Major changes

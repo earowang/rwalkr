@@ -15,9 +15,8 @@ as a CSV file, accompanied with basic visualisation.
 }
 \details{
 It offers some basic plots to give a glimpse of the data over a
-short time period, and so it uses \link{walk_melb} with \code{tweak = TRUE} to pull the
-data. In order to be reproducible, scripting using \code{walk_melb} or \code{run_melb} is
-recommended.
+short time period. In order to be reproducible, scripting using \code{walk_melb}
+or \code{run_melb} is recommended.
 }
 \examples{
 \dontrun{
