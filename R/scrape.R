@@ -49,7 +49,7 @@ walk_melb <- function(
   yesterday <- Sys.Date() - 1L
   if (to > yesterday) {
     warning(
-      paste0("The data is only avaiable up to ", yesterday, "."),
+      sprintf("The data is only avaiable up to %s.", yesterday),
       call. = FALSE
     )
     to <- yesterday
