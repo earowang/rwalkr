@@ -113,7 +113,7 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> <span class="kw">subset</span>(ped_walk, Sensor <span class="op">==</span><span class="st"> "Melbourne Central"</span>)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Date_Time, <span class="dt">y =</span> Count))</a></code></pre></div>
-<p><img src="/Users/earo/Rpkg/rwalkr/man/figure/plot-1.png" width="672"></p>
+<p><img src="man/figure/plot-1.png" width="672"></p>
 <p>It’s worth noting that some sensor names are coded differently by these two APIs. The argument <code>tweak = TRUE</code> ensures the sensor names returned by <code><a href="reference/walk_melb.html">walk_melb()</a></code> consistent to the ones in <code><a href="reference/run_melb.html">run_melb()</a></code> and <code><a href="reference/pull_sensor.html">pull_sensor()</a></code>, both of which are supported by Socrata. The dictionary for checking sensor names between two functions is available through <code><a href="reference/lookup_sensor.html">lookup_sensor()</a></code>.</p>
 <p>It’s recommended to include an application token in <code><a href="reference/run_melb.html">run_melb(app_token = "YOUR-APP-TOKEN")</a></code>, which you can sign up <a href="https://data.melbourne.vic.gov.au/profile/app_tokens">here</a>.</p>
 </div>
@@ -121,7 +121,7 @@
 <h3 class="hasAnchor">
 <a href="#shiny-app" class="anchor"></a>Shiny app</h3>
 <p>The function <code><a href="reference/shine_melb.html">shine_melb()</a></code> launches a shiny app to give a glimpse of the data. It provides two basic plots: one is an overlaying time series plot, and the other is a dot plot indicating missing values. Below is a screen-shot of the shiny app.</p>
-<p><img src="/Users/earo/Rpkg/rwalkr/man/figure/shiny.png"></p>
+<p><img src="man/figure/shiny.png"></p>
 </div>
 </div>
 </div>
@@ -129,27 +129,39 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2 class="hasAnchor">
-<a href="#sidebar" class="anchor"></a>Links</h2>
+    <div class="links">
+<h2>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cran.r-project.org/package=rwalkr">https://​cran.r-project.org/​package=rwalkr</a>
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=rwalkr">https://​cloud.r-project.org/​package=rwalkr</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/earowang/rwalkr/issues">https://​github.com/​earowang/​rwalkr/​issues</a>
 </li>
 </ul>
+</div>
+<div class="license">
 <h2>License</h2>
-<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></p>
+<ul class="list-unstyled">
+<li>
+<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+</li>
+</ul>
+</div>
+<div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>
 <a href="http://earo.me">Earo Wang</a> <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
+</div>
+
+      <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/earowang/rwalkr"><img src="https://travis-ci.org/earowang/rwalkr.svg?branch=master" alt="Travis-CI Build Status"></a></li>
 <li><a href="https://cran.r-project.org/package=rwalkr"><img src="http://www.r-pkg.org/badges/version/rwalkr" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://cran.r-project.org/package=rwalkr"><img src="http://cranlogs.r-pkg.org/badges/rwalkr?color=brightgreen" alt="Downloads"></a></li>
 </ul>
+</div>
 </div>
 
 </div>
