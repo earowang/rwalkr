@@ -25,7 +25,12 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Function reference" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -48,8 +53,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">rwalkr</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">rwalkr</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -68,6 +77,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -75,80 +85,75 @@
       
       </header>
 
-      <div class="row">
-  <div class="col-md-9">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.3.3</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <colgroup>
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-apis-to-melbourne-pedestrian-data" class="hasAnchor"><a href="#section-apis-to-melbourne-pedestrian-data" class="anchor"></a>APIs to Melbourne pedestrian data</h2>
-            <p class="section-desc"><p>Provides APIs using Socrata to Melbourne pedestrian data in a tidy data form.</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="walk_melb.html">walk_melb()</a></code> </p>
-          </td>
-          <td><p>API using compedapi to Melbourne pedestrian data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="run_melb.html">run_melb()</a></code> </p>
-          </td>
-          <td><p>API using Socrata to Melbourne pedestrian data</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-sensor-locations" class="hasAnchor"><a href="#section-sensor-locations" class="anchor"></a>Sensor locations</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="pull_sensor.html">pull_sensor()</a></code> </p>
-          </td>
-          <td><p>API using Socrata to Melbourne pedestrian sensor locations</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="lookup_sensor.html">lookup_sensor()</a></code> </p>
-          </td>
-          <td><p>Look up sensor names between <code>run_melb()</code> and <code>walk_melb()</code></p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-shiny-app-for-melbourne-pedestrian-data" class="hasAnchor"><a href="#section-shiny-app-for-melbourne-pedestrian-data" class="anchor"></a>Shiny app for Melbourne pedestrian data</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="shine_melb.html">shine_melb()</a></code> </p>
-          </td>
-          <td><p>A simple shiny app for pedestrian data</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-apis-to-melbourne-pedestrian-data" class="hasAnchor"><a href="#section-apis-to-melbourne-pedestrian-data" class="anchor"></a>APIs to Melbourne pedestrian data</h2>
+          <p class="section-desc"><p>Provides APIs using Socrata to Melbourne pedestrian data in a tidy data form.</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="walk_melb.html">walk_melb()</a></code> </p>
+        </td>
+        <td><p>API using compedapi to Melbourne pedestrian data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="run_melb.html">run_melb()</a></code> </p>
+        </td>
+        <td><p>API using Socrata to Melbourne pedestrian data</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-sensor-locations" class="hasAnchor"><a href="#section-sensor-locations" class="anchor"></a>Sensor locations</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="pull_sensor.html">pull_sensor()</a></code> </p>
+        </td>
+        <td><p>API using Socrata to Melbourne pedestrian sensor locations</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="lookup_sensor.html">lookup_sensor()</a></code> </p>
+        </td>
+        <td><p>Look up sensor names between <code>run_melb()</code> and <code>walk_melb()</code></p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-shiny-app-for-melbourne-pedestrian-data" class="hasAnchor"><a href="#section-shiny-app-for-melbourne-pedestrian-data" class="anchor"></a>Shiny app for Melbourne pedestrian data</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="shine_melb.html">shine_melb()</a></code> </p>
+        </td>
+        <td><p>A simple shiny app for pedestrian data</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -172,6 +177,8 @@
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

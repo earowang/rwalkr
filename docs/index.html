@@ -18,7 +18,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -27,8 +27,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">rwalkr</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="index.html">rwalkr</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -55,12 +59,11 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     
 
     
     
-<div class="contents">
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 <div id="rwalkr" class="section level1">
@@ -113,7 +116,7 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> <span class="kw">subset</span>(ped_walk, Sensor <span class="op">==</span><span class="st"> "Melbourne Central"</span>)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Date_Time, <span class="dt">y =</span> Count))</a></code></pre></div>
-<p><img src="man/figure/plot-1.png" width="672"></p>
+<p><img src="man/figure/plot-1.png" width="700"></p>
 <p>It’s worth noting that some sensor names are coded differently by these two APIs. The argument <code>tweak = TRUE</code> ensures the sensor names returned by <code><a href="reference/walk_melb.html">walk_melb()</a></code> consistent to the ones in <code><a href="reference/run_melb.html">run_melb()</a></code> and <code><a href="reference/pull_sensor.html">pull_sensor()</a></code>, both of which are supported by Socrata. The dictionary for checking sensor names between two functions is available through <code><a href="reference/lookup_sensor.html">lookup_sensor()</a></code>.</p>
 <p>It’s recommended to include an application token in <code><a href="reference/run_melb.html">run_melb(app_token = "YOUR-APP-TOKEN")</a></code>, which you can sign up <a href="https://data.melbourne.vic.gov.au/profile/app_tokens">here</a>.</p>
 </div>
@@ -122,7 +125,6 @@
 <a href="#shiny-app" class="anchor"></a>Shiny app</h3>
 <p>The function <code><a href="reference/shine_melb.html">shine_melb()</a></code> launches a shiny app to give a glimpse of the data. It provides two basic plots: one is an overlaying time series plot, and the other is a dot plot indicating missing values. Below is a screen-shot of the shiny app.</p>
 <p><img src="man/figure/shiny.png"></p>
-</div>
 </div>
 </div>
 </div>
@@ -150,7 +152,7 @@
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="http://earo.me">Earo Wang</a> <br><small class="roles"> Author, maintainer </small>  </li>
+<a href="http://earo.me">Earo Wang</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-6448-5260" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" height="16"></a> </li>
 </ul>
 </div>
 
@@ -177,6 +179,8 @@
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>
