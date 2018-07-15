@@ -1,6 +1,6 @@
 template:
   params:
-    bootswatch: united
+    bootswatch: cosmo
 
 authors:
   Earo Wang:
