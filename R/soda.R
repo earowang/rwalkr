@@ -101,7 +101,7 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
   ped <- dplyr::bind_rows(lst_dat)
   ped <- dplyr::mutate(
     ped, 
-    Date_Time = as.POSIXct(strptime(Date_Time, format = "%d-%B-%Y %H:%M"),
+    Date_Time = as.POSIXct(strptime(Date_Time, format = "%Y-%m-%dT%H:%M:%S"),
       tz = tz)
   )
   from_time <- as.POSIXct(paste0(min(year, na.rm = TRUE), "-01-01 00:00"),

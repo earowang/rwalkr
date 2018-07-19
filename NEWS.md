@@ -1,3 +1,7 @@
+# rwalkr 0.3.4
+
+* Fixed date-time formatting for Socrata data update
+
 # rwalkr 0.3.3
 
 ## API changes
