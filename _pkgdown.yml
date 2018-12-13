@@ -11,8 +11,8 @@ reference:
   desc: >
     Provides APIs using Socrata to Melbourne pedestrian data in a tidy data form.
   contents:
-    - walk_melb
-    - run_melb
+    - melb_walk
+    - melb_walk_fast
 - title: Sensor locations
   contents:
     - pull_sensor
@@ -20,7 +20,7 @@ reference:
 
 - title: Shiny app for Melbourne pedestrian data
   contents:
-    - shine_melb
+    - melb_shine
 
 navbar:
   type: default

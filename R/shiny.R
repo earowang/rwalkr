@@ -11,10 +11,6 @@
 #' @export
 #' @seealso [melb_walk], [melb_walk_fast]
 #'
-#' @examples
-#' \dontrun{
-#'   melb_shine()
-#' }
 melb_shine <- function() {
   if (!(requireNamespace("shiny", quietly = TRUE) && 
         utils::packageVersion("shiny") >= "1.0.4")) {
@@ -152,11 +148,4 @@ melb_shine <- function() {
   }
 
   shiny::shinyApp(ui, server)
-}
-
-#' @aliases melb_shine
-#' @export
-shine_melb <- function() {
-  .Deprecated("melb_shine")
-  melb_shine()
 }

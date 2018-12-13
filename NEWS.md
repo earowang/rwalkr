@@ -1,3 +1,8 @@
+# rwalkr 0.4.0
+
+* Fixed status "400" for `melb_walk_fast()` (previously `run_melb()`) due to Socrata API changes.
+* Deprecated `walk_melb()`, `run_melb()` and `shine_melb()` in favour of suffixed function names.
+
 # rwalkr 0.3.4
 
 * Fixed date-time formatting for Socrata data update

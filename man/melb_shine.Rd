@@ -18,11 +18,6 @@ It offers some basic plots to give a glimpse of the data over a
 short time period. In order to be reproducible, scripting using \code{walk_melb}
 or \code{run_melb} is recommended.
 }
-\examples{
-\dontrun{
-  melb_shine()
-}
-}
 \seealso{
 \link{melb_walk}, \link{melb_walk_fast}
 }

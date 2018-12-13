@@ -41,17 +41,15 @@ its policy.
 }
 \examples{
 \dontrun{
-  # Retrieve last week data
-  ped_df1 <- melb_walk()
-  head(ped_df1)
+# Retrieve last week data
+melb_walk()
 
-  # Retrieve data of a speficied period
-  start_date <- as.Date("2017-07-01")
-  end_date <- start_date + 6L
-  ped_df2 <- melb_walk(from = start_date, to = end_date)
-  head(ped_df2)
+# Retrieve data of a speficied period
+start_date <- as.Date("2017-07-01")
+end_date <- start_date + 6L
+melb_walk(from = start_date, to = end_date)
 }
 }
 \seealso{
-\link{run_melb}
+\link{melb_walk_fast}
 }

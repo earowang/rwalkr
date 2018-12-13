@@ -23,5 +23,5 @@ names. This functions returns a data frame that allows to compare sensor
 names obtained from these two APIs.
 }
 \examples{
-  lookup_sensor()
+lookup_sensor()
 }

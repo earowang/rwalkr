@@ -33,17 +33,15 @@ globalVariables(c(
 #'   * Count: Hourly counts
 #'
 #' @export
-#' @seealso [walk_melb]
+#' @seealso [melb_walk]
 #'
 #' @examples
 #' \dontrun{
-#'   # Retrieve the year 2017
-#'   ped_df17 <- melb_walk_fast(year = 2017)
-#'   head(ped_df17)
+#' # Retrieve the year 2017
+#' melb_walk_fast(year = 2017)
 #'   
-#'   # Retrieve the year 2017 for Southern Cross Station
-#'   sx_df17 <- melb_walk_fast(year = 2017, sensor = "Southern Cross Station")
-#'   head(sx_df17)
+#' # Retrieve the year 2017 for Southern Cross Station
+#' melb_walk_fast(year = 2017, sensor = "Southern Cross Station")
 #' }
 melb_walk_fast <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
   app_token = NULL) {
@@ -143,15 +141,6 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
   dplyr::arrange(ped, Date_Time)
 }
 
-#' @aliases melb_walk_fast
-#' @export
-run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
-  app_token = NULL) {
-  .Deprecated("melb_walk_fast")
-  melb_walk_fast(year = year, sensor = sensor, tz = tz, na.rm = na.rm,
-    app_token = app_token)
-}
-
 #' API using Socrata to Melbourne pedestrian sensor locations
 #'
 #' Provides API using Socrata to Melbourne pedestrian sensor locations.
@@ -176,7 +165,7 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
 #'
 #' @examples
 #' \dontrun{
-#'   pull_sensor()
+#' pull_sensor()
 #' }
 pull_sensor <- function(app_token = NULL) {
   base_url <- "https://data.melbourne.vic.gov.au/resource/xbm5-bb4n.csv"

@@ -46,15 +46,13 @@ its policy.
 }
 \examples{
 \dontrun{
-  # Retrieve the year 2017
-  ped_df17 <- melb_walk_fast(year = 2017)
-  head(ped_df17)
+# Retrieve the year 2017
+melb_walk_fast(year = 2017)
   
-  # Retrieve the year 2017 for Southern Cross Station
-  sx_df17 <- melb_walk_fast(year = 2017, sensor = "Southern Cross Station")
-  head(sx_df17)
+# Retrieve the year 2017 for Southern Cross Station
+melb_walk_fast(year = 2017, sensor = "Southern Cross Station")
 }
 }
 \seealso{
-\link{walk_melb}
+\link{melb_walk}
 }

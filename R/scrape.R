@@ -22,19 +22,17 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time", "walk"))
 #'   * Count: Hourly counts
 #'
 #' @export
-#' @seealso [run_melb]
+#' @seealso [melb_walk_fast]
 #'
 #' @examples
 #' \dontrun{
-#'   # Retrieve last week data
-#'   ped_df1 <- melb_walk()
-#'   head(ped_df1)
+#' # Retrieve last week data
+#' melb_walk()
 #'
-#'   # Retrieve data of a speficied period
-#'   start_date <- as.Date("2017-07-01")
-#'   end_date <- start_date + 6L
-#'   ped_df2 <- melb_walk(from = start_date, to = end_date)
-#'   head(ped_df2)
+#' # Retrieve data of a speficied period
+#' start_date <- as.Date("2017-07-01")
+#' end_date <- start_date + 6L
+#' melb_walk(from = start_date, to = end_date)
 #' }
 melb_walk <- function(
   from = to - 6L, to = Sys.Date() - 1L, tz = "", na.rm = FALSE, session = NULL
@@ -65,7 +63,7 @@ melb_walk <- function(
   if (is.null(session)) {
     p <- dplyr::progress_estimated(len_urls)
     lst_dat <- lapply(urls, function(x) {
-      dat <- tibble::as_tibble(read_url(url = x))
+      dat <- dplyr::as_tibble(read_url(url = x))
       p$tick()$print()
       dat
     })
@@ -99,15 +97,6 @@ melb_walk <- function(
   if (na.rm) df_dat <- dplyr::filter(df_dat, !is.na(Count))
 
   dplyr::select(df_dat, Sensor, Date_Time, Date, Time, Count)
-}
-
-#' @aliases melb_walk
-#' @export
-walk_melb <- function(
-  from = to - 6L, to = Sys.Date() - 1L, tz = "", na.rm = FALSE, session = NULL
-) {
-  .Deprecated("melb_walk")
-  melb_walk(from = from, to = to, tz = tz, na.rm = na.rm, session = session)
 }
 
 ### helper functions
@@ -146,7 +135,7 @@ read_url <- function(url) {
 #' @export
 #'
 #' @examples
-#'   lookup_sensor()
+#' lookup_sensor()
 lookup_sensor <- function() {
   sensor_dict
 }
