@@ -35,5 +35,5 @@ It provides API using \href{https://dev.socrata.com/foundry/data.melbourne.vic.g
 }
 }
 \seealso{
-\link{run_melb}
+\link{melb_walk_fast}
 }

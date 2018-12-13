@@ -2,20 +2,20 @@
 % Please edit documentation in R/scrape.R
 \name{lookup_sensor}
 \alias{lookup_sensor}
-\title{Look up sensor names between \code{run_melb()} and \code{walk_melb()}}
+\title{Look up sensor names between \code{melb_walk_fast()} and \code{melb_walk()}}
 \usage{
 lookup_sensor()
 }
 \value{
 A data frame including three columns:
 \itemize{
-\item run: Sensor names obtained from the \code{run_melb()} function using Socrata
-\item walk: Sensor names obtained from the \code{walk_melb()} function using compedapi
+\item run: Sensor names obtained from the \code{melb_walk_fast()} function using Socrata
+\item walk: Sensor names obtained from the \code{melb_walk()} function using compedapi
 \item match: whether sensor names are identical or not
 }
 }
 \description{
-One-to-one corresponding sensor names between \code{run_melb()} and \code{walk_melb()}
+One-to-one corresponding sensor names between \code{melb_walk_fast()} and \code{melb_walk()}
 }
 \details{
 Two APIs (Socrata and compedapi) code some sensors using different

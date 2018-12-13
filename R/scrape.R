@@ -6,12 +6,8 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time", "walk"))
 #'
 #' @param from Starting date.
 #' @param to Ending date.
-#' @param tz Time zone. By default, "" is the current time zone. For this dataset,
-#'   the local time zone is "Australia/Melbourne" which would be the most
-#'   appropriate, depending on OS.
-#' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in 
-#'   the dataset. `TRUE` removes the `NA`s.
 #' @param session `NULL` or "shiny". For internal use only.
+#' @inheritParams melb_walk_fast
 #'
 #' @details It provides API using compedapi, where counts are uploaded on a 
 #'   daily basis. The up-to-date data would be
@@ -31,18 +27,22 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time", "walk"))
 #' @examples
 #' \dontrun{
 #'   # Retrieve last week data
-#'   ped_df1 <- walk_melb()
+#'   ped_df1 <- melb_walk()
 #'   head(ped_df1)
 #'
 #'   # Retrieve data of a speficied period
 #'   start_date <- as.Date("2017-07-01")
 #'   end_date <- start_date + 6L
-#'   ped_df2 <- walk_melb(from = start_date, to = end_date)
+#'   ped_df2 <- melb_walk(from = start_date, to = end_date)
 #'   head(ped_df2)
 #' }
-walk_melb <- function(
+melb_walk <- function(
   from = to - 6L, to = Sys.Date() - 1L, tz = "", na.rm = FALSE, session = NULL
 ) {
+  if (tz != "") {
+    warning("Argument `tz` ignored.")
+  }
+  tz <- "Australia/Melbourne"
   stopifnot(class(from) == "Date" && class(to) == "Date")
   stopifnot(from > as.Date("2009-05-31"))
   stopifnot(from <= to)
@@ -98,23 +98,16 @@ walk_melb <- function(
   )
   if (na.rm) df_dat <- dplyr::filter(df_dat, !is.na(Count))
 
-  # if (tweak) {
-  #   dif <- dplyr::filter(sensor_dict, match == FALSE, walk != "NA")
-  #   seq_sensor <- seq_len(nrow(dif))
-  #   changed_df <- dplyr::bind_rows(lapply(seq_sensor, function(x) {
-  #     df_tmp <- df_dat[df_dat$Sensor == dif[x, "walk"], , drop = FALSE]
-  #     dif_run <- dif[x, "run"]
-  #     if (!is.na(dif_run)) {
-  #       df_tmp$Sensor <- dif_run
-  #     }
-  #     df_tmp
-  #   }))
-  #   same <- dplyr::filter(sensor_dict, match == TRUE)$walk
-  #   unchanged_df <- dplyr::filter(df_dat, Sensor %in% same)
-  #   df_dat <- dplyr::bind_rows(unchanged_df, changed_df)
-  # }
-
   dplyr::select(df_dat, Sensor, Date_Time, Date, Time, Count)
+}
+
+#' @aliases melb_walk
+#' @export
+walk_melb <- function(
+  from = to - 6L, to = Sys.Date() - 1L, tz = "", na.rm = FALSE, session = NULL
+) {
+  .Deprecated("melb_walk")
+  melb_walk(from = from, to = to, tz = tz, na.rm = na.rm, session = session)
 }
 
 ### helper functions
@@ -138,16 +131,16 @@ read_url <- function(url) {
   )
 }
 
-#' Look up sensor names between `run_melb()` and `walk_melb()`
+#' Look up sensor names between `melb_walk_fast()` and `melb_walk()`
 #'
-#' One-to-one corresponding sensor names between `run_melb()` and `walk_melb()`
+#' One-to-one corresponding sensor names between `melb_walk_fast()` and `melb_walk()`
 #'
 #' @details Two APIs (Socrata and compedapi) code some sensors using different 
 #'   names. This functions returns a data frame that allows to compare sensor 
 #'   names obtained from these two APIs.
 #' @return A data frame including three columns:
-#'   * run: Sensor names obtained from the `run_melb()` function using Socrata
-#'   * walk: Sensor names obtained from the `walk_melb()` function using compedapi
+#'   * run: Sensor names obtained from the `melb_walk_fast()` function using Socrata
+#'   * walk: Sensor names obtained from the `melb_walk()` function using compedapi
 #'   * match: whether sensor names are identical or not
 #'
 #' @export

@@ -1,5 +1,5 @@
 globalVariables(c(
-  "Time", "Count", "Sensor", "Date", "Date_Time", # run_melb()
+  "Time", "Count", "Sensor", "Date", "Date_Time", # melb_walk_fast()
   "Sensor_ID", "Longitude", "Latitude", "Location_Type", "Year_Installed",
   "sensorloc", "sensorid", "longitude", "latitude", "loctype", "xdate"
 ))
@@ -12,9 +12,7 @@ globalVariables(c(
 #'   year.
 #' @param sensor Sensor names. By default, it pulls all the sensors. Use [lookup_sensor]
 #'   to see the available sensors.
-#' @param tz Time zone. By default, "" is the current time zone. For this dataset,
-#'   the local time zone is "Australia/Melbourne" which would be the most
-#'   appropriate, depending on OS.
+#' @param tz Deprecated. For this dataset, it should only be "Australia/Melbourne".
 #' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in 
 #'   the dataset. `TRUE` removes the `NA`s.
 #' @param app_token Characters giving the application token. A limited number of 
@@ -40,15 +38,19 @@ globalVariables(c(
 #' @examples
 #' \dontrun{
 #'   # Retrieve the year 2017
-#'   ped_df17 <- run_melb(year = 2017)
+#'   ped_df17 <- melb_walk_fast(year = 2017)
 #'   head(ped_df17)
 #'   
 #'   # Retrieve the year 2017 for Southern Cross Station
-#'   sx_df17 <- run_melb(year = 2017, sensor = "Southern Cross Station")
+#'   sx_df17 <- melb_walk_fast(year = 2017, sensor = "Southern Cross Station")
 #'   head(sx_df17)
 #' }
-run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
+melb_walk_fast <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
   app_token = NULL) {
+  if (tz != "") {
+    warning("Argument `tz` ignored.")
+  }
+  tz <- "Australia/Melbourne"
   this_year <- as.integer(format(Sys.Date(), "%Y"))
   if (is.null(year)) {
     year <- this_year
@@ -56,10 +58,10 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
   stopifnot(year > 2008 && year < (this_year + 1L))
   base_url <- "https://data.melbourne.vic.gov.au/resource/mxb8-wn4w.csv?"
   sel_cols <- paste(
-    "$query=SELECT sensor_name AS Sensor,",
-    "daet_time AS Date_Time,",
+    "SELECT sensor_name AS Sensor,",
+    "date_time AS Date_Time,",
     "time AS Time,",
-    "qv_market_peel_st AS Count"
+    "hourly_counts AS Count"
   )
   year_str <- paste(year, collapse = ", ")
   query <- paste0(sel_cols, " WHERE year in", "(", year_str, ")")
@@ -82,13 +84,14 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
   lst_dat <- lapply(seq_len(npages), function(x) {
     offset <- sprintf("%i", limit * (x - 1))
     update_query <- paste0(query, " OFFSET ", offset)
-    url <- paste0(base_url, update_query)
-    p_url <- httr::parse_url(url)
-    if (!is.null(app_token)) p_url$query$`$$app_token` <- app_token
-    response <- httr::GET(p_url)
+    if (!is.null(app_token)) {
+      app_token <- paste0("$$app_token=", app_token)
+      base_url <- paste0(base_url, app_token)
+    }
+    response <- httr::GET(base_url, query = list("$query" = update_query))
     content <- httr::content(response, as = "text", type = "text/csv", 
       encoding = "UTF-8")
-    dat <- tibble::as_tibble(utils::read.csv(
+    dat <- dplyr::as_tibble(utils::read.csv(
       textConnection(content), 
       colClasses = rep("character", 4L),
       stringsAsFactors = FALSE,
@@ -108,7 +111,7 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
       tz = tz)
   max_year <- max(year, na.rm = TRUE)
   to_time <- if (max_year == this_year) {
-    max(ped$Date_Time)
+    max(ped$Date_Time, na.rm = TRUE)
   } else {
     as.POSIXct(paste0(max_year, "-12-31 23:00"), tz = tz)
   }
@@ -140,6 +143,15 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
   dplyr::arrange(ped, Date_Time)
 }
 
+#' @aliases melb_walk_fast
+#' @export
+run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
+  app_token = NULL) {
+  .Deprecated("melb_walk_fast")
+  melb_walk_fast(year = year, sensor = sensor, tz = tz, na.rm = na.rm,
+    app_token = app_token)
+}
+
 #' API using Socrata to Melbourne pedestrian sensor locations
 #'
 #' Provides API using Socrata to Melbourne pedestrian sensor locations.
@@ -160,7 +172,7 @@ run_melb <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
 #'   * Year_Installed: Year installed
 #'
 #' @export
-#' @seealso [run_melb]
+#' @seealso [melb_walk_fast]
 #'
 #' @examples
 #' \dontrun{
