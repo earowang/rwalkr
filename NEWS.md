@@ -1,5 +1,6 @@
 # rwalkr 0.5.0
 
+* New function `melb_walk_directional()` to access minute by minute directional pedestrian counts for the last hour from pedestrian sensor devices located across the city.
 * Fixed `pull_sensor()` due to the Socrata API URL change.
 * Defunct `lookup_sensor()`, `walk_melb()`, `run_melb()` and `shine_melb()` in favour of suffixed function names.
 

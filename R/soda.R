@@ -1,34 +1,35 @@
 globalVariables(c(
   "Time", "Count", "Sensor", "Date", "Date_Time", # melb_walk_fast()
-  "direction_1", "direction_2", "installation_date", "note", "sensor_description", "sensor_df", "sensor_id", "status", "latitude", "longitude"
+  "direction_1", "direction_2", "installation_date", "note", "sensor_description",
+  "sensor_df", "sensor_id", "status", "latitude", "longitude",
+  "date_time", "time", "total_of_directions"
 ))
 
-#' API using Socrata to Melbourne pedestrian data
-#'
-#' Provides API using Socrata to Melbourne pedestrian data in a tidy data form.
+#' API using Socrata to Melbourne pedestrian data (per hour)
 #'
 #' @param year An integer or a vector of integers. By default, it's the current
-#'   year.
+#' year.
 #' @param sensor Sensor names. By default, it pulls all the sensors. Use [pull_sensor]
-#'   to see the available sensors.
+#' to see the available sensors.
 #' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in
-#'   the dataset. `TRUE` removes the `NA`s.
+#' the dataset. `TRUE` removes the `NA`s.
 #' @param app_token Characters giving the application token. A limited number of
-#'    requests can be made without an app token (`NULL`), but they are subject
-#'    to much lower throttling limits than request that do include one. Sign up
-#'    for an app token [here](https://data.melbourne.vic.gov.au/profile/app_tokens).
+#' requests can be made without an app token (`NULL`), but they are subject
+#' to much lower throttling limits than request that do include one. Sign up
+#' for an app token [here](https://data.melbourne.vic.gov.au/profile/app_tokens).
 #'
-#' @details It provides API using [Socrata](https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/mxb8-wn4w),
-#'   where counts are uploaded on a monthly basis. The up-to-date data would be
-#'   till the previous month. The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp). Please
-#'   refer to Melbourne Open Data Portal for more details about the dataset and
-#'   its policy.
+#' @details It provides the API using [Socrata](https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/mxb8-wn4w),
+#' where counts are uploaded on a monthly basis. The up-to-date data would be
+#' till the previous month. The data is sourced from
+#' [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp).
+#' Please refer to Melbourne Open Data Portal for more details about the dataset and
+#' its policy.
 #' @return A tibble including these variables as follows:
-#'   * Sensor: Sensor name (46 sensors up to date)
-#'   * Date_Time: Date time when the pedestrian counts are recorded
-#'   * Date: Date associated with Date_Time
-#'   * Time: Time of day
-#'   * Count: Hourly counts
+#' * `Sensor`: Sensor name
+#' * `Date_Time`: Date time when the pedestrian counts are recorded
+#' * `Date`: Date associated with `date_Time`
+#' * `Time`: Time of day
+#' * `Count`: Hourly counts
 #'
 #' @export
 #' @seealso [melb_walk]
@@ -136,6 +137,34 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
   dplyr::arrange(ped, Date_Time)
 }
 
+#' API using Socrata to Melbourne pedestrian data with directions (per minute)
+#'
+#' @inheritParams melb_walk_fast
+#'
+#' @details It provides the API using [Socrata](https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/d6mv-s43h),
+#' to access minute by minute directional pedestrian counts for *the last hour*
+#' from pedestrian sensor devices located across the city. The data is updated
+#' every 15 minutes.
+#'
+#' Columns `sensor_id`, `direction_1`, and `direction_2` can be used to join
+#' the data with the Sensor Locations dataset which details the location, status,
+#' and directional readings of sensors, which can be obtained from [pull_sensor()].
+#'
+#' @return A tibble including these variables as follows:
+#' * `sensor_id`: Sensor name
+#' * `date_time`: Date time when the pedestrian counts are recorded
+#' * `date`: Date associated with `date_time`
+#' * `time`: Time of day
+#' * `direction_1`: Direction 1 sensor reading (count of pedestrians)
+#' * `direction_2`: Direction 2 sensor reading (count of pedestrians)
+#' * `total_of_directions`: Total sensor reading i.e. direction 1+2 (count of pedestrians)
+#'
+#' @seealso [pull_sensor()]
+#'
+#' @examples
+#' \dontrun{
+#' melb_walk_directional()
+#' }
 melb_walk_directional <- function(app_token = NULL) {
   tz <- "Australia/Melbourne"
   base_url <- "https://data.melbourne.vic.gov.au/resource/d6mv-s43h.csv"
@@ -174,20 +203,9 @@ melb_walk_directional <- function(app_token = NULL) {
 #'
 #' Provides API using Socrata to Melbourne pedestrian sensor locations.
 #'
-#' @param app_token Characters giving the application token. A limited number of
-#'    requests can be made without an app token (`NULL`), but they are subject
-#'    to much lower throttling limits than request that do include one. Sign up
-#'    for an app token [here](https://data.melbourne.vic.gov.au/profile/app_tokens).
+#' @inheritParams melb_walk_fast
 #'
-#' @details It provides API using [Socrata](https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/xbm5-bb4n).
-#'
-#' @return A data frame including these variables as follows:
-#'   * Sensor: Sensor name (43 sensors up to date)
-#'   * Sensor_ID: Sensor identifier
-#'   * Longitude: Longitude
-#'   * Latitude: Latitude
-#'   * Location_Type: Location type
-#'   * Year_Installed: Year installed
+#' @details It provides API using [Socrata](https://data.melbourne.vic.gov.au/resource/h57g-5234).
 #'
 #' @export
 #' @seealso [melb_walk_fast]

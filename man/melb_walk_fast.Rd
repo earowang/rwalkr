@@ -2,7 +2,7 @@
 % Please edit documentation in R/soda.R
 \name{melb_walk_fast}
 \alias{melb_walk_fast}
-\title{API using Socrata to Melbourne pedestrian data}
+\title{API using Socrata to Melbourne pedestrian data (per hour)}
 \usage{
 melb_walk_fast(year = NULL, sensor = NULL, na.rm = FALSE,
   app_token = NULL)
@@ -25,21 +25,22 @@ for an app token \href{https://data.melbourne.vic.gov.au/profile/app_tokens}{her
 \value{
 A tibble including these variables as follows:
 \itemize{
-\item Sensor: Sensor name (46 sensors up to date)
-\item Date_Time: Date time when the pedestrian counts are recorded
-\item Date: Date associated with Date_Time
-\item Time: Time of day
-\item Count: Hourly counts
+\item \code{Sensor}: Sensor name
+\item \code{Date_Time}: Date time when the pedestrian counts are recorded
+\item \code{Date}: Date associated with \code{date_Time}
+\item \code{Time}: Time of day
+\item \code{Count}: Hourly counts
 }
 }
 \description{
-Provides API using Socrata to Melbourne pedestrian data in a tidy data form.
+API using Socrata to Melbourne pedestrian data (per hour)
 }
 \details{
-It provides API using \href{https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/mxb8-wn4w}{Socrata},
+It provides the API using \href{https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/mxb8-wn4w}{Socrata},
 where counts are uploaded on a monthly basis. The up-to-date data would be
-till the previous month. The data is sourced from \href{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}{Melbourne Open Data Portal}. Please
-refer to Melbourne Open Data Portal for more details about the dataset and
+till the previous month. The data is sourced from
+\href{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}{Melbourne Open Data Portal}.
+Please refer to Melbourne Open Data Portal for more details about the dataset and
 its policy.
 }
 \examples{

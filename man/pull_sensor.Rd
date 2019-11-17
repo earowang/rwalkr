@@ -12,22 +12,11 @@ requests can be made without an app token (\code{NULL}), but they are subject
 to much lower throttling limits than request that do include one. Sign up
 for an app token \href{https://data.melbourne.vic.gov.au/profile/app_tokens}{here}.}
 }
-\value{
-A data frame including these variables as follows:
-\itemize{
-\item Sensor: Sensor name (43 sensors up to date)
-\item Sensor_ID: Sensor identifier
-\item Longitude: Longitude
-\item Latitude: Latitude
-\item Location_Type: Location type
-\item Year_Installed: Year installed
-}
-}
 \description{
 Provides API using Socrata to Melbourne pedestrian sensor locations.
 }
 \details{
-It provides API using \href{https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/xbm5-bb4n}{Socrata}.
+It provides API using \href{https://data.melbourne.vic.gov.au/resource/h57g-5234}{Socrata}.
 }
 \examples{
 \dontrun{
