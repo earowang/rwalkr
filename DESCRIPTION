@@ -1,7 +1,7 @@
 Package: rwalkr
 Type: Package
 Title: API to Melbourne Pedestrian Data
-Version: 0.4.0
+Version: 0.4.0.9000
 Authors@R: person("Earo", "Wang", email = "earo.wang@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-6448-5260"))
 Description: Provides API to Melbourne pedestrian data in tidy data form.
 Depends:
