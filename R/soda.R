@@ -8,21 +8,21 @@ globalVariables(c(
 #'
 #' Provides API using Socrata to Melbourne pedestrian data in a tidy data form.
 #'
-#' @param year An integer or a vector of integers. By default, it's the current 
+#' @param year An integer or a vector of integers. By default, it's the current
 #'   year.
 #' @param sensor Sensor names. By default, it pulls all the sensors. Use [lookup_sensor]
 #'   to see the available sensors.
-#' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in 
+#' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in
 #'   the dataset. `TRUE` removes the `NA`s.
-#' @param app_token Characters giving the application token. A limited number of 
-#'    requests can be made without an app token (`NULL`), but they are subject 
+#' @param app_token Characters giving the application token. A limited number of
+#'    requests can be made without an app token (`NULL`), but they are subject
 #'    to much lower throttling limits than request that do include one. Sign up
 #'    for an app token [here](https://data.melbourne.vic.gov.au/profile/app_tokens).
 #'
-#' @details It provides API using [Socrata](https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/mxb8-wn4w), 
+#' @details It provides API using [Socrata](https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/mxb8-wn4w),
 #'   where counts are uploaded on a monthly basis. The up-to-date data would be
-#'   till the previous month. The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp). Please 
-#'   refer to Melbourne Open Data Portal for more details about the dataset and 
+#'   till the previous month. The data is sourced from [Melbourne Open Data Portal](https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp). Please
+#'   refer to Melbourne Open Data Portal for more details about the dataset and
 #'   its policy.
 #' @return A tibble including these variables as follows:
 #'   * Sensor: Sensor name (46 sensors up to date)
@@ -38,7 +38,7 @@ globalVariables(c(
 #' \dontrun{
 #' # Retrieve the year 2017
 #' melb_walk_fast(year = 2017)
-#'   
+#'
 #' # Retrieve the year 2017 for Southern Cross Station
 #' melb_walk_fast(year = 2017, sensor = "Southern Cross Station")
 #' }
@@ -62,12 +62,12 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
   nsensors <- 50L
   if (!is.null(sensor)) {
     sensor_str <- paste(
-      vapply(sensor, function(x) paste0("'", x, "'"), character(1)), 
+      vapply(sensor, function(x) paste0("'", x, "'"), character(1)),
       collapse = ", "
     )
     query <- paste0(query, "AND sensor_name in", "(", sensor_str, ")")
     nsensors[] <- length(sensor) # overwrite nsensors
-  } 
+  }
   query <- paste0(query, " ORDER BY :id LIMIT 50000")
   limit <- 50000L
 
@@ -83,10 +83,10 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
       base_url <- paste0(base_url, app_token)
     }
     response <- httr::GET(base_url, query = list("$query" = update_query))
-    content <- httr::content(response, as = "text", type = "text/csv", 
+    content <- httr::content(response, as = "text", type = "text/csv",
       encoding = "UTF-8")
     dat <- dplyr::as_tibble(utils::read.csv(
-      textConnection(content), 
+      textConnection(content),
       colClasses = rep("character", 4L),
       stringsAsFactors = FALSE,
       nrows = limit
@@ -97,7 +97,7 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
 
   ped <- dplyr::bind_rows(lst_dat)
   ped <- dplyr::mutate(
-    ped, 
+    ped,
     Date_Time = as.POSIXct(strptime(Date_Time, format = "%Y-%m-%dT%H:%M:%S"),
       tz = tz)
   )
@@ -119,14 +119,14 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
       Sensor
     )
     ped <- dplyr::mutate(
-      ped, 
+      ped,
       Date = as.Date.POSIXct(Date_Time, tz = tz),
       Count = as.integer(Count),
       Time = as.integer(substr(Date_Time, 12, 13))
     )
   } else {
     ped <- dplyr::mutate(
-      ped, 
+      ped,
       Date = as.Date.POSIXct(Date_Time, tz = tz),
       Count = as.integer(Count),
       Time = as.integer(Time),
@@ -141,8 +141,8 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
 #'
 #' Provides API using Socrata to Melbourne pedestrian sensor locations.
 #'
-#' @param app_token Characters giving the application token. A limited number of 
-#'    requests can be made without an app token (`NULL`), but they are subject 
+#' @param app_token Characters giving the application token. A limited number of
+#'    requests can be made without an app token (`NULL`), but they are subject
 #'    to much lower throttling limits than request that do include one. Sign up
 #'    for an app token [here](https://data.melbourne.vic.gov.au/profile/app_tokens).
 #'
@@ -164,29 +164,30 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
 #' pull_sensor()
 #' }
 pull_sensor <- function(app_token = NULL) {
-  base_url <- "https://data.melbourne.vic.gov.au/resource/xbm5-bb4n.csv"
+  base_url <- "https://data.melbourne.vic.gov.au/resource/h57g-5234.csv"
   p_url <- httr::parse_url(base_url)
   if (!is.null(app_token)) p_url$query$`$$app_token` <- app_token
   response <- httr::GET(p_url)
-  content <- httr::content(response, as = "text", type = "text/csv", 
+  content <- httr::content(response, as = "text", type = "text/csv",
     encoding = "UTF-8")
   sensor_info <- utils::read.csv(
-    textConnection(content), 
-    colClasses = rep("character", 10L),
+    textConnection(content),
+    colClasses = rep("character", 11L),
     stringsAsFactors = FALSE,
-    nrows = 50L # give a buffer to 43
+    na.strings = "",
+    nrows = 60L
   )
   sensor_info <- dplyr::select(
-    sensor_info, sensorloc, sensorid, longitude, latitude, loctype, xdate
+    sensor_info, sensor = sensor_description, sensor_id, longitude, latitude, direction_1, direction_2, installation_date, status, note
   )
-  colnames(sensor_info) <- c("Sensor", "Sensor_ID", "Longitude", "Latitude",
-    "Location_Type", "Year_Installed")
   sensor_info <- dplyr::mutate(
     sensor_info,
-    Sensor_ID = as.integer(Sensor_ID),
-    Longitude = as.numeric(Longitude),
-    Latitude = as.numeric(Latitude),
-    Year_Installed = as.integer(Year_Installed)
+    sensor_id = as.integer(sensor_id),
+    longitude = as.numeric(longitude),
+    latitude = as.numeric(latitude),
+    installation_date = as.POSIXct(
+      strptime(installation_date, format = "%Y-%m-%dT%H:%M:%S"),
+      tz = "Australia/Melbourne")
   )
   sensor_info
 }

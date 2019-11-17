@@ -46,7 +46,7 @@ its policy.
 \dontrun{
 # Retrieve the year 2017
 melb_walk_fast(year = 2017)
-  
+
 # Retrieve the year 2017 for Southern Cross Station
 melb_walk_fast(year = 2017, sensor = "Southern Cross Station")
 }
