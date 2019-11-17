@@ -11,7 +11,7 @@ melb_walk_fast(year = NULL, sensor = NULL, na.rm = FALSE,
 \item{year}{An integer or a vector of integers. By default, it's the current
 year.}
 
-\item{sensor}{Sensor names. By default, it pulls all the sensors. Use \link{lookup_sensor}
+\item{sensor}{Sensor names. By default, it pulls all the sensors. Use \link{pull_sensor}
 to see the available sensors.}
 
 \item{na.rm}{Logical. \code{FALSE} is the default suggesting to include \code{NA} in

@@ -1,7 +1,6 @@
 globalVariables(c(
   "Time", "Count", "Sensor", "Date", "Date_Time", # melb_walk_fast()
-  "Sensor_ID", "Longitude", "Latitude", "Location_Type", "Year_Installed",
-  "sensorloc", "sensorid", "longitude", "latitude", "loctype", "xdate"
+  "direction_1", "direction_2", "installation_date", "note", "sensor_description", "sensor_df", "sensor_id", "status", "latitude", "longitude"
 ))
 
 #' API using Socrata to Melbourne pedestrian data
@@ -10,7 +9,7 @@ globalVariables(c(
 #'
 #' @param year An integer or a vector of integers. By default, it's the current
 #'   year.
-#' @param sensor Sensor names. By default, it pulls all the sensors. Use [lookup_sensor]
+#' @param sensor Sensor names. By default, it pulls all the sensors. Use [pull_sensor]
 #'   to see the available sensors.
 #' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in
 #'   the dataset. `TRUE` removes the `NA`s.
