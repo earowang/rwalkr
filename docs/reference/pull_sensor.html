@@ -8,21 +8,25 @@
 
 <title>API using Socrata to Melbourne pedestrian sensor locations — pull_sensor • rwalkr</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +34,11 @@
 
 
 
-<meta property="og:title" content="API using Socrata to Melbourne pedestrian sensor locations — pull_sensor" />
 
+<meta property="og:title" content="API using Socrata to Melbourne pedestrian sensor locations — pull_sensor" />
 <meta property="og:description" content="Provides API using Socrata to Melbourne pedestrian sensor locations." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -45,6 +50,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -63,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rwalkr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -76,7 +82,6 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/earowang/rwalkr">
@@ -91,6 +96,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -102,13 +108,11 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Provides API using Socrata to Melbourne pedestrian sensor locations.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>pull_sensor</span>(<span class='kw'>app_token</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -120,148 +124,213 @@ to much lower throttling limits than request that do include one. Sign up
 for an app token <a href='https://data.melbourne.vic.gov.au/profile/app_tokens'>here</a>.</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame including these variables as follows:</p><ul>
-<li><p>Sensor: Sensor name (43 sensors up to date)</p></li>
-<li><p>Sensor_ID: Sensor identifier</p></li>
-<li><p>Longitude: Longitude</p></li>
-<li><p>Latitude: Latitude</p></li>
-<li><p>Location_Type: Location type</p></li>
-<li><p>Year_Installed: Year installed</p></li>
-</ul>
-
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>It provides API using <a href='https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/xbm5-bb4n'>Socrata</a>.</p>
-    
+    <p>It provides API using <a href='https://data.melbourne.vic.gov.au/resource/h57g-5234'>Socrata</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='melb_walk_fast.html'>melb_walk_fast</a></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>pull_sensor</span>()</div><div class='output co'>#&gt;                                                                        Sensor
-#&gt; 1                                                           Melbourne Central
-#&gt; 2  Melbourne Central-Elizabeth St (East)Melbourne Central-Elizabeth St (East)
-#&gt; 3                                                         QVM-Queen St (East)
-#&gt; 4                                                           QV Market-Peel St
-#&gt; 5                                                             Lygon St (West)
-#&gt; 6                                                     QVM-Franklin St (North)
-#&gt; 7                                                     Lincoln-Swanston (West)
-#&gt; 8                                                         Lonsdale St (South)
-#&gt; 9                                                      Collins Street (North)
-#&gt; 10                                                          Flagstaff Station
-#&gt; 11                                       Little Collins St-Swanston St (East)
-#&gt; 12                                              QV Market-Elizabeth St (West)
-#&gt; 13                                               Lonsdale St-Spring St (West)
-#&gt; 14                                                 Faraday St-Lygon St (West)
-#&gt; 15                                                                Webb Bridge
-#&gt; 16                                                           Sandridge Bridge
-#&gt; 17                                             Flinders La-Swanston St (West)
-#&gt; 18                                                      Collins Place (North)
-#&gt; 19                                            Elizabeth St-La Trobe St (East)
-#&gt; 20                                                             Birrarung Marr
-#&gt; 21                                                 Bourke Street Mall (South)
-#&gt; 22                                             Bourke St - Spencer St (North)
-#&gt; 23                                                           Bourke St Bridge
-#&gt; 24                                              Spencer St-Collins St (South)
-#&gt; 25                                                            Lygon St (East)
-#&gt; 26                                          Flinders Street Station Underpass
-#&gt; 27                                                       Australia on Collins
-#&gt; 28                                                            The Arts Centre
-#&gt; 29                                                      Collins Place (South)
-#&gt; 30                                                               Alfred Place
-#&gt; 31                                                       Flinders St-Spark La
-#&gt; 32                                                     Southern Cross Station
-#&gt; 33                                         Lonsdale St - Elizabeth St (North)
-#&gt; 34                                                            Waterfront City
-#&gt; 35                                                      QVM-Therry St (South)
-#&gt; 36                                              St Kilda Rd-Alexandra Gardens
-#&gt; 37                                                             Victoria Point
-#&gt; 38                                                                   New Quay
-#&gt; 39                                               Tin Alley-Swanston St (West)
-#&gt; 40                                               Monash Rd-Swanston St (West)
-#&gt; 41                                                          Pelham St (South)
+    <pre class="examples"><div class='input'><span class='co'># \dontrun{</span>
+<span class='fu'>pull_sensor</span>()</div><div class='output co'>#&gt;                                                                        sensor
+#&gt; 1                                                            Building 80 RMIT
+#&gt; 2                                               Spencer St-Collins St (South)
+#&gt; 3                                              Chinatown-Lt Bourke St (South)
+#&gt; 4                                                        Flinders St-Spark La
+#&gt; 5                                                            Bourke St Bridge
+#&gt; 6                                                Lonsdale St-Spring St (West)
+#&gt; 7                                                             Lygon St (West)
+#&gt; 8                                               Chinatown-Swanston St (North)
+#&gt; 9                                                             Lygon St (East)
+#&gt; 10                                                            Queen St (West)
+#&gt; 11                                             Bourke St - Spencer St (North)
+#&gt; 12                                                                Webb Bridge
+#&gt; 13                                                            Waterfront City
+#&gt; 14                                              St Kilda Rd-Alexandra Gardens
+#&gt; 15                                                      Collins Place (North)
+#&gt; 16                                                      QVM-Therry St (South)
+#&gt; 17                                              QV Market-Elizabeth St (West)
+#&gt; 18                                                       Australia on Collins
+#&gt; 19                                            Flinders St-Elizabeth St (East)
+#&gt; 20                                                      Collins Place (South)
+#&gt; 21                                              Spencer St-Collins St (North)
+#&gt; 22                                                               Alfred Place
+#&gt; 23                                                          QV Market-Peel St
+#&gt; 24                                                              State Library
+#&gt; 25                                                            The Arts Centre
+#&gt; 26                                               Tin Alley-Swanston St (West)
+#&gt; 27 Melbourne Central-Elizabeth St (East)Melbourne Central-Elizabeth St (East)
+#&gt; 28                                                        QVM-Queen St (East)
+#&gt; 29                                                    QVM-Franklin St (North)
+#&gt; 30                                                             Victoria Point
+#&gt; 31                                               Monash Rd-Swanston St (West)
+#&gt; 32                                                                   New Quay
+#&gt; 33                                                     Collins Street (North)
+#&gt; 34                                                          Melbourne Central
+#&gt; 35                                                     Southern Cross Station
+#&gt; 36                                                    Lincoln-Swanston (West)
+#&gt; 37                                                        Lonsdale St (South)
+#&gt; 38                                          Flinders Street Station Underpass
+#&gt; 39                                             Flinders St-Swanston St (West)
+#&gt; 40                                                                City Square
+#&gt; 41                                                Bourke St-Russell St (West)
 #&gt; 42                                                           Town Hall (West)
-#&gt; 43                                              Grattan St-Swanston St (West)
-#&gt; 44                                                             Princes Bridge
-#&gt; 45                                                 Bourke Street Mall (North)
-#&gt; 46                                     Melbourne Convention Exhibition Centre
-#&gt; 47                                                                  Southbank
-#&gt; 48                                            Flinders St-Elizabeth St (East)
-#&gt; 49                                                Bourke St-Russell St (West)
-#&gt; 50                                           Elizabeth St-Lonsdale St (South)
-#&gt;    Sensor_ID Longitude  Latitude Location_Type Year_Installed
-#&gt; 1          3  144.9643 -37.81102       Outdoor           2009
-#&gt; 2         47  144.9622 -37.81160       Outdoor           2017
-#&gt; 3         48  144.9587 -37.80632       Outdoor           2017
-#&gt; 4         27  144.9564 -37.80607       Outdoor           2013
-#&gt; 5         31  144.9666 -37.80170       Outdoor           2014
-#&gt; 6         51  144.9591 -37.80842       Outdoor           2017
-#&gt; 7         54  144.9631 -37.80402       Outdoor           2018
-#&gt; 8         30  144.9666 -37.81122       Outdoor           2014
-#&gt; 9         53  144.9655 -37.81564       Outdoor           2015
-#&gt; 10        13  144.9565 -37.81240       Outdoor           2009
-#&gt; 11        45  144.9661 -37.81414       Outdoor           2017
-#&gt; 12        26  144.9605 -37.80870       Outdoor           2013
-#&gt; 13        40  144.9723 -37.80999       Outdoor           2015
-#&gt; 14        50  144.9672 -37.79808       Outdoor           2017
-#&gt; 15         8  144.9472 -37.82294       Outdoor           2009
-#&gt; 16        14  144.9629 -37.82011       Outdoor           2009
-#&gt; 17        41  144.9669 -37.81669       Outdoor           2017
-#&gt; 18        18  144.9731 -37.81345       Outdoor           2009
-#&gt; 19        55  144.9614 -37.81006       Outdoor           2018
-#&gt; 20         7  144.9714 -37.81832       Outdoor           2009
-#&gt; 21         2  144.9652 -37.81381       Outdoor           2009
-#&gt; 22        58  144.9536 -37.81686       Outdoor           2018
-#&gt; 23        57  144.9503 -37.81767       Outdoor           2018
-#&gt; 24        23  144.9545 -37.81909       Outdoor           2013
-#&gt; 25        37  144.9667 -37.80310       Outdoor           2015
-#&gt; 26         6  144.9656 -37.81912       Outdoor           2009
-#&gt; 27        16  144.9652 -37.81573       Outdoor           2009
-#&gt; 28        28  144.9688 -37.82130       Outdoor           2013
-#&gt; 29        17  144.9732 -37.81363       Outdoor           2009
-#&gt; 30        39  144.9700 -37.81380       Outdoor           2015
-#&gt; 31        34  144.9742 -37.81538       Outdoor           2014
-#&gt; 32         9  144.9510 -37.81983       Outdoor           2009
-#&gt; 33        56  144.9615 -37.81235       Outdoor           2018
-#&gt; 34        11  144.9397 -37.81565       Outdoor           2009
-#&gt; 35        49  144.9596 -37.80730       Outdoor           2017
-#&gt; 36        29  144.9686 -37.81966       Outdoor           2014
-#&gt; 37        10  144.9471 -37.81876       Outdoor           2009
-#&gt; 38        12  144.9429 -37.81458       Outdoor           2009
-#&gt; 39        44  144.9644 -37.79690       Outdoor           2015
-#&gt; 40        43  144.9641 -37.79845       Outdoor           2015
-#&gt; 41        46  144.9616 -37.80241       Outdoor           2017
-#&gt; 42         4  144.9661 -37.81488       Outdoor           2009
-#&gt; 43        42  144.9639 -37.80009       Outdoor           2015
-#&gt; 44         5  144.9679 -37.81874       Outdoor           2009
-#&gt; 45         1  144.9652 -37.81349       Outdoor           2009
-#&gt; 46        25  144.9560 -37.82402       Outdoor           2013
-#&gt; 47        35  144.9651 -37.82018       Outdoor           2016
-#&gt; 48        22  144.9651 -37.81786       Outdoor           2013
-#&gt; 49        21  144.9678 -37.81245       Outdoor           2013
-#&gt; 50        52  144.9619 -37.81252       Outdoor           2017</div></pre>
+#&gt; 43                                                          Pelham St (South)
+#&gt; 44                                         Lonsdale St - Elizabeth St (North)
+#&gt; 45                                                          Flagstaff Station
+#&gt; 46                                              Grattan St-Swanston St (West)
+#&gt; 47                                                             Princes Bridge
+#&gt; 48                                                 Faraday St-Lygon St (West)
+#&gt; 49                                           Elizabeth St-Lonsdale St (South)
+#&gt; 50                                                 Bourke Street Mall (South)
+#&gt; 51                                                                  Southbank
+#&gt; 52                                                 Bourke Street Mall (North)
+#&gt; 53                                       Little Collins St-Swanston St (East)
+#&gt; 54                                                           RMIT Building 14
+#&gt; 55                                                             Birrarung Marr
+#&gt; 56                                            Elizabeth St-La Trobe St (East)
+#&gt; 57                                                        La Trobe St (North)
+#&gt; 58                                               Flinders St-Spring St (West)
+#&gt; 59                                                           Sandridge Bridge
+#&gt; 60                                             Flinders La-Swanston St (West)
+#&gt;    sensor_id longitude  latitude direction_1 direction_2 installation_date
+#&gt; 1         59  144.9630 -37.80826       North       South        2019-02-13
+#&gt; 2         23  144.9545 -37.81909        East        West        2013-09-02
+#&gt; 3         20  144.9682 -37.81173        East        West        2013-09-06
+#&gt; 4         34  144.9742 -37.81538        East        West        2014-06-08
+#&gt; 5         57  144.9503 -37.81767        West        East        2018-08-13
+#&gt; 6         40  144.9723 -37.80999       South       North        2015-01-19
+#&gt; 7         31  144.9666 -37.80170       South       North        2013-10-10
+#&gt; 8         19  144.9655 -37.81237        East        West        2013-09-02
+#&gt; 9         37  144.9667 -37.80310       North       South        2015-02-11
+#&gt; 10        36  144.9612 -37.81653       South       North        2015-01-20
+#&gt; 11        58  144.9536 -37.81686        West        East        2018-09-27
+#&gt; 12         8  144.9472 -37.82294       North       South        2009-03-24
+#&gt; 13        11  144.9397 -37.81565        East        West        2009-01-20
+#&gt; 14        29  144.9686 -37.81966       South       North        2013-10-11
+#&gt; 15        18  144.9731 -37.81345        East        West        2009-03-30
+#&gt; 16        49  144.9596 -37.80730        West        East        2017-11-29
+#&gt; 17        26  144.9605 -37.80870       South       North        2013-09-28
+#&gt; 18        16  144.9652 -37.81573        &lt;NA&gt;        &lt;NA&gt;        2009-03-30
+#&gt; 19        22  144.9651 -37.81786       South       North        2013-08-12
+#&gt; 20        17  144.9732 -37.81363        East        West        2009-03-30
+#&gt; 21        24  144.9545 -37.81888        East        West        2013-09-02
+#&gt; 22        39  144.9700 -37.81380       South       North        2014-08-27
+#&gt; 23        27  144.9564 -37.80607        East        West        2013-08-16
+#&gt; 24        15  144.9645 -37.81064       South       North        2009-03-25
+#&gt; 25        28  144.9688 -37.82130       South       North        2013-08-23
+#&gt; 26        44  144.9644 -37.79690       South       North        2015-04-15
+#&gt; 27        47  144.9622 -37.81160       South       North        2017-08-24
+#&gt; 28        48  144.9587 -37.80632        East        West        2017-10-02
+#&gt; 29        51  144.9591 -37.80842        West        East        2017-11-30
+#&gt; 30        10  144.9471 -37.81876        West        East        2009-04-23
+#&gt; 31        43  144.9641 -37.79845       South       North        2015-04-15
+#&gt; 32        12  144.9429 -37.81458        West        East        2009-01-21
+#&gt; 33        53  144.9655 -37.81564        West        East        2015-09-23
+#&gt; 34         3  144.9643 -37.81102       South       North        2009-03-25
+#&gt; 35         9  144.9510 -37.81983        East        West        2009-03-23
+#&gt; 36        54  144.9631 -37.80402       South       North        2018-06-26
+#&gt; 37        30  144.9666 -37.81122        East        West        2013-10-14
+#&gt; 38         6  144.9656 -37.81912       North       South        2009-03-25
+#&gt; 39        38  144.9672 -37.81723        &lt;NA&gt;        &lt;NA&gt;        2014-12-05
+#&gt; 40        32  144.9669 -37.81574        &lt;NA&gt;        &lt;NA&gt;        2013-12-20
+#&gt; 41        21  144.9678 -37.81245       South       North        2013-09-02
+#&gt; 42         4  144.9661 -37.81488       South       North        2009-03-23
+#&gt; 43        46  144.9616 -37.80241        West        East        2017-07-10
+#&gt; 44        56  144.9615 -37.81235        East        West        2018-07-25
+#&gt; 45        13  144.9565 -37.81240        &lt;NA&gt;        &lt;NA&gt;        2009-03-24
+#&gt; 46        42  144.9639 -37.80009       South       North        2015-04-15
+#&gt; 47         5  144.9679 -37.81874       North       South        2009-03-26
+#&gt; 48        50  144.9672 -37.79808       North       South        2017-11-30
+#&gt; 49        52  144.9619 -37.81252        West        East        2017-07-31
+#&gt; 50         2  144.9652 -37.81381        East        West        2009-03-30
+#&gt; 51        35  144.9651 -37.82018        East        West        2016-04-11
+#&gt; 52         1  144.9652 -37.81349        West        East        2009-03-24
+#&gt; 53        45  144.9661 -37.81414       North       South        2017-06-29
+#&gt; 54        61  144.9631 -37.80767       North       South        2019-06-28
+#&gt; 55         7  144.9717 -37.81863        East        West        2014-12-17
+#&gt; 56        55  144.9613 -37.80989       North       South        2018-07-19
+#&gt; 57        62  144.9622 -37.80996        East        West        2019-09-25
+#&gt; 58        33  144.9745 -37.81483       North       South        2014-04-23
+#&gt; 59        14  144.9629 -37.82011       North       South        2019-09-25
+#&gt; 60        41  144.9669 -37.81669       North       South        2017-06-29
+#&gt;    status                                        note
+#&gt; 1       A                                        &lt;NA&gt;
+#&gt; 2       A                                        &lt;NA&gt;
+#&gt; 3       A                                        &lt;NA&gt;
+#&gt; 4       A                                        &lt;NA&gt;
+#&gt; 5       A                                        &lt;NA&gt;
+#&gt; 6       A                                        &lt;NA&gt;
+#&gt; 7       A                                        &lt;NA&gt;
+#&gt; 8       A                                        &lt;NA&gt;
+#&gt; 9       A                                        &lt;NA&gt;
+#&gt; 10      A                                        &lt;NA&gt;
+#&gt; 11      A                                        &lt;NA&gt;
+#&gt; 12      A                                        &lt;NA&gt;
+#&gt; 13      A                                        &lt;NA&gt;
+#&gt; 14      A                                        &lt;NA&gt;
+#&gt; 15      A                                        &lt;NA&gt;
+#&gt; 16      A                                        &lt;NA&gt;
+#&gt; 17      A                                        &lt;NA&gt;
+#&gt; 18      R Device moved to location ID 53 (22/09/2015)
+#&gt; 19      A                                        &lt;NA&gt;
+#&gt; 20      A                                        &lt;NA&gt;
+#&gt; 21      A                                        &lt;NA&gt;
+#&gt; 22      A                                        &lt;NA&gt;
+#&gt; 23      A                                        &lt;NA&gt;
+#&gt; 24      A                                        &lt;NA&gt;
+#&gt; 25      A                                        &lt;NA&gt;
+#&gt; 26      A                                        &lt;NA&gt;
+#&gt; 27      A                                        &lt;NA&gt;
+#&gt; 28      A                                        &lt;NA&gt;
+#&gt; 29      A                                        &lt;NA&gt;
+#&gt; 30      A                                        &lt;NA&gt;
+#&gt; 31      A                                        &lt;NA&gt;
+#&gt; 32      A                                        &lt;NA&gt;
+#&gt; 33      A                                        &lt;NA&gt;
+#&gt; 34      A                                        &lt;NA&gt;
+#&gt; 35      A                                        &lt;NA&gt;
+#&gt; 36      A                                        &lt;NA&gt;
+#&gt; 37      A                                        &lt;NA&gt;
+#&gt; 38      A                                        &lt;NA&gt;
+#&gt; 39      R        Device has been removed (17/02/2017)
+#&gt; 40      R        Device has been removed (24/01/2017)
+#&gt; 41      A                                        &lt;NA&gt;
+#&gt; 42      A                                        &lt;NA&gt;
+#&gt; 43      A                                        &lt;NA&gt;
+#&gt; 44      A                                        &lt;NA&gt;
+#&gt; 45      I                                        &lt;NA&gt;
+#&gt; 46      A                                        &lt;NA&gt;
+#&gt; 47      A                                        &lt;NA&gt;
+#&gt; 48      A                                        &lt;NA&gt;
+#&gt; 49      A                                        &lt;NA&gt;
+#&gt; 50      A                                        &lt;NA&gt;
+#&gt; 51      A                                        &lt;NA&gt;
+#&gt; 52      A                                        &lt;NA&gt;
+#&gt; 53      A                                        &lt;NA&gt;
+#&gt; 54      A                                        &lt;NA&gt;
+#&gt; 55      A                                        &lt;NA&gt;
+#&gt; 56      A                                        &lt;NA&gt;
+#&gt; 57      A                                        &lt;NA&gt;
+#&gt; 58      I                                        &lt;NA&gt;
+#&gt; 59      A                                        &lt;NA&gt;
+#&gt; 60      A                                        &lt;NA&gt;</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -269,13 +338,16 @@ for an app token <a href='https://data.melbourne.vic.gov.au/profile/app_tokens'>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

@@ -13,10 +13,10 @@ reference:
   contents:
     - melb_walk
     - melb_walk_fast
+    - melb_walk_directional
 - title: Sensor locations
   contents:
     - pull_sensor
-    - lookup_sensor
 
 - title: Shiny app for Melbourne pedestrian data
   contents:

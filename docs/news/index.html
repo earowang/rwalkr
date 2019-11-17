@@ -8,21 +8,25 @@
 
 <title>Changelog • rwalkr</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,7 +34,9 @@
 
 
 
+
 <meta property="og:title" content="Changelog" />
+
 
 
 
@@ -42,6 +48,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -60,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rwalkr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -73,7 +80,6 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/earowang/rwalkr">
@@ -88,6 +94,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -97,13 +104,23 @@
       
     </div>
 
+    <div id="rwalkr-0-5-0" class="section level1">
+<h1 class="page-header">
+<a href="#rwalkr-0-5-0" class="anchor"></a>rwalkr 0.5.0<small> Unreleased </small>
+</h1>
+<ul>
+<li>New function <code><a href="../reference/melb_walk_directional.html">melb_walk_directional()</a></code> to access minute by minute directional pedestrian counts for the last hour from pedestrian sensor devices located across the city.</li>
+<li>Fixed <code><a href="../reference/pull_sensor.html">pull_sensor()</a></code> due to the Socrata API URL change.</li>
+<li>Defunct <code>lookup_sensor()</code>, <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code>, <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code> and <code><a href="../reference/rwalkr-defunct.html">shine_melb()</a></code> in favour of suffixed function names.</li>
+</ul>
+</div>
     <div id="rwalkr-0-4-0" class="section level1">
 <h1 class="page-header">
 <a href="#rwalkr-0-4-0" class="anchor"></a>rwalkr 0.4.0<small> 2018-12-13 </small>
 </h1>
 <ul>
-<li>Fixed status “400” for <code><a href="../reference/melb_walk_fast.html">melb_walk_fast()</a></code> (previously <code><a href="../reference/deprecated.html">run_melb()</a></code>) due to Socrata API changes.</li>
-<li>Deprecated <code><a href="../reference/deprecated.html">walk_melb()</a></code>, <code><a href="../reference/deprecated.html">run_melb()</a></code> and <code><a href="../reference/deprecated.html">shine_melb()</a></code> in favour of suffixed function names.</li>
+<li>Fixed status “400” for <code><a href="../reference/melb_walk_fast.html">melb_walk_fast()</a></code> (previously <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code>) due to Socrata API changes.</li>
+<li>Deprecated <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code>, <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code> and <code><a href="../reference/rwalkr-defunct.html">shine_melb()</a></code> in favour of suffixed function names.</li>
 </ul>
 </div>
     <div id="rwalkr-0-3-4" class="section level1">
@@ -122,14 +139,14 @@
 <h2 class="hasAnchor">
 <a href="#api-changes" class="anchor"></a>API changes</h2>
 <ul>
-<li>Dropped the argument of <code>tweak</code> in <code><a href="../reference/deprecated.html">walk_melb()</a></code>, as the sensor names from the data source match with <code><a href="../reference/deprecated.html">run_melb()</a></code>.</li>
+<li>Dropped the argument of <code>tweak</code> in <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code>, as the sensor names from the data source match with <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code>.</li>
 </ul>
 </div>
 <div id="minor-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h2>
 <ul>
-<li>Dropped the <code>match</code> column in the data frame called from <code><a href="../reference/lookup_sensor.html">lookup_sensor()</a></code>.</li>
+<li>Dropped the <code>match</code> column in the data frame called from <code>lookup_sensor()</code>.</li>
 </ul>
 </div>
 </div>
@@ -160,17 +177,17 @@
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>Fixed “Count” to be returned as integers instead of characters in <code><a href="../reference/deprecated.html">run_melb(na.rm = FALSE)</a></code>.</li>
-<li>Fixed duplicated data entries when <code><a href="../reference/deprecated.html">walk_melb(tweak = TRUE)</a></code>.</li>
-<li>Fixed one non-matching sensor in <code><a href="../reference/lookup_sensor.html">lookup_sensor()</a></code>.</li>
+<li>Fixed “Count” to be returned as integers instead of characters in <code><a href="../reference/rwalkr-defunct.html">run_melb(na.rm = FALSE)</a></code>.</li>
+<li>Fixed duplicated data entries when <code><a href="../reference/rwalkr-defunct.html">walk_melb(tweak = TRUE)</a></code>.</li>
+<li>Fixed one non-matching sensor in <code>lookup_sensor()</code>.</li>
 </ul>
 </div>
 <div id="updates" class="section level2">
 <h2 class="hasAnchor">
 <a href="#updates" class="anchor"></a>Updates</h2>
 <ul>
-<li>A new sensor “Pelham St (S)” added to <code><a href="../reference/deprecated.html">run_melb()</a></code>, <code><a href="../reference/pull_sensor.html">pull_sensor()</a></code>, and <code><a href="../reference/lookup_sensor.html">lookup_sensor()</a></code> using Socrata.</li>
-<li>Changed the shiny app using <code><a href="../reference/deprecated.html">shine_melb()</a></code> to use <code><a href="../reference/deprecated.html">walk_melb(tweak = TRUE)</a></code>.</li>
+<li>A new sensor “Pelham St (S)” added to <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code>, <code><a href="../reference/pull_sensor.html">pull_sensor()</a></code>, and <code>lookup_sensor()</code> using Socrata.</li>
+<li>Changed the shiny app using <code><a href="../reference/rwalkr-defunct.html">shine_melb()</a></code> to use <code><a href="../reference/rwalkr-defunct.html">walk_melb(tweak = TRUE)</a></code>.</li>
 </ul>
 </div>
 </div>
@@ -183,18 +200,18 @@
 <a href="#new-functions" class="anchor"></a>New functions</h2>
 <ul>
 <li>
-<code><a href="../reference/deprecated.html">run_melb()</a></code> pulls Melbourne pedestrian data using Socrata, which is faster than <code><a href="../reference/deprecated.html">walk_melb()</a></code>.</li>
+<code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code> pulls Melbourne pedestrian data using Socrata, which is faster than <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code>.</li>
 <li>
 <code><a href="../reference/pull_sensor.html">pull_sensor()</a></code> pulls Melbourne pedestrian sensor locations using Socrata.</li>
 <li>
-<code><a href="../reference/lookup_sensor.html">lookup_sensor()</a></code> provides a dictionary for sensor names used in <code><a href="../reference/deprecated.html">walk_melb()</a></code> and <code><a href="../reference/deprecated.html">run_melb()</a></code>.</li>
+<code>lookup_sensor()</code> provides a dictionary for sensor names used in <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code> and <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code>.</li>
 </ul>
 </div>
 <div id="minor-changes-2" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
 <ul>
-<li>Added new arguments <code>na.rm = FALSE</code> and <code>tweak = FALSE</code> to the function <code><a href="../reference/deprecated.html">walk_melb()</a></code>. If <code>na.rm = TRUE</code>, it removes <code>NA</code>s from the data. If <code>tweak = TRUE</code>, it ensures the consistency of sensor names to <code><a href="../reference/deprecated.html">run_melb()</a></code>.</li>
+<li>Added new arguments <code>na.rm = FALSE</code> and <code>tweak = FALSE</code> to the function <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code>. If <code>na.rm = TRUE</code>, it removes <code>NA</code>s from the data. If <code>tweak = TRUE</code>, it ensures the consistency of sensor names to <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code>.</li>
 </ul>
 </div>
 </div>
@@ -203,7 +220,7 @@
 <a href="#rwalkr-0-2-0" class="anchor"></a>rwalkr 0.2.0<small> 2017-08-09 </small>
 </h1>
 <ul>
-<li>Added the function <code><a href="../reference/deprecated.html">shine_melb()</a></code> to launch a shiny app. It provides two basic plots to take a glimpse at the data: one is an overlaying time series plot and the other showing a dot plot of missing values.</li>
+<li>Added the function <code><a href="../reference/rwalkr-defunct.html">shine_melb()</a></code> to launch a shiny app. It provides two basic plots to take a glimpse at the data: one is an overlaying time series plot and the other showing a dot plot of missing values.</li>
 </ul>
 </div>
     <div id="rwalkr-0-1-0" class="section level1">
@@ -212,7 +229,7 @@
 </h1>
 <ul>
 <li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-<li>Added the function <code><a href="../reference/deprecated.html">walk_melb()</a></code> to scrape Melbourne pedestrian data.</li>
+<li>Added the function <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code> to scrape Melbourne pedestrian data.</li>
 </ul>
 </div>
   </div>
@@ -221,6 +238,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#rwalkr-0-5-0">0.5.0</a></li>
         <li><a href="#rwalkr-0-4-0">0.4.0</a></li>
         <li><a href="#rwalkr-0-3-4">0.3.4</a></li>
         <li><a href="#rwalkr-0-3-3">0.3.3</a></li>
@@ -235,19 +253,23 @@
 
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='http://earo.me'>Earo Wang</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

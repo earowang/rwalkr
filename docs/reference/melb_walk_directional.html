@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • rwalkr</title>
+<title>API using Socrata to Melbourne pedestrian data with directions (per minute) — melb_walk_directional • rwalkr</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="API using Socrata to Melbourne pedestrian data with directions (per minute) — melb_walk_directional" />
+<meta property="og:description" content="API using Socrata to Melbourne pedestrian data with directions (per minute)" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -54,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -98,84 +100,71 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>API using Socrata to Melbourne pedestrian data with directions (per minute)</h1>
+    
+    <div class="hidden name"><code>melb_walk_directional.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>API using Socrata to Melbourne pedestrian data with directions (per minute)</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>melb_walk_directional</span>(<span class='kw'>app_token</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-apis-to-melbourne-pedestrian-data" class="hasAnchor"><a href="#section-apis-to-melbourne-pedestrian-data" class="anchor"></a>APIs to Melbourne pedestrian data</h2>
-          <p class="section-desc"><p>Provides APIs using Socrata to Melbourne pedestrian data in a tidy data form.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="melb_walk.html">melb_walk()</a></code> </p>
-        </td>
-        <td><p>API using compedapi to Melbourne pedestrian data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="melb_walk_fast.html">melb_walk_fast()</a></code> </p>
-        </td>
-        <td><p>API using Socrata to Melbourne pedestrian data (per hour)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="melb_walk_directional.html">melb_walk_directional()</a></code> </p>
-        </td>
-        <td><p>API using Socrata to Melbourne pedestrian data with directions (per minute)</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-sensor-locations" class="hasAnchor"><a href="#section-sensor-locations" class="anchor"></a>Sensor locations</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="pull_sensor.html">pull_sensor()</a></code> </p>
-        </td>
-        <td><p>API using Socrata to Melbourne pedestrian sensor locations</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-shiny-app-for-melbourne-pedestrian-data" class="hasAnchor"><a href="#section-shiny-app-for-melbourne-pedestrian-data" class="anchor"></a>Shiny app for Melbourne pedestrian data</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="melb_shine.html">melb_shine()</a></code> </p>
-        </td>
-        <td><p>A simple shiny app for pedestrian data</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>app_token</th>
+      <td><p>Characters giving the application token. A limited number of
+requests can be made without an app token (<code>NULL</code>), but they are subject
+to much lower throttling limits than request that do include one. Sign up
+for an app token <a href='https://data.melbourne.vic.gov.au/profile/app_tokens'>here</a>.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A tibble including these variables as follows:</p><ul>
+<li><p><code>sensor_id</code>: Sensor name</p></li>
+<li><p><code>date_time</code>: Date time when the pedestrian counts are recorded</p></li>
+<li><p><code>date</code>: Date associated with <code>date_time</code></p></li>
+<li><p><code>time</code>: Time of day</p></li>
+<li><p><code>direction_1</code>: Direction 1 sensor reading (count of pedestrians)</p></li>
+<li><p><code>direction_2</code>: Direction 2 sensor reading (count of pedestrians)</p></li>
+<li><p><code>total_of_directions</code>: Total sensor reading i.e. direction 1+2 (count of pedestrians)</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>It provides the API using <a href='https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/d6mv-s43h'>Socrata</a>,
+to access minute by minute directional pedestrian counts for <em>the last hour</em>
+from pedestrian sensor devices located across the city. The data is updated
+every 15 minutes.</p>
+<p>Columns <code>sensor_id</code>, <code>direction_1</code>, and <code>direction_2</code> can be used to join
+the data with the Sensor Locations dataset which details the location, status,
+and directional readings of sensors, which can be obtained from <code><a href='pull_sensor.html'>pull_sensor()</a></code>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='pull_sensor.html'>pull_sensor()</a></code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \dontrun{</span>
+<span class='fu'>melb_walk_directional</span>()</div><div class='output co'>#&gt; <span class='error'>Error in melb_walk_directional(): could not find function "melb_walk_directional"</span></div><div class='input'># }
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-apis-to-melbourne-pedestrian-data">APIs to Melbourne pedestrian data</a></li>
-      <li><a href="#section-sensor-locations">Sensor locations</a></li>
-      <li><a href="#section-shiny-app-for-melbourne-pedestrian-data">Shiny app for Melbourne pedestrian data</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 
