@@ -4,8 +4,8 @@
 \alias{walk_melb}
 \alias{run_melb}
 \alias{shine_melb}
-\title{Deprecated functions}
+\title{Defunct functions}
 \description{
-Deprecated functions
+Defunct functions
 }
 \keyword{internal}
