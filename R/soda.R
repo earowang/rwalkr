@@ -136,6 +136,40 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
   dplyr::arrange(ped, Date_Time)
 }
 
+melb_walk_directional <- function(app_token = NULL) {
+  tz <- "Australia/Melbourne"
+  base_url <- "https://data.melbourne.vic.gov.au/resource/d6mv-s43h.csv"
+  sel_cols <- paste(
+    "SELECT sensor_id", "date_time", "date", "time", "direction_1",
+    "direction_2", "total_of_directions", sep = ", "
+  )
+
+  query <- paste0(sel_cols, " ORDER BY :id LIMIT 10000")
+  if (!is.null(app_token)) {
+    app_token <- paste0("$$app_token=", app_token)
+    base_url <- paste0(base_url, app_token)
+  }
+  response <- httr::GET(base_url, query = list("$query" = query))
+  content <- httr::content(response, as = "text", type = "text/csv",
+    encoding = "UTF-8")
+  ped <- dplyr::as_tibble(utils::read.csv(
+    textConnection(content),
+    colClasses = rep("character", 7L),
+    stringsAsFactors = FALSE,
+    nrows = 10000
+  ))
+  dplyr::mutate(
+    ped,
+    date_time = as.POSIXct(strptime(date_time, format = "%Y-%m-%dT%H:%M:%S"),
+      tz = tz),
+    date = as.Date.POSIXct(date_time, tz = tz),
+    time = hms::parse_hm(time),
+    direction_1 = as.integer(direction_1),
+    direction_2 = as.integer(direction_2),
+    total_of_directions = as.integer(total_of_directions)
+  )
+}
+
 #' API using Socrata to Melbourne pedestrian sensor locations
 #'
 #' Provides API using Socrata to Melbourne pedestrian sensor locations.
@@ -181,7 +215,6 @@ pull_sensor <- function(app_token = NULL) {
   )
   sensor_info <- dplyr::mutate(
     sensor_info,
-    sensor_id = as.integer(sensor_id),
     longitude = as.numeric(longitude),
     latitude = as.numeric(latitude),
     installation_date = as.POSIXct(
