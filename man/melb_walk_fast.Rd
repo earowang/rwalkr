@@ -4,7 +4,7 @@
 \alias{melb_walk_fast}
 \title{API using Socrata to Melbourne pedestrian data}
 \usage{
-melb_walk_fast(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
+melb_walk_fast(year = NULL, sensor = NULL, na.rm = FALSE,
   app_token = NULL)
 }
 \arguments{
@@ -13,8 +13,6 @@ year.}
 
 \item{sensor}{Sensor names. By default, it pulls all the sensors. Use \link{lookup_sensor}
 to see the available sensors.}
-
-\item{tz}{Deprecated. For this dataset, it should only be "Australia/Melbourne".}
 
 \item{na.rm}{Logical. \code{FALSE} is the default suggesting to include \code{NA} in
 the dataset. \code{TRUE} removes the \code{NA}s.}

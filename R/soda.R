@@ -12,7 +12,6 @@ globalVariables(c(
 #'   year.
 #' @param sensor Sensor names. By default, it pulls all the sensors. Use [lookup_sensor]
 #'   to see the available sensors.
-#' @param tz Deprecated. For this dataset, it should only be "Australia/Melbourne".
 #' @param na.rm Logical. `FALSE` is the default suggesting to include `NA` in 
 #'   the dataset. `TRUE` removes the `NA`s.
 #' @param app_token Characters giving the application token. A limited number of 
@@ -43,11 +42,8 @@ globalVariables(c(
 #' # Retrieve the year 2017 for Southern Cross Station
 #' melb_walk_fast(year = 2017, sensor = "Southern Cross Station")
 #' }
-melb_walk_fast <- function(year = NULL, sensor = NULL, tz = "", na.rm = FALSE,
+melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
   app_token = NULL) {
-  if (tz != "") {
-    warning("Argument `tz` ignored.")
-  }
   tz <- "Australia/Melbourne"
   this_year <- as.integer(format(Sys.Date(), "%Y"))
   if (is.null(year)) {

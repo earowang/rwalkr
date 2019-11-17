@@ -35,11 +35,8 @@ globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time", "walk"))
 #' melb_walk(from = start_date, to = end_date)
 #' }
 melb_walk <- function(
-  from = to - 6L, to = Sys.Date() - 1L, tz = "", na.rm = FALSE, session = NULL
+  from = to - 6L, to = Sys.Date() - 1L, na.rm = FALSE, session = NULL
 ) {
-  if (tz != "") {
-    warning("Argument `tz` ignored.")
-  }
   tz <- "Australia/Melbourne"
   stopifnot(class(from) == "Date" && class(to) == "Date")
   stopifnot(from > as.Date("2009-05-31"))

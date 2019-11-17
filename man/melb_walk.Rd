@@ -4,15 +4,13 @@
 \alias{melb_walk}
 \title{API using compedapi to Melbourne pedestrian data}
 \usage{
-melb_walk(from = to - 6L, to = Sys.Date() - 1L, tz = "",
-  na.rm = FALSE, session = NULL)
+melb_walk(from = to - 6L, to = Sys.Date() - 1L, na.rm = FALSE,
+  session = NULL)
 }
 \arguments{
 \item{from}{Starting date.}
 
 \item{to}{Ending date.}
-
-\item{tz}{Deprecated. For this dataset, it should only be "Australia/Melbourne".}
 
 \item{na.rm}{Logical. \code{FALSE} is the default suggesting to include \code{NA} in
 the dataset. \code{TRUE} removes the \code{NA}s.}
