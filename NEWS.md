@@ -1,3 +1,8 @@
+# rwalkr 0.5.0
+
+* Fixed `pull_sensor()` due to the Socrata API URL change.
+* Defunct `lookup_sensor()`, `walk_melb()`, `run_melb()` and `shine_melb()` in favour of suffixed function names.
+
 # rwalkr 0.4.0
 
 * Fixed status "400" for `melb_walk_fast()` (previously `run_melb()`) due to Socrata API changes.
