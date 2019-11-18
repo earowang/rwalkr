@@ -83,7 +83,7 @@ ggplot(data = subset(ped_walk, Sensor == "Melbourne Central")) +
 ![](man/figure/plot-1.png)<!-- -->
 
 To access minute by minute directional pedestrian counts for the last
-hour, please check out the \[melb\_walk\_directional()\].
+hour, please check out the `melb_walk_directional()`.
 
 It’s recommended to include an application token in
 `melb_walk_fast(app_token = "YOUR-APP-TOKEN")`, which you can sign up
