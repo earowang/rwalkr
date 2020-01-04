@@ -4,8 +4,7 @@
 \alias{melb_walk_fast}
 \title{API using Socrata to Melbourne pedestrian data (per hour)}
 \usage{
-melb_walk_fast(year = NULL, sensor = NULL, na.rm = FALSE,
-  app_token = NULL)
+melb_walk_fast(year = NULL, sensor = NULL, na.rm = FALSE, app_token = NULL)
 }
 \arguments{
 \item{year}{An integer or a vector of integers. By default, it's the current

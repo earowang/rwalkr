@@ -4,8 +4,7 @@
 \alias{melb_walk}
 \title{API using compedapi to Melbourne pedestrian data}
 \usage{
-melb_walk(from = to - 6L, to = Sys.Date() - 1L, na.rm = FALSE,
-  session = NULL)
+melb_walk(from = to - 6L, to = Sys.Date() - 1L, na.rm = FALSE, session = NULL)
 }
 \arguments{
 \item{from}{Starting date.}

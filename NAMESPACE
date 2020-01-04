@@ -2,6 +2,7 @@
 
 export(melb_shine)
 export(melb_walk)
+export(melb_walk_directional)
 export(melb_walk_fast)
 export(pull_sensor)
 export(run_melb)

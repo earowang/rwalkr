@@ -1,7 +1,7 @@
 Type: Package
 Package: rwalkr
 Title: API to Melbourne Pedestrian Data
-Version: 0.5.0
+Version: 0.5.1
 Authors@R: 
     person(given = "Earo",
            family = "Wang",
@@ -26,4 +26,4 @@ Suggests:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.1

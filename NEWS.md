@@ -1,3 +1,7 @@
+# rwalkr 0.5.1
+
+* Export `melb_walk_directional()`.
+
 # rwalkr 0.5.0
 
 * New function `melb_walk_directional()` to access minute by minute directional pedestrian counts for the last hour from pedestrian sensor devices located across the city.

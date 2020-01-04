@@ -165,6 +165,7 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
 #' \dontrun{
 #' melb_walk_directional()
 #' }
+#' @export
 melb_walk_directional <- function(app_token = NULL) {
   tz <- "Australia/Melbourne"
   base_url <- "https://data.melbourne.vic.gov.au/resource/d6mv-s43h.csv"
