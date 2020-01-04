@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rwalkr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1</span>
       </span>
     </div>
 
@@ -102,15 +102,15 @@
 <a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; # … with 7,219 more rows</span></a>
 <a class="sourceLine" id="cb3-14" data-line-number="14">ped_run &lt;-<span class="st"> </span><span class="kw"><a href="reference/melb_walk_fast.html">melb_walk_fast</a></span>(<span class="dt">year =</span> <span class="dv">2016</span><span class="op">:</span><span class="dv">2017</span>, <span class="dt">sensor =</span> <span class="ot">NULL</span>) <span class="co"># NULL means all sensors</span></a>
 <a class="sourceLine" id="cb3-15" data-line-number="15">ped_run</a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; # A tibble: 1,601,530 x 5</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;   Sensor         Date_Time           Date        Time Count</span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt;   &lt;chr&gt;          &lt;dttm&gt;              &lt;date&gt;     &lt;int&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; 1 Alfred Place   2016-01-01 00:00:00 2016-01-01     0    NA</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; 2 Birrarung Marr 2016-01-01 00:00:00 2016-01-01     0  1405</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt; 3 Birrarung Marr 2016-01-01 00:00:00 2016-01-01     0  1124</span></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; 4 Birrarung Marr 2016-01-01 00:00:00 2016-01-01     0   614</span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt; 5 Birrarung Marr 2016-01-01 00:00:00 2016-01-01     0   363</span></a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; # … with 1.602e+06 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; # A tibble: 912,288 x 5</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;   Sensor                      Date_Time           Date        Time Count</span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt;   &lt;chr&gt;                       &lt;dttm&gt;              &lt;date&gt;     &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; 1 Alfred Place                2016-01-01 00:00:00 2016-01-01     0    NA</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; 2 Birrarung Marr              2016-01-01 00:00:00 2016-01-01     0  1405</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt; 3 Bourke St-Russell St (West) 2016-01-01 00:00:00 2016-01-01     0  1900</span></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; 4 Bourke Street Mall (North)  2016-01-01 00:00:00 2016-01-01     0   461</span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt; 5 Bourke Street Mall (South)  2016-01-01 00:00:00 2016-01-01     0   883</span></a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; # … with 9.123e+05 more rows</span></a></code></pre></div>
 <p>There are missing values (i.e. <code>NA</code>) in the dataset. By setting <code>na.rm = TRUE</code> in both functions, missing values will be removed.</p>
 <p>Here’s an example to use <em>ggplot2</em> for visualisation:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>

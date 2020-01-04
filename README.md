@@ -58,15 +58,15 @@ ped_walk
 #> # … with 7,219 more rows
 ped_run <- melb_walk_fast(year = 2016:2017, sensor = NULL) # NULL means all sensors
 ped_run
-#> # A tibble: 1,601,530 x 5
-#>   Sensor         Date_Time           Date        Time Count
-#>   <chr>          <dttm>              <date>     <int> <int>
-#> 1 Alfred Place   2016-01-01 00:00:00 2016-01-01     0    NA
-#> 2 Birrarung Marr 2016-01-01 00:00:00 2016-01-01     0  1405
-#> 3 Birrarung Marr 2016-01-01 00:00:00 2016-01-01     0  1124
-#> 4 Birrarung Marr 2016-01-01 00:00:00 2016-01-01     0   614
-#> 5 Birrarung Marr 2016-01-01 00:00:00 2016-01-01     0   363
-#> # … with 1.602e+06 more rows
+#> # A tibble: 912,288 x 5
+#>   Sensor                      Date_Time           Date        Time Count
+#>   <chr>                       <dttm>              <date>     <int> <int>
+#> 1 Alfred Place                2016-01-01 00:00:00 2016-01-01     0    NA
+#> 2 Birrarung Marr              2016-01-01 00:00:00 2016-01-01     0  1405
+#> 3 Bourke St-Russell St (West) 2016-01-01 00:00:00 2016-01-01     0  1900
+#> 4 Bourke Street Mall (North)  2016-01-01 00:00:00 2016-01-01     0   461
+#> 5 Bourke Street Mall (South)  2016-01-01 00:00:00 2016-01-01     0   883
+#> # … with 9.123e+05 more rows
 ```
 
 There are missing values (i.e. `NA`) in the dataset. By setting `na.rm =
