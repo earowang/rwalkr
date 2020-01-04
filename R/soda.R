@@ -240,5 +240,5 @@ pull_sensor <- function(app_token = NULL) {
       strptime(installation_date, format = "%Y-%m-%dT%H:%M:%S"),
       tz = "Australia/Melbourne")
   )
-  sensor_info
+  dplyr::as_tibble(sensor_info)
 }
