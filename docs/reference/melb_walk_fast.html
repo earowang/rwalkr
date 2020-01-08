@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rwalkr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1</span>
       </span>
     </div>
 
@@ -111,8 +111,7 @@
     <p>API using Socrata to Melbourne pedestrian data (per hour)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>melb_walk_fast</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sensor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>app_token</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>melb_walk_fast</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sensor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>app_token</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,35 +165,35 @@ its policy.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \dontrun{</span>
 <span class='co'># Retrieve the year 2017</span>
-<span class='fu'>melb_walk_fast</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2017</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 798,728 x 5</span><span>
-#&gt;    Sensor       Date_Time           Date        Time Count
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> Alfred Place 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   222
-#&gt; </span><span style='color: #555555;'> 2</span><span> Alfred Place 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    99
-#&gt; </span><span style='color: #555555;'> 3</span><span> Alfred Place 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    48
-#&gt; </span><span style='color: #555555;'> 4</span><span> Alfred Place 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    23
-#&gt; </span><span style='color: #555555;'> 5</span><span> Alfred Place 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    12
-#&gt; </span><span style='color: #555555;'> 6</span><span> Alfred Place 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0     6
-#&gt; </span><span style='color: #555555;'> 7</span><span> Alfred Place 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    13
-#&gt; </span><span style='color: #555555;'> 8</span><span> Alfred Place 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    23
-#&gt; </span><span style='color: #555555;'> 9</span><span> Alfred Place 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    67
-#&gt; </span><span style='color: #555555;'>10</span><span> Alfred Place 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    80
-#&gt; </span><span style='color: #555555;'># … with 798,718 more rows</span><span></div><div class='input'>
+<span class='fu'>melb_walk_fast</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2017</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 455,520 x 5</span><span>
+#&gt;    Sensor                         Date_Time           Date        Time Count
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Alfred Place                   2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   222
+#&gt; </span><span style='color: #555555;'> 2</span><span> Birrarung Marr                 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0  </span><span style='text-decoration: underline;'>1</span><span>099
+#&gt; </span><span style='color: #555555;'> 3</span><span> Bourke St-Russell St (West)    2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0  </span><span style='text-decoration: underline;'>1</span><span>916
+#&gt; </span><span style='color: #555555;'> 4</span><span> Bourke Street Mall (North)     2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   855
+#&gt; </span><span style='color: #555555;'> 5</span><span> Bourke Street Mall (South)     2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   855
+#&gt; </span><span style='color: #555555;'> 6</span><span> Chinatown-Lt Bourke St (South) 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   353
+#&gt; </span><span style='color: #555555;'> 7</span><span> Chinatown-Swanston St (North)  2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   697
+#&gt; </span><span style='color: #555555;'> 8</span><span> City Square                    2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0  </span><span style='text-decoration: underline;'>5</span><span>120
+#&gt; </span><span style='color: #555555;'> 9</span><span> Collins Place (North)          2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   444
+#&gt; </span><span style='color: #555555;'>10</span><span> Collins Place (South)          2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   844
+#&gt; </span><span style='color: #555555;'># … with 455,510 more rows</span><span></div><div class='input'>
 <span class='co'># Retrieve the year 2017 for Southern Cross Station</span>
-<span class='fu'>melb_walk_fast</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2017</span>, <span class='kw'>sensor</span> <span class='kw'>=</span> <span class='st'>"Southern Cross Station"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 17,154 x 5</span><span>
+<span class='fu'>melb_walk_fast</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2017</span>, <span class='kw'>sensor</span> <span class='kw'>=</span> <span class='st'>"Southern Cross Station"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 8,760 x 5</span><span>
 #&gt;    Sensor                 Date_Time           Date        Time Count
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0  </span><span style='text-decoration: underline;'>1</span><span>335
-#&gt; </span><span style='color: #555555;'> 2</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   463
-#&gt; </span><span style='color: #555555;'> 3</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   219
-#&gt; </span><span style='color: #555555;'> 4</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   122
-#&gt; </span><span style='color: #555555;'> 5</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    21
-#&gt; </span><span style='color: #555555;'> 6</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    28
-#&gt; </span><span style='color: #555555;'> 7</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    26
-#&gt; </span><span style='color: #555555;'> 8</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    35
-#&gt; </span><span style='color: #555555;'> 9</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    55
-#&gt; </span><span style='color: #555555;'>10</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0    82
-#&gt; </span><span style='color: #555555;'># … with 17,144 more rows</span><span></div><div class='input'># }
+#&gt; </span><span style='color: #555555;'> 2</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>01:00:00</span><span> 2017-01-01     1   463
+#&gt; </span><span style='color: #555555;'> 3</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>02:00:00</span><span> 2017-01-01     2   219
+#&gt; </span><span style='color: #555555;'> 4</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>03:00:00</span><span> 2017-01-01     3   122
+#&gt; </span><span style='color: #555555;'> 5</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>04:00:00</span><span> 2017-01-01     4    21
+#&gt; </span><span style='color: #555555;'> 6</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>05:00:00</span><span> 2017-01-01     5    28
+#&gt; </span><span style='color: #555555;'> 7</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>06:00:00</span><span> 2017-01-01     6    26
+#&gt; </span><span style='color: #555555;'> 8</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>07:00:00</span><span> 2017-01-01     7    35
+#&gt; </span><span style='color: #555555;'> 9</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>08:00:00</span><span> 2017-01-01     8    55
+#&gt; </span><span style='color: #555555;'>10</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>09:00:00</span><span> 2017-01-01     9    82
+#&gt; </span><span style='color: #555555;'># … with 8,750 more rows</span><span></div><div class='input'># }
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
