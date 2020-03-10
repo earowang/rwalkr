@@ -1,7 +1,7 @@
 Type: Package
 Package: rwalkr
 Title: API to Melbourne Pedestrian Data
-Version: 0.5.1
+Version: 0.5.1.9000
 Authors@R: 
     person(given = "Earo",
            family = "Wang",
