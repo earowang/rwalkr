@@ -227,7 +227,7 @@ pull_sensor <- function(app_token = NULL) {
     colClasses = rep("character", 11L),
     stringsAsFactors = FALSE,
     na.strings = "",
-    nrows = 60L
+    nrows = 100L
   )
   sensor_info <- dplyr::select(
     sensor_info, sensor = sensor_description, sensor_id, longitude, latitude, direction_1, direction_2, installation_date, status, note
