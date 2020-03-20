@@ -4,12 +4,11 @@
 #' as a CSV file, accompanied with basic visualisation. 
 #'
 #' @details It offers some basic plots to give a glimpse of the data over a 
-#' short time period. In order to be reproducible, scripting using `walk_melb` 
-#' or `run_melb` is recommended.
+#' short time period. In order to be reproducible, scripting using [`melb_walk`] 
+#' or [`melb_walk_fast`] is recommended.
 #'
 #' @return A shiny app.
 #' @export
-#' @seealso [melb_walk], [melb_walk_fast]
 #'
 melb_shine <- function() {
   if (!(requireNamespace("shiny", quietly = TRUE) && 
@@ -26,6 +25,8 @@ melb_shine <- function() {
     )
   }
   `%>%` <- plotly::`%>%`
+  sensor_df <- pull_sensor() %>% 
+    dplyr::mutate(abbr = gsub(" ", "", gsub("[:a-z:]", "", sensor)))
 
   ui <- shiny::fluidPage(
     shiny::br(),
@@ -63,7 +64,7 @@ melb_shine <- function() {
   server <- function(input, output, session) {
     all_df <- shiny::reactive({
       input$goButton
-      shiny::isolate(walk_melb(
+      shiny::isolate(melb_walk(
         from = input$date_rng[1], to = input$date_rng[2], session = "shiny"
       ))
     })

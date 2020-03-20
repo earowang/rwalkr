@@ -15,9 +15,6 @@ as a CSV file, accompanied with basic visualisation.
 }
 \details{
 It offers some basic plots to give a glimpse of the data over a
-short time period. In order to be reproducible, scripting using \code{walk_melb}
-or \code{run_melb} is recommended.
-}
-\seealso{
-\link{melb_walk}, \link{melb_walk_fast}
+short time period. In order to be reproducible, scripting using \code{\link{melb_walk}}
+or \code{\link{melb_walk_fast}} is recommended.
 }

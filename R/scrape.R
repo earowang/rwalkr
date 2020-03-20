@@ -111,7 +111,7 @@ interp_time <- function(x) {
 
 read_url <- function(url) {
   utils::read.csv(
-    url, skip = 8, nrows = 64,
+    url, skip = 8, nrows = 63,
     colClasses = c("character", rep("integer", 24)),
     na.strings = "N/A", stringsAsFactors = FALSE, check.names = FALSE
   )
