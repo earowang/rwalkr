@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rwalkr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2</span>
       </span>
     </div>
 
@@ -104,6 +104,11 @@
       
     </div>
 
+    <div id="rwalkr-0-5-2" class="section level1">
+<h1 class="page-header">
+<a href="#rwalkr-0-5-2" class="anchor"></a>rwalkr 0.5.2<small> 2020-03-20 </small>
+</h1>
+</div>
     <div id="rwalkr-0-5-1" class="section level1">
 <h1 class="page-header">
 <a href="#rwalkr-0-5-1" class="anchor"></a>rwalkr 0.5.1<small> 2020-01-08 </small>
@@ -119,7 +124,7 @@
 <ul>
 <li>New function <code><a href="../reference/melb_walk_directional.html">melb_walk_directional()</a></code> to access minute by minute directional pedestrian counts for the last hour from pedestrian sensor devices located across the city.</li>
 <li>Fixed <code><a href="../reference/pull_sensor.html">pull_sensor()</a></code> due to the Socrata API URL change.</li>
-<li>Defunct <code>lookup_sensor()</code>, <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code>, <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code> and <code><a href="../reference/rwalkr-defunct.html">shine_melb()</a></code> in favour of suffixed function names.</li>
+<li>Defunct <code>lookup_sensor()</code>, <code>walk_melb()</code>, <code>run_melb()</code> and <code>shine_melb()</code> in favour of suffixed function names.</li>
 </ul>
 </div>
     <div id="rwalkr-0-4-0" class="section level1">
@@ -127,8 +132,8 @@
 <a href="#rwalkr-0-4-0" class="anchor"></a>rwalkr 0.4.0<small> 2018-12-13 </small>
 </h1>
 <ul>
-<li>Fixed status “400” for <code><a href="../reference/melb_walk_fast.html">melb_walk_fast()</a></code> (previously <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code>) due to Socrata API changes.</li>
-<li>Deprecated <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code>, <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code> and <code><a href="../reference/rwalkr-defunct.html">shine_melb()</a></code> in favour of suffixed function names.</li>
+<li>Fixed status “400” for <code><a href="../reference/melb_walk_fast.html">melb_walk_fast()</a></code> (previously <code>run_melb()</code>) due to Socrata API changes.</li>
+<li>Deprecated <code>walk_melb()</code>, <code>run_melb()</code> and <code>shine_melb()</code> in favour of suffixed function names.</li>
 </ul>
 </div>
     <div id="rwalkr-0-3-4" class="section level1">
@@ -147,7 +152,7 @@
 <h2 class="hasAnchor">
 <a href="#api-changes" class="anchor"></a>API changes</h2>
 <ul>
-<li>Dropped the argument of <code>tweak</code> in <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code>, as the sensor names from the data source match with <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code>.</li>
+<li>Dropped the argument of <code>tweak</code> in <code>walk_melb()</code>, as the sensor names from the data source match with <code>run_melb()</code>.</li>
 </ul>
 </div>
 <div id="minor-changes" class="section level2">
@@ -185,8 +190,8 @@
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>Fixed “Count” to be returned as integers instead of characters in <code><a href="../reference/rwalkr-defunct.html">run_melb(na.rm = FALSE)</a></code>.</li>
-<li>Fixed duplicated data entries when <code><a href="../reference/rwalkr-defunct.html">walk_melb(tweak = TRUE)</a></code>.</li>
+<li>Fixed “Count” to be returned as integers instead of characters in <code>run_melb(na.rm = FALSE)</code>.</li>
+<li>Fixed duplicated data entries when <code>walk_melb(tweak = TRUE)</code>.</li>
 <li>Fixed one non-matching sensor in <code>lookup_sensor()</code>.</li>
 </ul>
 </div>
@@ -194,8 +199,8 @@
 <h2 class="hasAnchor">
 <a href="#updates" class="anchor"></a>Updates</h2>
 <ul>
-<li>A new sensor “Pelham St (S)” added to <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code>, <code><a href="../reference/pull_sensor.html">pull_sensor()</a></code>, and <code>lookup_sensor()</code> using Socrata.</li>
-<li>Changed the shiny app using <code><a href="../reference/rwalkr-defunct.html">shine_melb()</a></code> to use <code><a href="../reference/rwalkr-defunct.html">walk_melb(tweak = TRUE)</a></code>.</li>
+<li>A new sensor “Pelham St (S)” added to <code>run_melb()</code>, <code><a href="../reference/pull_sensor.html">pull_sensor()</a></code>, and <code>lookup_sensor()</code> using Socrata.</li>
+<li>Changed the shiny app using <code>shine_melb()</code> to use <code>walk_melb(tweak = TRUE)</code>.</li>
 </ul>
 </div>
 </div>
@@ -208,18 +213,18 @@
 <a href="#new-functions" class="anchor"></a>New functions</h2>
 <ul>
 <li>
-<code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code> pulls Melbourne pedestrian data using Socrata, which is faster than <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code>.</li>
+<code>run_melb()</code> pulls Melbourne pedestrian data using Socrata, which is faster than <code>walk_melb()</code>.</li>
 <li>
 <code><a href="../reference/pull_sensor.html">pull_sensor()</a></code> pulls Melbourne pedestrian sensor locations using Socrata.</li>
 <li>
-<code>lookup_sensor()</code> provides a dictionary for sensor names used in <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code> and <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code>.</li>
+<code>lookup_sensor()</code> provides a dictionary for sensor names used in <code>walk_melb()</code> and <code>run_melb()</code>.</li>
 </ul>
 </div>
 <div id="minor-changes-2" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
 <ul>
-<li>Added new arguments <code>na.rm = FALSE</code> and <code>tweak = FALSE</code> to the function <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code>. If <code>na.rm = TRUE</code>, it removes <code>NA</code>s from the data. If <code>tweak = TRUE</code>, it ensures the consistency of sensor names to <code><a href="../reference/rwalkr-defunct.html">run_melb()</a></code>.</li>
+<li>Added new arguments <code>na.rm = FALSE</code> and <code>tweak = FALSE</code> to the function <code>walk_melb()</code>. If <code>na.rm = TRUE</code>, it removes <code>NA</code>s from the data. If <code>tweak = TRUE</code>, it ensures the consistency of sensor names to <code>run_melb()</code>.</li>
 </ul>
 </div>
 </div>
@@ -228,7 +233,7 @@
 <a href="#rwalkr-0-2-0" class="anchor"></a>rwalkr 0.2.0<small> 2017-08-09 </small>
 </h1>
 <ul>
-<li>Added the function <code><a href="../reference/rwalkr-defunct.html">shine_melb()</a></code> to launch a shiny app. It provides two basic plots to take a glimpse at the data: one is an overlaying time series plot and the other showing a dot plot of missing values.</li>
+<li>Added the function <code>shine_melb()</code> to launch a shiny app. It provides two basic plots to take a glimpse at the data: one is an overlaying time series plot and the other showing a dot plot of missing values.</li>
 </ul>
 </div>
     <div id="rwalkr-0-1-0" class="section level1">
@@ -237,7 +242,7 @@
 </h1>
 <ul>
 <li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-<li>Added the function <code><a href="../reference/rwalkr-defunct.html">walk_melb()</a></code> to scrape Melbourne pedestrian data.</li>
+<li>Added the function <code>walk_melb()</code> to scrape Melbourne pedestrian data.</li>
 </ul>
 </div>
   </div>
@@ -246,6 +251,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#rwalkr-0-5-2">0.5.2</a></li>
         <li><a href="#rwalkr-0-5-1">0.5.1</a></li>
         <li><a href="#rwalkr-0-5-0">0.5.0</a></li>
         <li><a href="#rwalkr-0-4-0">0.4.0</a></li>
