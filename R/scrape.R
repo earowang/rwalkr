@@ -1,4 +1,4 @@
-globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time", "walk"))
+globalVariables(c("Time", "Count", "Sensor", "Date", "Date_Time", "walk", "sensor"))
 
 #' API using compedapi to Melbourne pedestrian data
 #'
