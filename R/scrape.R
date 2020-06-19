@@ -51,7 +51,7 @@ melb_walk <- function(
   }
 
   date_range <- seq.Date(from = from, to = to, by = 1L)
-  prefix_url <- "https://compedapi.herokuapp.com/api/bydatecsv/"
+  prefix_url <- "https://compedv2api.herokuapp.com/api/bydatecsv/"
 
   fmt_date <- format(date_range, "%d-%m-%Y")
   urls <- paste0(prefix_url, fmt_date)

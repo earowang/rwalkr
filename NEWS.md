@@ -1,6 +1,10 @@
+# rwalkr 0.5.3
+
+* Updated API URL in `melb_walk()`.
+
 # rwalkr 0.5.2
 
-# Included newly-installed sensors.
+* Included newly-installed sensors.
 
 # rwalkr 0.5.1
 

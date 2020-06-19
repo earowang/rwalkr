@@ -47,7 +47,7 @@ library(rwalkr)
 start_date <- as.Date("2017-07-01")
 ped_walk <- melb_walk(from = start_date, to = start_date + 6L)
 ped_walk
-#> # A tibble: 7,224 x 5
+#> # A tibble: 10,584 x 5
 #>   Sensor                     Date_Time           Date        Time Count
 #>   <chr>                      <dttm>              <date>     <int> <int>
 #> 1 Bourke Street Mall (North) 2017-07-01 00:00:00 2017-07-01     0   280
@@ -55,7 +55,7 @@ ped_walk
 #> 3 Melbourne Central          2017-07-01 00:00:00 2017-07-01     0   826
 #> 4 Town Hall (West)           2017-07-01 00:00:00 2017-07-01     0   682
 #> 5 Princes Bridge             2017-07-01 00:00:00 2017-07-01     0     0
-#> # … with 7,219 more rows
+#> # … with 10,579 more rows
 ped_run <- melb_walk_fast(year = 2016:2017, sensor = NULL) # NULL means all sensors
 ped_run
 #> # A tibble: 912,288 x 5
@@ -66,10 +66,10 @@ ped_run
 #> 3 Bourke St-Russell St (West) 2016-01-01 00:00:00 2016-01-01     0  1900
 #> 4 Bourke Street Mall (North)  2016-01-01 00:00:00 2016-01-01     0   461
 #> 5 Bourke Street Mall (South)  2016-01-01 00:00:00 2016-01-01     0   883
-#> # … with 9.123e+05 more rows
+#> # … with 912,283 more rows
 ```
 
-There are missing values (i.e. `NA`) in the dataset. By setting `na.rm =
+There are missing values (i.e. `NA`) in the dataset. By setting `na.rm =
 TRUE` in both functions, missing values will be removed.
 
 Here’s an example to use *ggplot2* for visualisation:
