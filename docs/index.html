@@ -6,20 +6,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>API to Melbourne Pedestrian Data • rwalkr</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="API to Melbourne Pedestrian Data">
 <meta property="og:description" content="Provides API to Melbourne pedestrian data in tidy
     data form.">
-<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rwalkr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.3</span>
       </span>
     </div>
 
@@ -74,10 +74,10 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You could install the stable version from CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"rwalkr"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"rwalkr"</span>)</pre></div>
 <p>You could install the development version from Github using:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"earowang/rwalkr"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("devtools")</span>
+<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"earowang/rwalkr"</span>)</pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -87,35 +87,35 @@
 <a href="#apis" class="anchor"></a>APIs</h3>
 <p>There are two APIs available to access hourly Melbourne pedestrian data: <em>compedapi</em> and <em>Socrata</em>. The former drives the <code><a href="reference/melb_walk.html">melb_walk()</a></code> function, where counts are uploaded on a daily basis; the latter powers the <code><a href="reference/melb_walk_fast.html">melb_walk_fast()</a></code> function, where counts are uploaded on a monthly basis. Given the function names, the function <code><a href="reference/melb_walk_fast.html">melb_walk_fast()</a></code> pulls the data at a much faster speed than <code><a href="reference/melb_walk.html">melb_walk()</a></code>.</p>
 <p>The function <code><a href="reference/melb_walk.html">melb_walk()</a></code> specifies the starting and ending dates to be pulled, whereas <code><a href="reference/melb_walk_fast.html">melb_walk_fast()</a></code> requires years to define the time frame. If a selection of sensors are of interest, <code><a href="reference/melb_walk_fast.html">melb_walk_fast()</a></code> provides the flexibility for sensor choices.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rwalkr)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">start_date &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span>(<span class="st">"2017-07-01"</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">ped_walk &lt;-<span class="st"> </span><span class="kw"><a href="reference/melb_walk.html">melb_walk</a></span>(<span class="dt">from =</span> start_date, <span class="dt">to =</span> start_date <span class="op">+</span><span class="st"> </span>6L)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">ped_walk</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; # A tibble: 7,224 x 5</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;   Sensor                     Date_Time           Date        Time Count</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;   &lt;chr&gt;                      &lt;dttm&gt;              &lt;date&gt;     &lt;int&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 1 Bourke Street Mall (North) 2017-07-01 00:00:00 2017-07-01     0   280</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 2 Bourke Street Mall (South) 2017-07-01 00:00:00 2017-07-01     0   177</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 3 Melbourne Central          2017-07-01 00:00:00 2017-07-01     0   826</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; 4 Town Hall (West)           2017-07-01 00:00:00 2017-07-01     0   682</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; 5 Princes Bridge             2017-07-01 00:00:00 2017-07-01     0     0</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; # … with 7,219 more rows</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">ped_run &lt;-<span class="st"> </span><span class="kw"><a href="reference/melb_walk_fast.html">melb_walk_fast</a></span>(<span class="dt">year =</span> <span class="dv">2016</span><span class="op">:</span><span class="dv">2017</span>, <span class="dt">sensor =</span> <span class="ot">NULL</span>) <span class="co"># NULL means all sensors</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15">ped_run</a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; # A tibble: 912,288 x 5</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;   Sensor                      Date_Time           Date        Time Count</span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt;   &lt;chr&gt;                       &lt;dttm&gt;              &lt;date&gt;     &lt;int&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; 1 Alfred Place                2016-01-01 00:00:00 2016-01-01     0    NA</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; 2 Birrarung Marr              2016-01-01 00:00:00 2016-01-01     0  1405</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt; 3 Bourke St-Russell St (West) 2016-01-01 00:00:00 2016-01-01     0  1900</span></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; 4 Bourke Street Mall (North)  2016-01-01 00:00:00 2016-01-01     0   461</span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt; 5 Bourke Street Mall (South)  2016-01-01 00:00:00 2016-01-01     0   883</span></a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; # … with 9.123e+05 more rows</span></a></code></pre></div>
-<p>There are missing values (i.e. <code>NA</code>) in the dataset. By setting <code>na.rm = TRUE</code> in both functions, missing values will be removed.</p>
+<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">rwalkr</span>)
+<span class="no">start_date</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span>(<span class="st">"2017-07-01"</span>)
+<span class="no">ped_walk</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/melb_walk.html">melb_walk</a></span>(<span class="kw">from</span> <span class="kw">=</span> <span class="no">start_date</span>, <span class="kw">to</span> <span class="kw">=</span> <span class="no">start_date</span> + <span class="fl">6L</span>)
+<span class="no">ped_walk</span>
+<span class="co">#&gt; # A tibble: 10,584 x 5</span>
+<span class="co">#&gt;   Sensor                     Date_Time           Date        Time Count</span>
+<span class="co">#&gt;   &lt;chr&gt;                      &lt;dttm&gt;              &lt;date&gt;     &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt; 1 Bourke Street Mall (North) 2017-07-01 00:00:00 2017-07-01     0   280</span>
+<span class="co">#&gt; 2 Bourke Street Mall (South) 2017-07-01 00:00:00 2017-07-01     0   177</span>
+<span class="co">#&gt; 3 Melbourne Central          2017-07-01 00:00:00 2017-07-01     0   826</span>
+<span class="co">#&gt; 4 Town Hall (West)           2017-07-01 00:00:00 2017-07-01     0   682</span>
+<span class="co">#&gt; 5 Princes Bridge             2017-07-01 00:00:00 2017-07-01     0     0</span>
+<span class="co">#&gt; # … with 10,579 more rows</span>
+<span class="no">ped_run</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/melb_walk_fast.html">melb_walk_fast</a></span>(<span class="kw">year</span> <span class="kw">=</span> <span class="fl">2016</span>:<span class="fl">2017</span>, <span class="kw">sensor</span> <span class="kw">=</span> <span class="kw">NULL</span>) <span class="co"># NULL means all sensors</span>
+<span class="no">ped_run</span>
+<span class="co">#&gt; # A tibble: 912,288 x 5</span>
+<span class="co">#&gt;   Sensor                      Date_Time           Date        Time Count</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dttm&gt;              &lt;date&gt;     &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt; 1 Alfred Place                2016-01-01 00:00:00 2016-01-01     0    NA</span>
+<span class="co">#&gt; 2 Birrarung Marr              2016-01-01 00:00:00 2016-01-01     0  1405</span>
+<span class="co">#&gt; 3 Bourke St-Russell St (West) 2016-01-01 00:00:00 2016-01-01     0  1900</span>
+<span class="co">#&gt; 4 Bourke Street Mall (North)  2016-01-01 00:00:00 2016-01-01     0   461</span>
+<span class="co">#&gt; 5 Bourke Street Mall (South)  2016-01-01 00:00:00 2016-01-01     0   883</span>
+<span class="co">#&gt; # … with 912,283 more rows</span></pre></div>
+<p>There are missing values (i.e. <code>NA</code>) in the dataset. By setting <code>na.rm = TRUE</code> in both functions, missing values will be removed.</p>
 <p>Here’s an example to use <em>ggplot2</em> for visualisation:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="dt">data =</span> <span class="kw"><a href="https://rdrr.io/r/base/subset.html">subset</a></span>(ped_walk, Sensor <span class="op">==</span><span class="st"> "Melbourne Central"</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Date_Time, <span class="dt">y =</span> Count))</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span>(<span class="no">ped_walk</span>, <span class="no">Sensor</span> <span class="kw">==</span> <span class="st">"Melbourne Central"</span>)) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">Date_Time</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">Count</span>))</pre></div>
 <p><img src="man/figure/plot-1.png"><!-- --></p>
 <p>To access minute by minute directional pedestrian counts for the last hour, please check out the <code><a href="reference/melb_walk_directional.html">melb_walk_directional()</a></code>.</p>
 <p>It’s recommended to include an application token in <code><a href="reference/melb_walk_fast.html">melb_walk_fast(app_token = "YOUR-APP-TOKEN")</a></code>, which you can sign up <a href="https://data.melbourne.vic.gov.au/profile/app_tokens">here</a>.</p>
@@ -131,11 +131,13 @@
 
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=rwalkr">https://​cloud.r-project.org/​package=rwalkr</a>
+</li>
+<li>Browse source code at <br><a href="https://github.com/earowang/rwalkr/">https://​github.com/​earowang/​rwalkr/​</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/earowang/rwalkr/issues">https://​github.com/​earowang/​rwalkr/​issues</a>
 </li>
@@ -153,7 +155,7 @@
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="http://earo.me">Earo Wang</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-6448-5260" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
+<a href="http://earo.me">Earo Wang</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-6448-5260" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
@@ -174,7 +176,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

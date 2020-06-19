@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="API using Socrata to Melbourne pedestrian data (per hour) — melb_walk_fast" />
 <meta property="og:description" content="API using Socrata to Melbourne pedestrian data (per hour)" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rwalkr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.3</span>
       </span>
     </div>
 
@@ -103,7 +106,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>API using Socrata to Melbourne pedestrian data (per hour)</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/earowang/rwalkr/blob/master/R/soda.R'><code>R/soda.R</code></a></small>
     <div class="hidden name"><code>melb_walk_fast.Rd</code></div>
     </div>
 
@@ -163,49 +166,18 @@ its policy.</p>
     <div class='dont-index'><p><a href='melb_walk.html'>melb_walk</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \dontrun{</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># Retrieve the year 2017</span>
-<span class='fu'>melb_walk_fast</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2017</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 455,520 x 5</span><span>
-#&gt;    Sensor                         Date_Time           Date        Time Count
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> Alfred Place                   2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   222
-#&gt; </span><span style='color: #555555;'> 2</span><span> Birrarung Marr                 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0  </span><span style='text-decoration: underline;'>1</span><span>099
-#&gt; </span><span style='color: #555555;'> 3</span><span> Bourke St-Russell St (West)    2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0  </span><span style='text-decoration: underline;'>1</span><span>916
-#&gt; </span><span style='color: #555555;'> 4</span><span> Bourke Street Mall (North)     2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   855
-#&gt; </span><span style='color: #555555;'> 5</span><span> Bourke Street Mall (South)     2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   855
-#&gt; </span><span style='color: #555555;'> 6</span><span> Chinatown-Lt Bourke St (South) 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   353
-#&gt; </span><span style='color: #555555;'> 7</span><span> Chinatown-Swanston St (North)  2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   697
-#&gt; </span><span style='color: #555555;'> 8</span><span> City Square                    2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0  </span><span style='text-decoration: underline;'>5</span><span>120
-#&gt; </span><span style='color: #555555;'> 9</span><span> Collins Place (North)          2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   444
-#&gt; </span><span style='color: #555555;'>10</span><span> Collins Place (South)          2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0   844
-#&gt; </span><span style='color: #555555;'># … with 455,510 more rows</span><span></div><div class='input'>
-<span class='co'># Retrieve the year 2017 for Southern Cross Station</span>
-<span class='fu'>melb_walk_fast</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2017</span>, <span class='kw'>sensor</span> <span class='kw'>=</span> <span class='st'>"Southern Cross Station"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 8,760 x 5</span><span>
-#&gt;    Sensor                 Date_Time           Date        Time Count
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #555555;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>00:00:00</span><span> 2017-01-01     0  </span><span style='text-decoration: underline;'>1</span><span>335
-#&gt; </span><span style='color: #555555;'> 2</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>01:00:00</span><span> 2017-01-01     1   463
-#&gt; </span><span style='color: #555555;'> 3</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>02:00:00</span><span> 2017-01-01     2   219
-#&gt; </span><span style='color: #555555;'> 4</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>03:00:00</span><span> 2017-01-01     3   122
-#&gt; </span><span style='color: #555555;'> 5</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>04:00:00</span><span> 2017-01-01     4    21
-#&gt; </span><span style='color: #555555;'> 6</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>05:00:00</span><span> 2017-01-01     5    28
-#&gt; </span><span style='color: #555555;'> 7</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>06:00:00</span><span> 2017-01-01     6    26
-#&gt; </span><span style='color: #555555;'> 8</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>07:00:00</span><span> 2017-01-01     7    35
-#&gt; </span><span style='color: #555555;'> 9</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>08:00:00</span><span> 2017-01-01     8    55
-#&gt; </span><span style='color: #555555;'>10</span><span> Southern Cross Station 2017-01-01 </span><span style='color: #555555;'>09:00:00</span><span> 2017-01-01     9    82
-#&gt; </span><span style='color: #555555;'># … with 8,750 more rows</span><span></div><div class='input'># }
-</div></span></pre>
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+<span class='fu'>melb_walk_fast</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2017</span>)
 
+<span class='co'># Retrieve the year 2017 for Southern Cross Station</span>
+<span class='fu'>melb_walk_fast</span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2017</span>, <span class='kw'>sensor</span> <span class='kw'>=</span> <span class='st'>"Southern Cross Station"</span>)
+}</div></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -216,7 +188,7 @@ its policy.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
