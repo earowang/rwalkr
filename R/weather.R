@@ -1,8 +1,12 @@
+globalVariables(c("Site", "Sensor_Type", "Units", "Value",
+                  "site_id", "description", "last_data",
+                  "sensor_type", "last_update", "type"))
+
 #' API to access Melbourne microclimate sensor data
 #'
 #' @param from Starting date. Earliest measurement is 2019-11-15
 #' @param to Ending date.
-#' @param site The site identifier. By default will pull in all locations that have weather sensors [pull_weather_sites()].
+#' @param site The site identifier. By default will pull in all locations that have weather sensors [pull_weather_sensors()].
 #' @param sensor_type The type of microclimate measurement to extract see [pull_weather_types()] for details.
 #' @param app_token Characters giving the application token. A limited number of
 #' requests can be made without an app token (`NULL`), but they are subject
@@ -22,7 +26,7 @@
 #' * `Sensor_Type`: The type of microclimate sensor reading
 #' * `Units`: The units that `Value` is in
 #' * `Value`: The value of the reading
-#' @seealso [melb_walk], [pull_weather_sites], [pull_weather_types]
+#' @seealso [melb_walk], [pull_weather_sensors], [pull_weather_types]
 #'
 #' @examples
 #' \dontrun{
@@ -168,8 +172,8 @@ pull_weather_types <- function(app_token = NULL) {
   ))
 
   dplyr::select(dat,
-                Sensor_ID = sensor_id,
-                Sensor_Type = type
+                sensor_id = sensor_id,
+                sensor_type = type
    )
 }
 
@@ -190,7 +194,7 @@ pull_weather_types <- function(app_token = NULL) {
 #' \dontrun{
 #' pull_weather_types()
 #' }
-pull_weather_sensor <- function(app_token = NULL) {
+pull_weather_sensors <- function(app_token = NULL) {
   base_url <- "https://data.melbourne.vic.gov.au/resource/irqv-hjr4.csv"
   p_url <- httr::parse_url(base_url)
   if (!is.null(app_token)) p_url$query$`$$app_token` <- app_token
@@ -207,16 +211,16 @@ pull_weather_sensor <- function(app_token = NULL) {
 
   sensor_info <- dplyr::select(
     sensor_info,
-    Site = site_id, Longitude = longitude, Latitude = latitude,
-    Description = description,
-    Last_Update = last_data
+    site_id, longitude, latitude,
+    description,
+    last_update = last_data
   )
   sensor_info <- dplyr::mutate(
     sensor_info,
-    Longitude = as.numeric(Longitude),
-    Latitude = as.numeric(Latitude),
-    Last_Update = as.POSIXct(
-      strptime(Last_Update, format = "%Y-%m-%dT%H:%M:%S"),
+    longitude = as.numeric(longitude),
+    latitude = as.numeric(latitude),
+    last_update = as.POSIXct(
+      strptime(last_update, format = "%Y-%m-%dT%H:%M:%S"),
       tz = "Australia/Melbourne")
   )
   dplyr::as_tibble(sensor_info)
