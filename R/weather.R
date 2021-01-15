@@ -1,6 +1,6 @@
-globalVariables(c("Site", "Sensor_Type", "Units", "Value",
+globalVariables(c("site", "sensor_type", "units", "value",
                   "site_id", "description", "last_data",
-                  "sensor_type", "last_update", "type"))
+                  "last_update", "type"))
 
 #' API to access Melbourne microclimate sensor data
 #'
@@ -20,12 +20,12 @@ globalVariables(c("Site", "Sensor_Type", "Units", "Value",
 #' its policy.
 #'
 #' @return A tibble including these variables as follows:
-#' * `Site`: Site identifier, this is the location of the weather sensor
-#' * `Date_Time`: Date time when the measurement was recorded
-#' * `Date`: Date associated with `Date_Time`
-#' * `Sensor_Type`: The type of microclimate sensor reading
-#' * `Units`: The units that `Value` is in
-#' * `Value`: The value of the reading
+#' * `site`: Site identifier, this is the location of the weather sensor
+#' * `date_Time`: Date time when the measurement was recorded
+#' * `date`: Date associated with `Date_Time`
+#' * `sensor_type`: The type of microclimate sensor reading
+#' * `units`: The units that `value` is in
+#' * `value`: The value of the reading
 #' @seealso [melb_walk], [pull_weather_sensors], [pull_weather_types]
 #'
 #' @examples
@@ -61,10 +61,10 @@ melb_weather <- function(
   base_url <- "https://data.melbourne.vic.gov.au/resource/u4vh-84j8.csv?"
   sel_cols <- paste(
     "SELECT site_id AS Site,",
-    "local_time AS Date_Time,",
-    "type AS Sensor_Type,",
-    "units AS Units,",
-    "value AS Value"
+    "local_time AS date_Time,",
+    "type AS sensor_Type,",
+    "units AS units,",
+    "value AS value"
   )
 
   # filter on API side
