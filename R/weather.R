@@ -101,7 +101,8 @@ melb_weather <- function(
   ndays <- as.integer(to - from)
   npages <- ceiling((ndays * 48L * nsensors * nsites) / limit)
 
-  p <- dplyr::progress_estimated(npages)
+  p <- progress::progress_bar$new(total = npages,
+    format = "downloading [:bar] :percent eta: :eta")
   lst_dat <- lapply(seq_len(npages), function(x) {
     offset <- sprintf("%i", limit * (x - 1))
     update_query <- paste0(query, " OFFSET ", offset)
@@ -118,7 +119,7 @@ melb_weather <- function(
       colClasses = rep("character", 5),
       nrows = limit
     ))
-    p$tick()$print()
+    p$tick()
     dat
   })
 
@@ -146,7 +147,7 @@ melb_weather <- function(
 #' [Socrata](https://dev.socrata.com/foundry/data.melbourne.vic.gov.au/u4vh-84j8).
 #'
 #' @export
-#' @seealso [melb_walk_fast]
+#' @seealso [melb_weather]
 #'
 #' @examples
 #' \dontrun{

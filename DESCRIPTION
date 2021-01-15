@@ -10,7 +10,7 @@ Authors@R:
            comment = c(ORCID = "0000-0001-6448-5260")),
       person(given = "Stuart",
             family = "Lee",
-            role = "ctb",
+            role = "aut",
             email = "stuart.andrew.lee@gmail.com",
             comment = c(ORCID = "0000-0003-1179-8436")))
 Description: Provides API to Melbourne pedestrian and weather data in tidy
@@ -24,7 +24,8 @@ Imports:
     dplyr,
     hms,
     httr,
-    tidyr
+    tidyr,
+    progress
 Suggests: 
     plotly,
     shiny (>= 1.0.4)
