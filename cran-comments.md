@@ -1,4 +1,4 @@
-This is a re-submission to fix URL.
+This is a re-submission to cite the URL to the portal in the Description field.
 
 ## Test environments
 

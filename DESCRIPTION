@@ -1,6 +1,6 @@
 Type: Package
 Package: rwalkr
-Title: API to Melbourne Open Data Portal
+Title: API to Melbourne Open Data Portal <https://data.melbourne.vic.gov.au>
 Version: 0.5.4
 Authors@R: 
     c(person(given = "Earo",
