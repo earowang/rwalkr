@@ -1,6 +1,6 @@
 Type: Package
 Package: rwalkr
-Title: API to Melbourne Open Data Portal <https://data.melbourne.vic.gov.au>
+Title: API to Melbourne Open Data Portal
 Version: 0.5.4
 Authors@R: 
     c(person(given = "Earo",
@@ -13,8 +13,8 @@ Authors@R:
             role = "aut",
             email = "stuart.andrew.lee@gmail.com",
             comment = c(ORCID = "0000-0003-1179-8436")))
-Description: Provides API to Melbourne pedestrian and weather data in tidy
-    data form.
+Description: Provides API to Melbourne pedestrian and weather data
+    <https://data.melbourne.vic.gov.au> in tidy data form.
 License: MIT + file LICENSE
 URL: https://pkg.earo.me/rwalkr/
 BugReports: https://github.com/earowang/rwalkr/issues
