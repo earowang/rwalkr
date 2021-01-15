@@ -1,3 +1,7 @@
+# rwalkr 0.5.4
+
+Added a new set of functions to scrape Melbourne microclimate data. (@sa-lee)
+
 # rwalkr 0.5.3
 
 * Updated API URL in `melb_walk()`.
