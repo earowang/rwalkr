@@ -61,7 +61,7 @@ melb_weather <- function(
 
   base_url <- "https://data.melbourne.vic.gov.au/resource/u4vh-84j8.csv?"
   sel_cols <- paste(
-    "SELECT site_id AS Site,",
+    "SELECT site_id AS site,",
     "local_time AS date_time,",
     "type AS sensor_Type,",
     "units AS units,",
