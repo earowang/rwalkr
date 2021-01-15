@@ -26,7 +26,7 @@ A tibble including these variables as follows:
 \itemize{
 \item \code{Sensor}: Sensor name
 \item \code{Date_Time}: Date time when the pedestrian counts are recorded
-\item \code{Date}: Date associated with \code{date_Time}
+\item \code{Date}: Date associated with \code{Date_Time}
 \item \code{Time}: Time of day
 \item \code{Count}: Hourly counts
 }

@@ -3,12 +3,17 @@ Package: rwalkr
 Title: API to Melbourne Pedestrian Data
 Version: 0.5.3.9000
 Authors@R: 
-    person(given = "Earo",
+    c(person(given = "Earo",
            family = "Wang",
            role = c("aut", "cre"),
            email = "earo.wang@gmail.com",
-           comment = c(ORCID = "0000-0001-6448-5260"))
-Description: Provides API to Melbourne pedestrian data in tidy
+           comment = c(ORCID = "0000-0001-6448-5260")),
+      person(given = "Stuart",
+            family = "Lee",
+            role = "ctb",
+            email = "stuart.andrew.lee@gmail.com",
+            comment = c(ORCID = "0000-0003-1179-8436")))
+Description: Provides API to Melbourne pedestrian and weather data in tidy
     data form.
 License: MIT + file LICENSE
 URL: http://pkg.earo.me/rwalkr
@@ -26,4 +31,4 @@ Suggests:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

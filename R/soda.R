@@ -27,7 +27,7 @@ globalVariables(c(
 #' @return A tibble including these variables as follows:
 #' * `Sensor`: Sensor name
 #' * `Date_Time`: Date time when the pedestrian counts are recorded
-#' * `Date`: Date associated with `date_Time`
+#' * `Date`: Date associated with `Date_Time`
 #' * `Time`: Time of day
 #' * `Count`: Hourly counts
 #'
