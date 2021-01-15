@@ -29,12 +29,12 @@ for an app token \href{https://data.melbourne.vic.gov.au/profile/app_tokens}{her
 \value{
 A tibble including these variables as follows:
 \itemize{
-\item \code{Site}: Site identifier, this is the location of the weather sensor
-\item \code{Date_Time}: Date time when the measurement was recorded
-\item \code{Date}: Date associated with \code{Date_Time}
-\item \code{Sensor_Type}: The type of microclimate sensor reading
-\item \code{Units}: The units that \code{Value} is in
-\item \code{Value}: The value of the reading
+\item \code{site}: Site identifier, this is the location of the weather sensor
+\item \code{date_time}: Date time when the measurement was recorded
+\item \code{date}: Date associated with \code{date_time}
+\item \code{sensor_type}: The type of microclimate sensor reading
+\item \code{units}: The units that \code{value} is in
+\item \code{value}: The value of the reading
 }
 }
 \description{

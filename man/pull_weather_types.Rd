@@ -25,5 +25,5 @@ pull_weather_types()
 }
 }
 \seealso{
-\link{melb_walk_fast}
+\link{melb_weather}
 }

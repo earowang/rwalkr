@@ -21,13 +21,14 @@ globalVariables(c("site", "sensor_type", "units", "value",
 #'
 #' @return A tibble including these variables as follows:
 #' * `site`: Site identifier, this is the location of the weather sensor
-#' * `date_Time`: Date time when the measurement was recorded
-#' * `date`: Date associated with `Date_Time`
+#' * `date_time`: Date time when the measurement was recorded
+#' * `date`: Date associated with `date_time`
 #' * `sensor_type`: The type of microclimate sensor reading
 #' * `units`: The units that `value` is in
 #' * `value`: The value of the reading
 #' @seealso [melb_walk], [pull_weather_sensors], [pull_weather_types]
 #'
+#' @export
 #' @examples
 #' \dontrun{
 #' # Retrieve the last weeks data
@@ -61,7 +62,7 @@ melb_weather <- function(
   base_url <- "https://data.melbourne.vic.gov.au/resource/u4vh-84j8.csv?"
   sel_cols <- paste(
     "SELECT site_id AS Site,",
-    "local_time AS date_Time,",
+    "local_time AS date_time,",
     "type AS sensor_Type,",
     "units AS units,",
     "value AS value"
@@ -126,14 +127,14 @@ melb_weather <- function(
   weather <- dplyr::bind_rows(lst_dat)
   weather <- dplyr::mutate(
     weather,
-    Date_Time = as.POSIXct(strptime(Date_Time, format = "%Y-%m-%dT%H:%M:%S"),
+    date_time = as.POSIXct(strptime(date_time, format = "%Y-%m-%dT%H:%M:%S"),
                            tz = tz),
-    Date = as.Date.POSIXct(Date_Time, tz = tz),
+    date = as.Date.POSIXct(date_time, tz = tz),
 
   )
-  weather <- dplyr::arrange(weather, Date_Time)
-  weather <- dplyr::select(weather, Site, Date_Time,
-                           Date, Sensor_Type, Units, Value)
+  weather <- dplyr::arrange(weather, date_time)
+  weather <- dplyr::select(weather, site, date_time,
+                           date, sensor_type, units, value)
   weather
 }
 
