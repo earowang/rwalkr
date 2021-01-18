@@ -21,7 +21,7 @@ options(tibble.print_min = 5)
 
 # rwalkr
 
-The goal of **rwalkr** is to provide APIs to the pedestrian data from the City of Melbourne in tidy data form.
+The goal of **rwalkr** is to provide APIs to the pedestrian and microclimate data from the City of Melbourne in tidy data form.
 
 ## Installation
 

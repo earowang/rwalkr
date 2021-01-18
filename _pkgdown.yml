@@ -5,6 +5,8 @@ template:
 authors:
   Earo Wang:
     href: http://earo.me
+  Stuart Lee:
+    href: http://stuartlee.org
 
 reference:
 - title: APIs to Melbourne pedestrian data
@@ -14,13 +16,19 @@ reference:
     - melb_walk
     - melb_walk_fast
     - melb_walk_directional
-- title: Sensor locations
-  contents:
     - pull_sensor
 
 - title: Shiny app for Melbourne pedestrian data
   contents:
     - melb_shine
+
+- title: APIs to Melbourne microclimate data
+  desc: >
+    Provides APIs using Socrata to Melbourne microclimate data in a tidy data form.
+  contents:
+    - melb_weather
+    - pull_weahter_sensors
+    - pull_weahter_types
 
 navbar:
   type: default

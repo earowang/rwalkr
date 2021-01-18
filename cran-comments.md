@@ -1,7 +1,9 @@
+This is a re-submission to cite the URL to the portal in the Description field.
+
 ## Test environments
 
-* local OS X install, R 4.0.1
-* ubuntu 18.04 (on travis-ci), R 4.0.1
+* local OS X install, R 4.0.2
+* ubuntu 18.04 (on travis-ci), R 4.0.3
 * win-builder (devel and release)
 
 ## R CMD check results
