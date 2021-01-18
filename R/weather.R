@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-globalVariables(c("Site", "Sensor_Type", "Units", "Value",
-                  "site_id", "description", "last_data",
-                  "sensor_type", "last_update", "type"))
-=======
 globalVariables(c("site", "sensor_type", "units", "value",
                   "site_id", "description", "last_data",
                   "last_update", "type"))
->>>>>>> upstream/master
 
 #' API to access Melbourne microclimate sensor data
 #'
@@ -26,16 +20,6 @@ globalVariables(c("site", "sensor_type", "units", "value",
 #' its policy.
 #'
 #' @return A tibble including these variables as follows:
-<<<<<<< HEAD
-#' * `Site`: Site identifier, this is the location of the weather sensor
-#' * `Date_Time`: Date time when the measurement was recorded
-#' * `Date`: Date associated with `Date_Time`
-#' * `Sensor_Type`: The type of microclimate sensor reading
-#' * `Units`: The units that `Value` is in
-#' * `Value`: The value of the reading
-#' @seealso [melb_walk], [pull_weather_sensors], [pull_weather_types]
-#'
-=======
 #' * `site`: Site identifier, this is the location of the weather sensor
 #' * `date_time`: Date time when the measurement was recorded
 #' * `date`: Date associated with `date_time`
@@ -45,7 +29,6 @@ globalVariables(c("site", "sensor_type", "units", "value",
 #' @seealso [melb_walk], [pull_weather_sensors], [pull_weather_types]
 #'
 #' @export
->>>>>>> upstream/master
 #' @examples
 #' \dontrun{
 #' # Retrieve the last weeks data
