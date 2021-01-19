@@ -63,7 +63,7 @@ melb_weather <- function(
   sel_cols <- paste(
     "SELECT site_id AS site,",
     "local_time AS date_time,",
-    "type AS sensor_Type,",
+    "type AS sensor_type,",
     "units AS units,",
     "value AS value"
   )
@@ -130,6 +130,7 @@ melb_weather <- function(
     date_time = as.POSIXct(strptime(date_time, format = "%Y-%m-%dT%H:%M:%S"),
                            tz = tz),
     date = as.Date.POSIXct(date_time, tz = tz),
+    value = as.numeric(value)
 
   )
   weather <- dplyr::arrange(weather, date_time)
