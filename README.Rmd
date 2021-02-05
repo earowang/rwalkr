@@ -8,7 +8,7 @@ output:
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
+  collapse = TRUE, message = FALSE,
   comment = "#>",
   fig.path = "man/figures/"
 )
@@ -73,4 +73,4 @@ It's recommended to include an application token in `melb_walk_fast(app_token = 
 
 The function `melb_shine()` launches a shiny app to give a glimpse of the data. It provides two basic plots: one is an overlaying time series plot, and the other is a dot plot indicating missing values. Below is a screen-shot of the shiny app.
 
-![](man/figure/shiny.png)
+![](man/figures/shiny.png)

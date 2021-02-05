@@ -57,23 +57,6 @@ ped_walk
 #> 5 Princes Bridge             2017-07-01 00:00:00 2017-07-01     0     0
 #> # … with 10,579 more rows
 ped_run <- melb_walk_fast(year = 2016:2017, sensor = NULL) # NULL means all sensors
-#> downloading [=====>--------------------------------------------] 11% eta: 11s
-#> downloading [=======>------------------------------------------] 17% eta: 16s
-#> downloading [==========>---------------------------------------] 22% eta: 17s
-#> downloading [=============>------------------------------------] 28% eta: 17s
-#> downloading [================>---------------------------------] 33% eta: 17s
-#> downloading [==================>-------------------------------] 39% eta: 16s
-#> downloading [=====================>----------------------------] 44% eta: 15s
-#> downloading [========================>-------------------------] 50% eta: 14s
-#> downloading [===========================>----------------------] 56% eta: 13s
-#> downloading [==============================>-------------------] 61% eta: 11s
-#> downloading [================================>-----------------] 67% eta: 10s
-#> downloading [===================================>--------------] 72% eta: 8s
-#> downloading [======================================>-----------] 78% eta: 6s
-#> downloading [=========================================>--------] 83% eta: 5s
-#> downloading [===========================================>------] 89% eta: 3s
-#> downloading [==============================================>---] 94% eta: 1s
-#> downloading [==================================================] 100% eta: 0s
 ped_run
 #> # A tibble: 912,288 x 5
 #>   Sensor                      Date_Time           Date        Time Count
@@ -113,4 +96,4 @@ the data. It provides two basic plots: one is an overlaying time series
 plot, and the other is a dot plot indicating missing values. Below is a
 screen-shot of the shiny app.
 
-![](man/figure/shiny.png)
+![](man/figures/shiny.png)
