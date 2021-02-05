@@ -1,3 +1,7 @@
+# rwalkr 0.5.5
+
+Fixed a typo in `melb_weather()`.
+
 # rwalkr 0.5.4
 
 Added a new set of functions to scrape Melbourne microclimate data. (@sa-lee)
