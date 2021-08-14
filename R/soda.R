@@ -27,6 +27,7 @@ globalVariables(c(
 #' @return A tibble including these variables as follows:
 #' * `Sensor`: Sensor name
 #' * `Date_Time`: Date time when the pedestrian counts are recorded
+#' (at Australia/Melbourne)
 #' * `Date`: Date associated with `Date_Time`
 #' * `Time`: Time of day
 #' * `Count`: Hourly counts
@@ -54,7 +55,6 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
   sel_cols <- paste(
     "SELECT sensor_name AS Sensor,",
     "date_time AS Date_Time,",
-    "time AS Time,",
     "hourly_counts AS Count"
   )
   year_str <- paste(year, collapse = ", ")
@@ -88,7 +88,7 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
       encoding = "UTF-8")
     dat <- dplyr::as_tibble(utils::read.csv(
       textConnection(content),
-      colClasses = rep("character", 4L),
+      colClasses = rep("character", 3L),
       stringsAsFactors = FALSE,
       nrows = limit
     ))
@@ -99,8 +99,9 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
   ped <- dplyr::bind_rows(lst_dat)
   ped <- dplyr::mutate(
     ped,
-    Date_Time = as.POSIXct(strptime(Date_Time, format = "%Y-%m-%dT%H:%M:%S"),
-      tz = tz)
+    Date_Time = as.POSIXct(strptime(date_time, format = "%Y-%m-%dT%H:%M:%S"),
+      tz = tz),
+    date_time = NULL,
   )
   from_time <- as.POSIXct(paste0(min(year, na.rm = TRUE), "-01-01 00:00"),
       tz = tz)

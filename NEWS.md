@@ -1,3 +1,7 @@
+# rwalkr 0.5.6
+
+* Updated `melb_walk_fast()` to be compatible with the data API change.
+
 # rwalkr 0.5.5
 
 Fixed a typo in `melb_weather()`.
