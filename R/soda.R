@@ -50,7 +50,7 @@ melb_walk_fast <- function(year = NULL, sensor = NULL, na.rm = FALSE,
   if (is.null(year)) {
     year <- this_year
   }
-  stopifnot(year > 2008 && year < (this_year + 1L))
+  stopifnot(all(year > 2008 & year < (this_year + 1L)))
   base_url <- "https://data.melbourne.vic.gov.au/resource/mxb8-wn4w.csv?"
   sel_cols <- paste(
     "SELECT sensor_name AS Sensor,",
